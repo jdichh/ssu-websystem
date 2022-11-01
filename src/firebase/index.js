@@ -15,6 +15,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig)
 const auth = getAuth(app)
+export { auth }
 
 const firebaseApp = firebase.initializeApp(firebaseConfig)
 
@@ -46,6 +47,3 @@ export const useLoadUsers = () => {
   onUnmounted(close)
   return users
 }
-
-
-export { auth }
