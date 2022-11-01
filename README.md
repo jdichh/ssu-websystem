@@ -1,4 +1,4 @@
-# yt
+# WEBSYSTEM FOR SSU
 
 ## Project setup
 ```
