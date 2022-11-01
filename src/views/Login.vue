@@ -1,21 +1,38 @@
 <template>
 	<main class="login">
-		<section class="forms">
+		<div class="login-dark">
 			<form class="login" @submit.prevent="login">
-				<h2>Log In</h2>
-				<input 
-					type="email" 
-					placeholder="E-mail Address"
-					v-model="login_form.email" />
-				<input 
-					type="password" 
-					placeholder="Password" 
-					v-model="login_form.password" />
-				<input 
-					type="submit" 
-					value="Log In" />
+				<img class="letran_logo" src="../assets/img/letran_calamba_seal.png"/>
+				<h2>SSU Portal</h2>
+				<div class="illustration">
+					<div class="form-group">
+						<input 
+							class="form-control" 
+							type="email" 
+							placeholder="Email Address"
+							v-model="login_form.email" />
+					</div>
+
+					<div class="form-group">
+						<input 
+							class="form-control" 
+							type="password" 
+							placeholder="Password" 
+							v-model="login_form.password" />
+					</div>
+
+					<div class="form-group">
+						<input 
+							type="submit" 
+							value="Log In" />
+					</div>
+
+					<div>
+						<p class="forgot">Contact your head to register.</p>
+					</div>
+				</div>
 			</form>
-		</section>
+		</div>
 	</main>
 </template>
 
@@ -41,25 +58,61 @@ export default {
 </script>
 
 <style>
-.forms {
-	display: flex;
-	min-height: 100vh;
+
+.letran_logo{
+	padding-bottom: 20px;
 }
 
-form {
-	flex: 1 1 0%;
-	padding: 8rem 1rem 1rem;
+.login-dark {
+  height:100vh;
+  background:#475d62 url(../assets/img/bg.jpg);
+  background-size:cover;
+  position:relative;
 }
 
-form.login {
-	color: rgb(63, 174, 123);
-	background-color: rgb(30, 30, 47);
+.login-dark form {
+  max-width:400px;
+  width:100%;
+  background-color:#1e2833;
+  padding:40px;
+  border-radius:4px;
+  transform:translate(-50%, -50%);
+  position:absolute;
+  top:50%;
+  left:50%;
+  color:#fff;
+  box-shadow:3px 3px 4px rgba(0,0,0,0.2);
 }
 
-h2 {
-	font-size: 2rem;
-	text-transform: uppercase;
-	margin-bottom: 2rem;
+.login-dark .illustration {
+  text-align:center;
+  padding-top: 20px;
+  font-size:100px;
+  color:#2980ef;
+}
+
+.login-dark form .form-control {
+  background:none;
+  border:none;
+  border-bottom:1px solid #434a52;
+  border-radius:0;
+  box-shadow:none;
+  outline:none;
+  color:inherit;
+}
+
+.login-dark form .forgot {
+  display:block;
+  text-align:center;
+  font-size:16px;
+  color:#6f7a85;
+  opacity:0.9;
+  text-decoration:none;
+}
+
+.login-dark form .forgot:hover, .login-dark form .forgot:active {
+  opacity:1;
+  text-decoration:none;
 }
 
 input {
@@ -75,6 +128,7 @@ input {
 	font-size: 1.5rem;
 	margin-bottom: 2rem;
 	padding: 0.5rem 0rem;
+	font-size: 20px;
 }
 
 input:not([type="submit"]) {
@@ -90,15 +144,14 @@ input::placeholder {
 	color: inherit;
 }
 
-
 form.login input:not([type="submit"]) {
-	color: #FFF;
-	border-bottom: 2px solid rgb(39, 41, 61);
+	color: white;
+	border-bottom: 2px solid #6f7a85;
 }
 
 form.login input[type="submit"] {
-	background-color: rgb(63, 174, 123);
-	color: #FFF;
+	background-color:#214a80;
+	color: white;
 	font-weight: 700;
 	padding: 1rem 2rem;
 	border-radius: 0.5rem;

@@ -15,19 +15,24 @@ export default {
     <div class="sidebar" :style="{ width:sidebarWidth}" v-if="$store.state.user"> 
         <h1>
             <span v-if="collapsed">
-                <div>S</div>
-                <div>S</div>
-                <div>U</div>
+                <div class="sidebar_img">
+                    <img src="../letran_calamba_seal_title.png"/>
+                </div>
             </span>
-            <span v-else>SSU</span>
+            <span v-else>
+                <div class="sidebar_img">
+                    <img src="../letran_calamba_seal_title.png"/>
+                </div>
+            </span>
         </h1>
         
         <SidebarLink to="/" icon="fas fa-home">Home</SidebarLink>
         <SidebarLink to="/guards" icon="fa-solid fa-person-military-pointing">Guards</SidebarLink>
-        <SidebarLink to="/schedule" icon="fas fa-calendar">Scheduling</SidebarLink>
+        <SidebarLink to="/schedule" icon="fas fa-calendar">Calendar</SidebarLink>
         <SidebarLink to="/reports" icon="fas fa-book">Reports</SidebarLink>
-        <SidebarLink to="/login" icon="fa-solid fa-person-running" @click="$store.dispatch('logout')">Log Out</SidebarLink>
-        
+
+        <SidebarLink to="/login" icon="fa-solid fa-person-running" @click="$store.dispatch('logout')">Logout</SidebarLink>
+
         <span class="collapse-icon" :class="{ 'rotate-180': collapsed}" @click="toggleSidebar">
             <i class="fa-solid fa-expand"></i>
         </span>
@@ -36,9 +41,9 @@ export default {
 
 <style>
 :root {
-    --sidebar-bg-color: #2f855a;
-    --sidebar-item-hover: #38a169;
-    --sidebar-item-active: #276749;
+    --sidebar-bg-color: #1e2833;
+    --sidebar-item-hover: #434a52;
+    --sidebar-item-active: #0c1014;
 }
 </style>
 
@@ -56,6 +61,7 @@ export default {
     transition: 0.3s ease;
     display: flex;
     flex-direction: column;
+    font-size:17px;
 }
 
 .collapse-icon{
@@ -68,6 +74,9 @@ export default {
     transition: 0.2s linear;
 }
 
+.sidebar_img{
+    margin-left: 2.5px;
+}
 .rotate-180{
     transform: rotate(180deg);
     transition: 0.2s linear;

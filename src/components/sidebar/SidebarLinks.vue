@@ -46,10 +46,10 @@ export default {
     font-weight: 400;
     user-select: none;
 
-    margin: 0.20em 0;
+    margin: 0.15em 0;
     padding: 0.4em;
     border-radius: 0.25em;
-    height: 2.1em;
+    height: 4em;
 
     color: white;
     text-decoration: none;
@@ -65,8 +65,7 @@ export default {
 
 .link .icon{
     flex-shrink: 0;
-    width: 25px;
+    width: 30px;
     margin-right: 10px;
-    
 }
 </style>

@@ -5,12 +5,14 @@ import 'firebase/compat/firestore';
 import { ref, onUnmounted } from 'vue'
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDegJUpcTTTrTavpH3utSFxJTSTiA_rtKA",
-  authDomain: "test-f17ce.firebaseapp.com",
-  projectId: "test-f17ce",
-  storageBucket: "test-f17ce.appspot.com",
-  messagingSenderId: "898592687020",
-  appId: "1:898592687020:web:7d24f66738711830a3b009"
+  apiKey: "AIzaSyBVirBpZvWclB_eKNofu8DZLZ6T2jvTi5g",
+  authDomain: "geoloccapstone.firebaseapp.com",
+  databaseURL: "https://geoloccapstone-default-rtdb.firebaseio.com",
+  projectId: "geoloccapstone",
+  storageBucket: "geoloccapstone.appspot.com",
+  messagingSenderId: "1018081186988",
+  appId: "1:1018081186988:web:f076a41933fb8fd9dbbb09",
+  measurementId: "G-T635YWT2VM"
 }
 
 const app = initializeApp(firebaseConfig)
@@ -20,6 +22,7 @@ export { auth }
 const firebaseApp = firebase.initializeApp(firebaseConfig)
 
 const db = firebaseApp.firestore()
+
 const usersCollection = db.collection('users')
 
 export const createUser = user => {
