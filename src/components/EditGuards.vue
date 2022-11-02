@@ -160,8 +160,8 @@ export default {
       form.idNum = user.idNum
       form.position = user.position
       form.licNum = user.licNum
-      form.issueDate = user.issueDate
-      form.expDate = user.expDate
+      form.issueDate = user.issueDate.toDate()
+      form.expDate = user.expDate.toDate()
       form.email = user.email
       form.password = user.password
     })

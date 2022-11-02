@@ -27,6 +27,7 @@
                       <th scope="col">Full Name</th>
                       <th scope="col">Contact Number</th>
                       <th scope="col">License Number</th>
+                      <th scope="col">Date Issued</th> 
                       <th scope="col">Expiration Date</th> 
                       <th scope="col">Position</th>   
                       <th scope="col">Action</th>
@@ -42,6 +43,7 @@
                       nameEx,
                       conNumber, 
                       licNum,
+                      issueDate,
                       expDate,
                       position } in users" :key="id">
 
@@ -53,6 +55,7 @@
                             nameEx}}</td>
                       <td>{{ conNumber }}</td>	
                       <td>{{ licNum }}</td>
+                      <td>{{ issueDate.toDate().toDateString() }}</td>
                       <td>{{ expDate.toDate().toDateString() }}</td>
                       <td>{{ position }}</td>
 
