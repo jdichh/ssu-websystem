@@ -12,7 +12,7 @@
                 <a>
                     <button class="btn btn-success" @click="$router.push('/add-guards')">
                         <i class="fa-solid fa-plus"/>
-                        Add Guards
+                        Add
                     </button>
                 </a>
 

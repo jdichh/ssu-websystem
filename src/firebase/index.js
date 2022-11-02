@@ -20,28 +20,22 @@ const auth = getAuth(app)
 export { auth }
 
 const firebaseApp = firebase.initializeApp(firebaseConfig)
-
 const db = firebaseApp.firestore()
 
 const usersCollection = db.collection('users')
-
 export const createUser = user => {
   return usersCollection.add(user)
 }
-
 export const getUser = async id => {
   const user = await usersCollection.doc(id).get()
   return user.exists ? user.data() : null
 }
-
 export const updateUser = (id, user) => {
   return usersCollection.doc(id).update(user)
 }
-
 export const deleteUser = id => {
   return usersCollection.doc(id).delete()
 }
-
 export const useLoadUsers = () => {
   const users = ref([])
   const close = usersCollection.onSnapshot(snapshot => {
@@ -49,4 +43,28 @@ export const useLoadUsers = () => {
   })
   onUnmounted(close)
   return users
+}
+
+
+const reportsCollection = db.collection('reports')
+export const createReport = report => {
+  return reportsCollection.add(report)
+}
+export const getReport = async id => {
+  const report = await reportsCollection.doc(id).get()
+  return report.exists ? report.data() : null
+}
+export const updateReport = (id, report) => {
+  return reportsCollection.doc(id).update(report)
+}
+export const deleteReport = id => {
+  return reportsCollection.doc(id).delete()
+}
+export const useLoadReports = () => {
+  const reports = ref([])
+  const close = reportsCollection.onSnapshot(snapshot => {
+    reports.value = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }))
+  })
+  onUnmounted(close)
+  return reports
 }
