@@ -33,14 +33,14 @@ export default {
 }
 
 body{
-  background:#475d62 url(./assets/img/bg.jpg);
+  background: url(./assets/img/bg_color.png);
 }
 
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: black;
 }
 
 #nav {
