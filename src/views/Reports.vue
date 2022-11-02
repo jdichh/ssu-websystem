@@ -1,19 +1,28 @@
+<script>
+import { useLoadReports } from '@/firebase' //refer to firebase/index.js
+
+export default {
+    setup() {
+        const reports = useLoadReports()
+        return { reports }
+     }
+}
+</script>
+
 <template>
   <main class="reports"> 
     <div class="container-xl">
-      <div class="table-responsive">
-        <div class="table-wrapper">
-          <div class="table-title">
-            <div class="row">
-              <div class="col-sm-6">
-                <h2>Reports & Logs</h2>
-              </div>
-              <div class="col-sm-6">
+        <div class="table-responsive">
+            <div class="table-wrapper">
 
-              </div>
-            </div>
-          </div>
-          
+                <div class="table-title">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h2>Reports</h2>
+                        </div>
+                    </div>
+                </div>
+
                 <table class="table table-striped">
                   <thead>
                     <tr> 
@@ -23,29 +32,23 @@
                   </thead>
 
                   <tbody>
-                    <tr v-for="{ id, lastName, firstName, statement} in reports" :key="id">
+                    <tr v-for="{ 
+                        id, 
+                        lastName, 
+                        firstName, 
+                        statement} in reports" :key="id">
+
                       <td>{{ lastName + " " + firstName}}</td>
                       <td>{{ statement }}</td>
                     </tr>
                   </tbody>
-                </table>  
+                </table> 
+                 
             </div>
         </div>
     </div>
   </main>
 </template>
-
-<script>
-import { useLoadReports } from '@/firebase'
-
-export default {
-
-    setup() {
-        const reports = useLoadReports()
-        return { reports }
-     }
-}
-</script>
 
 <style scoped>
 .table-responsive {

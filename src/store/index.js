@@ -1,3 +1,4 @@
+//Authentication and State Management
 import { createStore } from 'vuex'
 import router from '../router'
 import { auth } from '../firebase'
@@ -56,7 +57,7 @@ export default createStore({
       } catch (error) {
         switch(error.code) {
           case 'auth/email-already-in-use':
-            alert("E-mail address is already in use.")
+            alert("Email address is already in use.")
             break
           case 'auth/invalid-email':
             alert("Invalid email.")

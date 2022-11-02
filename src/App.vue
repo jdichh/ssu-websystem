@@ -4,9 +4,7 @@ import { useStore } from 'vuex'
 import Sidebar from './components/sidebar/Sidebar.vue'
 import { sidebarWidth } from './components/sidebar/state'
 
-
 export default {
-
   data() {
     return {
       mobile: null,
@@ -17,11 +15,13 @@ export default {
     Sidebar
   },
 
+  //checks for any window resizing action
   created () {
     this.checkScreen();
     window.addEventListener("resize", this.checkScreen)
   },
 
+  //blocks the user from using the app if window width is less than or equal to 850px
   methods: {
     checkScreen() {
       const windowWidth = window.innerWidth;
@@ -41,13 +41,10 @@ export default {
     })
     return { sidebarWidth }
   },
-
-  
 }
 </script>
 
 <style lang="scss">
-
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
 
 * {
@@ -74,7 +71,7 @@ body{
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #434A52;
+  background-color: #1e2833;
   color: #fff;
 
   p {
@@ -97,14 +94,17 @@ body{
 </style>
 
 <template>
+
   <div v-if="!mobile">
     <Sidebar/>
       <div :style="{ 'margin-left': sidebarWidth}">
       </div>
     <router-view/>
   </div>
+
   <div v-else class="mobile-message flex flex-column">
     <h2>Sorry, this cannot be viewed on mobile devices or low resolution monitors.</h2>
     <p>To use this, please use a device that has a high resolution display.</p>
   </div>
+
 </template>

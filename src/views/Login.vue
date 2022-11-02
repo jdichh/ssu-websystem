@@ -1,3 +1,24 @@
+<script>
+import { ref } from 'vue'
+import { useStore } from 'vuex'
+
+export default {
+	setup () {
+		const login_form = ref({});
+		const store = useStore();
+
+		const login = () => {
+			store.dispatch('login', login_form.value);
+		}
+
+		return {
+			login_form,
+			login,
+		}
+	}
+}
+</script>
+
 <template>
 	<main class="login">
 		<div class="login-dark">
@@ -36,29 +57,7 @@
 	</main>
 </template>
 
-<script>
-import { ref } from 'vue'
-import { useStore } from 'vuex'
-
-export default {
-	setup () {
-		const login_form = ref({});
-		const store = useStore();
-
-		const login = () => {
-			store.dispatch('login', login_form.value);
-		}
-
-		return {
-			login_form,
-			login,
-		}
-	}
-}
-</script>
-
 <style>
-
 .letran_logo{
 	padding-bottom: 20px;
 }

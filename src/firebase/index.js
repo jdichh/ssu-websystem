@@ -1,10 +1,12 @@
 import { initializeApp } from "firebase/app"
 import { getAuth } from "firebase/auth"
+import { ref, onUnmounted } from 'vue'
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
-import { ref, onUnmounted } from 'vue'
+
 
 const firebaseConfig = {
+  //change this configuration if migrating to another database in firebase
   apiKey: "AIzaSyBVirBpZvWclB_eKNofu8DZLZ6T2jvTi5g",
   authDomain: "geoloccapstone.firebaseapp.com",
   databaseURL: "https://geoloccapstone-default-rtdb.firebaseio.com",
@@ -22,6 +24,7 @@ export { auth }
 const firebaseApp = firebase.initializeApp(firebaseConfig)
 const db = firebaseApp.firestore()
 
+//CRUD for Security Personnel
 const usersCollection = db.collection('users')
 export const createUser = user => {
   return usersCollection.add(user)
@@ -48,16 +51,16 @@ export const useLoadUsers = () => {
   return users
 }
 
-
+//CRUD for Reports
 const reportsCollection = db.collection('reports')
-export const createReport = report => { //this is useless code, delete later on
+export const createReport = report => { //this is useless code, possibly delete later on
   return reportsCollection.add(report)
 }
 export const getReport = async id => {
   const report = await reportsCollection.doc(id).get()
   return report.exists ? report.data() : null
 }
-export const updateReport = (id, report) => { //this is useless code, delete later on
+export const updateReport = (id, report) => { //this is useless code, possibly delete later on
   return reportsCollection.doc(id).update(report)
 }
 export const deleteReport = id => { //maybe useless?

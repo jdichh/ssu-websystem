@@ -1,3 +1,4 @@
+//Link Management
 import { createRouter, createWebHistory } from 'vue-router'
 import { auth } from '../firebase'
 import { defineAsyncComponent } from 'vue'

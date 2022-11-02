@@ -1,24 +1,34 @@
 <script>
 import SidebarLink from './SidebarLinks.vue'
-import { collapsed, toggleSidebar, sidebarWidth } from './state';
+import { collapsed, toggleSidebar, sidebarWidth } from './state'; // ./state is state.js in components/sidebar/state.js
 
 export default {
+
     props: {},
-    components: { SidebarLink },
+
+    components: { 
+        SidebarLink 
+    },
+
     setup () {
-        return { collapsed, toggleSidebar, sidebarWidth }
+        return { 
+            collapsed, 
+            toggleSidebar, 
+            sidebarWidth }
     }
 }
+
 </script>
 
 <template>
-    <div class="sidebar" :style="{ width:sidebarWidth}" v-if="$store.state.user"> 
+    <div class="sidebar" :style="{ width:sidebarWidth}" v-if="$store.state.user"> <!--store.state.user checks if the user is logged in for the sidebar to display, refer to store/index.js file-->
         <h1>
             <span v-if="collapsed">
                 <div class="sidebar_img">
                     <img src="../letran_calamba_seal_title.png"/>
                 </div>
             </span>
+
             <span v-else>
                 <div class="sidebar_img">
                     <img src="../letran_calamba_seal_title.png"/>
@@ -30,8 +40,7 @@ export default {
         <SidebarLink to="/guards" icon="fa-solid fa-person-military-pointing">Guards</SidebarLink>
         <SidebarLink to="/schedule" icon="fas fa-calendar">Calendar</SidebarLink>
         <SidebarLink to="/reports" icon="fas fa-book">Reports</SidebarLink>
-
-        <SidebarLink to="/login" icon="fa-solid fa-person-running" @click="$store.dispatch('logout')">Logout</SidebarLink>
+        <SidebarLink to="/login" icon="fa-solid fa-person-running" class="logout" @click="$store.dispatch('logout')">Log Out</SidebarLink>
 
         <span class="collapse-icon" :class="{ 'rotate-180': collapsed}" @click="toggleSidebar">
             <i class="fa-solid fa-expand"></i>
@@ -63,6 +72,25 @@ export default {
     flex-direction: column;
     font-size:17px;
 }
+
+.logout{
+    display:flex;
+    align-items: center;
+
+    cursor: pointer;
+    position: relative;
+    font-weight: 400;
+    user-select: none;
+
+    margin-top: 90px;
+    padding: 0.4em;
+    border-radius: 0.25em;
+    height: 4em;
+
+    color: white;
+    text-decoration: none;
+}
+
 
 .collapse-icon{
     position: absolute;

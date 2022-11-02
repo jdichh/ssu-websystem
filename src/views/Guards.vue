@@ -1,8 +1,20 @@
+<script>
+import { useLoadUsers, deleteUser } from '@/firebase' //refer to firebase/index.js
+
+export default {
+    setup() {
+        const users = useLoadUsers()
+        return { users, deleteUser }
+     }
+}
+</script>
+
 <template>
   <main class="Guard"> 
     <div class="container-xl">
       <div class="table-responsive">
         <div class="table-wrapper">
+
           <div class="table-title">
             <div class="row">
               <div class="col-sm-6">
@@ -15,7 +27,6 @@
                         Add
                     </button>
                 </a>
-
               </div>
             </div>
           </div>
@@ -55,7 +66,7 @@
                             nameEx}}</td>
                       <td>{{ conNumber }}</td>	
                       <td>{{ licNum }}</td>
-                      <td>{{ issueDate.toDate().toDateString() }}</td>
+                      <td>{{ issueDate.toDate().toDateString() }}</td> <!--toDate and toDateString converts timestamps to readable human text-->
                       <td>{{ expDate.toDate().toDateString() }}</td>
                       <td>{{ position }}</td>
 
@@ -79,23 +90,11 @@
                     </tr>
                   </tbody>
                 </table>  
-            </div>
         </div>
+      </div>
     </div>
   </main>
 </template>
-
-<script>
-import { useLoadUsers, deleteUser } from '@/firebase'
-
-export default {
-
-    setup() {
-        const users = useLoadUsers()
-        return { users, deleteUser }
-     }
-}
-</script>
 
 <style scoped>
 .table-responsive {

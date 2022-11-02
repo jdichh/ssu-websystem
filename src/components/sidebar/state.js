@@ -1,3 +1,4 @@
+//Sidebar
 import { ref, computed } from 'vue'
 
 export const collapsed = ref(true)
