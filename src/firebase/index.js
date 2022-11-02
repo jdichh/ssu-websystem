@@ -47,17 +47,17 @@ export const useLoadUsers = () => {
 
 
 const reportsCollection = db.collection('reports')
-export const createReport = report => {
+export const createReport = report => { //this is useless code, delete later on
   return reportsCollection.add(report)
 }
 export const getReport = async id => {
   const report = await reportsCollection.doc(id).get()
   return report.exists ? report.data() : null
 }
-export const updateReport = (id, report) => {
+export const updateReport = (id, report) => { //this is useless code, delete later on
   return reportsCollection.doc(id).update(report)
 }
-export const deleteReport = id => {
+export const deleteReport = id => { //maybe useless?
   return reportsCollection.doc(id).delete()
 }
 export const useLoadReports = () => {
