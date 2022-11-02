@@ -26,8 +26,8 @@
         </div>
 
         <div class="form-group">
-          <label>Age</label>
-          <input v-model="form.age" @keypress="validateNumber" maxlength="2" class="form-control" required />
+          <label>Date of Birth</label>
+          <Datepicker v-model="form.birthDate" required />
         </div>
 
         <div class="form-group">
@@ -112,15 +112,18 @@ import '@vuepic/vue-datepicker/dist/main.css'
 export default {
 
   methods: {
+
     validateNumber: (event) => {
       let keyCode = event.keyCode;
       if (keyCode < 48 || keyCode > 57) {
         event.preventDefault();
       }
     },
+
   },
   
   setup() {
+
     const router = useRouter()
     const route = useRoute()
     const userId = computed(() => route.params.id)
@@ -130,7 +133,7 @@ export default {
         firstName: '',
         middleName: '', 
         nameEx: '',
-        age: '',
+        birthDate: '',
         sex: '',
         civStat: '',
         bloodType: '',
@@ -151,7 +154,7 @@ export default {
       form.firstName = user.firstName
       form.middleName = user.middleName
       form.nameEx = user.nameEx
-      form.age = user.age
+      form.birthDate = user.birthDate.toDate()
       form.sex = user.sex
       form.civStat = user.civStat
       form.bloodType = user.bloodType
@@ -173,7 +176,7 @@ export default {
       form.firstName = ''
       form.middleName = ''
       form.nameEx = ''
-      form.age = ''
+      form.birthDate = ''
       form.sex = ''
       form.civStat = ''
       form.bloodType = ''

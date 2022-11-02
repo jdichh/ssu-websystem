@@ -26,8 +26,8 @@
         </div>
 
         <div class="form-group">
-          <label>Age</label>
-          <input v-model="form.age" @keypress="validateNumber" maxlength="2" class="form-control" required />
+          <label>Date of Birth</label>
+          <Datepicker v-model="form.birthDate" required />
         </div>
 
         <div class="form-group">
@@ -125,7 +125,7 @@ export default {
         firstName: '',
         middleName: '', 
         nameEx: '',
-        age: '',
+        birthDate: '',
         sex: '',
         civStat: '',
         bloodType: '',
@@ -146,7 +146,7 @@ export default {
       form.firstName = ''
       form.middleName = ''
       form.nameEx = ''
-      form.age = ''
+      form.birthDate = ''
       form.sex = ''
       form.civStat = ''
       form.bloodType = ''

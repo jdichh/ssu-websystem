@@ -34,7 +34,10 @@ export const updateUser = (id, user) => {
   return usersCollection.doc(id).update(user)
 }
 export const deleteUser = id => {
-  return usersCollection.doc(id).delete()
+  if(confirm('Are you sure you want to delete this record?')){
+    return usersCollection.doc(id).delete()
+  }
+ 
 }
 export const useLoadUsers = () => {
   const users = ref([])
