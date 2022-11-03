@@ -29,7 +29,10 @@ export default {
         sex: '',
         civStat: '',
         bloodType: '',
+        height: '',
+        weight: '',
         conNumber: '',
+        landNumber: '',
         homeAdd: '',
         idNum: '',
         position: '',
@@ -50,7 +53,10 @@ export default {
       form.sex = user.sex
       form.civStat = user.civStat
       form.bloodType = user.bloodType
+      form.height = user.height
+      form.weight = user.weight
       form.conNumber = user.conNumber
+      form.landNumber = user.landNumber
       form.homeAdd = user.homeAdd
       form.idNum = user.idNum
       form.position = user.position
@@ -72,7 +78,10 @@ export default {
       form.sex = ''
       form.civStat = ''
       form.bloodType = ''
+      form.height = ''
+      form.weight = ''
       form.conNumber = ''
+      form.landNumber = ''
       form.homeAdd = ''
       form.idNum = ''
       form.position = ''
@@ -90,105 +99,248 @@ export default {
 </script>
 
 <template>
-  <div class="card card-body mt-4">
-    <h3>Edit Guard</h3>
-    <form @submit.prevent="update">
-        
-      <h4>Personal Information</h4>
+  <div class="container-xl">
+    <div class="card-responsive">
+      <div class="card-wrapper">
+        <div class="card-title">
 
-        <div class="form-group">
-          <label>Last Name</label>
-          <input v-model="form.lastName" class="form-control" required />
+          <div class="row">
+            <div class="col-sm-6">
+              <h2>Edit Security Personnel</h2>
+            </div>
+          </div>
+
         </div>
+        <form class="login" @submit.prevent="update">
+          <p>Personal Information</p>
+            <div class="row justify-content-evenly">
+                            <div class="col-md-3 mb-2 pb-2">
+                              <div>
+                                <label>Last Name</label>
+                                <input v-model="form.lastName" style="color:black" required />
+                              </div>
+                            </div>
 
-        <div class="form-group">
-          <label>First Name</label>
-          <input v-model="form.firstName" class="form-control" required />
-        </div>
+                            <div class="col-md-3 mb-1 pb-2">
+                              <div>
+                                <label>First Name</label>
+                                <input v-model="form.firstName" style="color:black" required />
+                              </div>
+                            </div>
 
-        <div class="form-group">
-          <label>Middle Name</label>
-          <input v-model="form.middleName" class="form-control"/>
-        </div>
-  
-        <div class="form-group">
-          <label>Name Extension</label>
-          <input v-model="form.nameEx" class="form-control"/>
-        </div>
+                            <div class="col-md-3 mb-1 pb-2">
+                              <div>
+                                <label>Middle Name</label>
+                                <input v-model="form.middleName" style="color:black"/>
+                              </div>
+                            </div>
+                          
+                            <div class="col-md-1 mb-2 pb-2">
+                              <div>
+                                <label>Suffix</label>
+                                <input v-model="form.nameEx" style="color:black"/>
+                              </div>
+                            </div>
 
-        <div class="form-group">
-          <label>Date of Birth</label>
-          <Datepicker v-model="form.birthDate" required />
-        </div>
+                          <div class="col-md-2 mb-2 pb-2">
+                            <label style="padding-bottom: 5px;">Sex</label>
+                              <select class="form-select" v-model="form.sex" style="color:black" required>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Other">Other</option>
+                              </select>
+                          </div>
 
-        <div class="form-group">
-          <label>Sex</label>
-          <input v-model="form.sex" class="form-control"/>
-        </div>
+                          <div class="col-md-2 mb-2 pb-2">
+                              <div>
+                                <label>Height (cm)</label>
+                                <input v-model="form.height" @keypress="validateNumber" maxlength="3" style="color:black"/>
+                              </div>
+                          </div>
 
-        <div class="form-group">
-          <label>Civil Status</label>
-          <input v-model="form.civStat" class="form-control"/>
-        </div>
+                          <div class="col-md-2 mb-2 pb-2">
+                              <div>
+                                <label>Weight (kg)</label>
+                                <input v-model="form.weight" @keypress="validateNumber" maxlength="3" style="color:black"/>
+                              </div>
+                          </div>
 
-        <div class="form-group">
-          <label>Blood Type</label>
-          <input v-model="form.bloodType" class="form-control"/>
-        </div>
+                          <div class="col-md-2 mb-2 pb-2">
+                            <label style="padding-bottom: 5px;">Civil Status</label>
+                              <select class="form-select" v-model="form.civStat" style="color:black">
+                                <option value="Single">Single</option>
+                                <option value="Married">Married</option>
+                                <option value="Divorced">Divorced</option>
+                                <option value="Separated">Separated</option>
+                                <option value="Widowed">Widowed</option>
+                                <option value="Prefer not to say">Prefer not to say</option>
+                              </select>
+                          </div>
 
-        <div class="form-group">
-          <label>Contact Number</label>
-          <input v-model="form.conNumber" @keypress="validateNumber" maxlength="11" class="form-control" required />
-        </div>
+                          <div class="col-md-2 mb-2 pb-2">
+                            <label style="padding-bottom: 5px;">Blood Type</label>
+                              <select class="form-select" v-model="form.bloodType" style="color:black" >
+                                <option value="O+">O+</option>
+                                <option value="A+">A+</option>
+                                <option value="B+">B+</option>
+                                <option value="AB+">AB+</option>
+                                <option value="O-">O-</option>
+                                <option value="A-">A-</option>
+                                <option value="B-">B-</option>
+                                <option value="AB-">AB-</option>
+                              </select>
+                          </div>
 
-        <div class="form-group mt-3">
-          <label>Home Address</label>
-          <input v-model="form.homeAdd" class="form-control" required/>
-        </div>
+                          <div class="col-md-2 mb-2 pb-2">
+                            <label style="padding-bottom: 5px;">Date of Birth</label>
+                            <Datepicker dark v-model="form.birthDate" :maxDate="new Date()" required/>
+                          </div>
+                          
+                          <div class="col-md-4">
+                            <label>Home Address</label>
+                            <input v-model="form.homeAdd" required style="color:black"/>
+                          </div>
 
-      <h4>Work Information</h4>
+          <p>Contact Information</p>
 
-        <div class="form-group">
-          <label>SSU ID</label>
-          <input v-model="form.idNum" @keypress="validateNumber" class="form-control" required />
-        </div>
+                          <div class="col-md-3">
+                            <div>
+                              <label>Contact Number</label>
+                              <input v-model="form.conNumber" @keypress="validateNumber" maxlength="11" style="color:black" required />
+                            </div>
+                          </div>
 
-        <div class="form-group">
-          <label>Position</label>
-          <input v-model="form.position" class="form-control" required />
-        </div>
+                          <div class="col-md-3"> <!--REVISIT-->
+                            <div>
+                              <label>Landline Number</label>
+                              <input v-model="form.landNumber" @keypress="validateNumber" maxlength="10" style="color:black" required />
+                            </div>
+                          </div>
 
-        <div class="form-group">
-          <label>License Number</label>
-          <input v-model="form.licNum" @keypress="validateNumber" class="form-control" required />
-        </div>
+          <p>Work Information</p>
 
-        <div class="form-group">
-          <label>Date Issued</label>
-          <Datepicker v-model="form.issueDate" required />
-        </div>
+                          <div class="col-md-2"> <!--DROPDOWN-->
+                            <div>
+                              <label>Position</label>
+                              <input v-model="form.position" style="color:black" required />
+                            </div>
+                          </div>
 
-        <div class="form-group">
-          <label>Expiry Date</label>
-          <Datepicker v-model="form.expDate" required />
-        </div>
+                          <div class="col-md-2">
+                            <div>
+                              <label>SSU ID</label>
+                            <input v-model="form.idNum" @keypress="validateNumber" style="color:black" required />
+                            </div>
+                          </div>
 
-        <h4>Credentials</h4>
+                          <div class="col-md-2">
+                            <div>
+                              <label>License Number</label>
+                              <input v-model="form.licNum" @keypress="validateNumber" style="color:black" required />
+                            </div>
+                          </div>
 
-        <div class="form-group mt-3">
-          <label>Email Address</label>
-          <input v-model="form.email" class="form-control" type="email" required/>
-        </div>
-        
-        <div class="form-group mt-3">
-          <label>Password</label>
-          <input v-model="form.password" class="form-control" type="text" required/>
-        </div>
+                          <div class="col-md-2">
+                            <label style="padding-bottom: 5px;">Date Issued</label>
+                            <Datepicker dark v-model="form.issueDate" :maxDate="new Date()" required/>
+                          </div>
 
-      <button type="submit" class="btn btn-primary  mt-3">
-        Submit
-      </button>
+                          <div class="col-md-2">
+                            <label style="padding-bottom: 5px;">Expiry Date</label>
+                            <Datepicker dark v-model="form.expDate" :minDate="new Date()" required />
+                          </div>
 
-    </form>
+          <p>Credentials</p>
+
+                          <div class="col-md-3">
+                            <label>Email Address</label>
+                            <input v-model="form.email" type="email" style="color:black" required/>
+                          </div>
+                          
+                          <div class="col-md-3">
+                            <label>Password</label>
+                            <input v-model="form.password"  type="text" style="color:black" required/>
+                          </div>
+
+                         
+            </div>
+
+            <button class="btn btn-danger mt-3" @click="$router.push('/guards')">
+              Cancel
+            </button>
+                  
+            <button type="submit" class="btn btn-success mt-3">
+              Submit
+            </button>
+
+        </form>
+      </div>
+    </div>
   </div>
 </template>
+
+<style scoped>
+
+.card-responsive {
+    margin-top: 30px;
+}
+.card-wrapper {
+    background: rgb(235, 235, 235);
+    padding: 20px 25px;
+    border-radius: 3px;
+    min-width: 1000px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+}
+.card-title {        
+    padding-bottom: 15px;
+    background: #1e2833;
+    color: #fff;
+    padding: 14px 30px;
+    min-width: 100%;
+    margin: -20px -25px 10px;
+    border-radius: 3px 3px 0 0;
+}
+.card-title h2 {
+    margin: 5px 0 0;
+    font-size: 24px;
+    text-align: left;
+}
+
+.card-title .btn-group {
+    float: left;
+}
+.card-title .btn {
+    color: #fff;
+    float: right;
+    font-size: 13px;
+    border: none;
+    min-width: 50px;
+    border-radius: 2px;
+    border: none;
+    outline: none !important;
+    margin-left: 10px;
+}
+.card-title .btn i {
+    float: left;
+    font-size: 21px;
+    margin-right: 5px;
+}
+.card-title .btn span {
+    float: left;
+    margin-top: 2px;
+}
+
+input {
+  font-size: 16px;
+}
+
+p {
+  font-size: 30px;
+  font-weight: 500;
+  margin: 5px 0 0;
+  margin-top: 15px;
+  margin-left: 4px;
+  padding-bottom: 20px;
+  text-align: left;
+}
+</style>

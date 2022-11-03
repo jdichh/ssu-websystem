@@ -2,6 +2,7 @@
 import { useLoadReports } from '@/firebase' //refer to firebase/index.js
 
 export default {
+    
     setup() {
         const reports = useLoadReports()
         return { reports }
@@ -28,6 +29,7 @@ export default {
                     <tr> 
                       <th scope="col">Reporter</th>
                       <th scope="col">Statement</th>
+                      <th scope="col">Coordinates</th>
                     </tr>
                   </thead>
 
@@ -36,10 +38,12 @@ export default {
                         id, 
                         lastName, 
                         firstName, 
-                        statement} in reports" :key="id">
+                        statement,
+                        location} in reports" :key="id">
 
                       <td>{{ lastName + " " + firstName}}</td>
                       <td>{{ statement }}</td>
+                      <td>{{ location }}</td>
                     </tr>
                   </tbody>
                 </table> 
