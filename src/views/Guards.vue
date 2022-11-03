@@ -5,8 +5,16 @@ export default {
     setup() {
         const users = useLoadUsers()
         return { users, deleteUser }
-     }
+     },
+
+    methods: {
+    say: function (msg) {
+      alert(msg)
+    }
+  }
 }
+
+
 </script>
 
 <template>
@@ -17,17 +25,20 @@ export default {
 
           <div class="table-title">
             <div class="row">
+
               <div class="col-sm-6">
                 <h2>Security Personnel</h2>
               </div>
+
               <div class="col-sm-6">
                 <a>
                     <button class="btn btn-success" @click="$router.push('/add-guards')">
                         <i class="fa-solid fa-plus"/>
-                        Add
+                        Add New Record
                     </button>
                 </a>
               </div>
+
             </div>
           </div>
           
@@ -45,7 +56,7 @@ export default {
                     </tr>
                   </thead>
 
-                  <tbody>
+                  <tbody id="tbody1">
                     <tr v-for="{ id, 
                       idNum, 
                       lastName, 
@@ -73,7 +84,7 @@ export default {
                       <td>
                         <a class="edit" data-toggle="modal">
                             <router-link :to="`/edit-guard/${id}`">
-                              <button class="btn btn-info btn-sm"> <!--EDIT-->
+                              <button class="btn btn-info btn-sm" v-on:click="say('You are about to EDIT a record.')"> <!--EDIT-->
                                 <i class="fa-solid fa-pen" data-toggle="tooltip" title="Edit"> 
                                 </i>
                               </button>
@@ -111,14 +122,14 @@ export default {
     padding-bottom: 15px;
     background: #1e2833;
     color: #fff;
-    padding: 14px 30px;
+    padding: 16px 30px;
     min-width: 100%;
     margin: -20px -25px 10px;
     border-radius: 3px 3px 0 0;
 }
 .table-title h2 {
     margin: 5px 0 0;
-    font-size: 24px;
+    font-size: 30px;
     text-align: left;
 }
 .table-title .btn-group {
@@ -127,7 +138,7 @@ export default {
 .table-title .btn {
     color: #fff;
     float: right;
-    font-size: 13px;
+    font-size: 15px;
     border: none;
     min-width: 50px;
     border-radius: 2px;
@@ -178,21 +189,7 @@ table.table td a {
     text-decoration: none;
     outline: none !important;
 }
-table.table td a:hover {
-    color: #2196F3;
-}
-table.table td a.edit {
-    color: #FFC107;
-}
-table.table td a.delete {
-    color: #F44336;
-}
 table.table td i {
     font-size: 19px;
-}
-table.table .avatar {
-    border-radius: 50%;
-    vertical-align: middle;
-    margin-right: 10px;
 }
 </style>

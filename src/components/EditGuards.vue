@@ -193,7 +193,7 @@ export default {
 
                           <div class="col-md-2 mb-2 pb-2">
                             <label style="padding-bottom: 5px;">Date of Birth</label>
-                            <Datepicker dark v-model="form.birthDate" :maxDate="new Date()" required/>
+                            <Datepicker dark v-model="form.birthDate" :maxDate="new Date()" :monthChangeOnScroll="false" :enableTimePicker="false" noToday hideOffsetDates hideInputIcon required/>
                           </div>
                           
                           <div class="col-md-4">
@@ -242,12 +242,12 @@ export default {
 
                           <div class="col-md-2">
                             <label style="padding-bottom: 5px;">Date Issued</label>
-                            <Datepicker dark v-model="form.issueDate" :maxDate="new Date()" required/>
+                            <Datepicker dark v-model="form.issueDate" :maxDate="new Date()" :monthChangeOnScroll="false" :enableTimePicker="false" noToday hideOffsetDates hideInputIcon required/>
                           </div>
 
                           <div class="col-md-2">
                             <label style="padding-bottom: 5px;">Expiry Date</label>
-                            <Datepicker dark v-model="form.expDate" :minDate="new Date()" required />
+                            <Datepicker dark v-model="form.expDate" :minDate="new Date()" :monthChangeOnScroll="false" :enableTimePicker="false" noToday hideOffsetDates hideInputIcon required />
                           </div>
 
           <p>Credentials</p>
@@ -266,11 +266,11 @@ export default {
             </div>
 
             <button class="btn btn-danger mt-3" @click="$router.push('/guards')">
-              Cancel
+              Cancel Edit
             </button>
                   
             <button type="submit" class="btn btn-success mt-3">
-              Submit
+              Confirm Edit
             </button>
 
         </form>
@@ -295,14 +295,14 @@ export default {
     padding-bottom: 15px;
     background: #1e2833;
     color: #fff;
-    padding: 14px 30px;
+    padding: 16px 30px;
     min-width: 100%;
     margin: -20px -25px 10px;
     border-radius: 3px 3px 0 0;
 }
 .card-title h2 {
     margin: 5px 0 0;
-    font-size: 24px;
+    font-size: 30px;
     text-align: left;
 }
 

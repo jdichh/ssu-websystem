@@ -76,7 +76,7 @@ export default {
 }
 .table-title h2 {
     margin: 3px 0 0;
-    font-size: 24px;
+    font-size: 30px;
     text-align: left;
 }
 .table-title .btn-group {
