@@ -21,11 +21,11 @@ export default {
     window.addEventListener("resize", this.checkScreen)
   },
 
-  //blocks the user from using the app if window width is less than or equal to 850px
+  //blocks the user from using the app if window width is less than or equal to 900px
   methods: {
     checkScreen() {
       const windowWidth = window.innerWidth;
-      if (windowWidth <= 850) {
+      if (windowWidth <= 900) {
         this.mobile = true;
         return;
       }

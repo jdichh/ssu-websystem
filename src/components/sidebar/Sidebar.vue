@@ -36,10 +36,10 @@ export default {
             </span>
         </h1>
         
-        <SidebarLink to="/" icon="fas fa-home">Home</SidebarLink>
+        <SidebarLink to="/" icon="fas fa-house-user">Home</SidebarLink>
         <SidebarLink to="/guards" icon="fa-solid fa-person-military-pointing">Guards</SidebarLink>
-        <SidebarLink to="/schedule" icon="fas fa-calendar">Calendar</SidebarLink>
-        <SidebarLink to="/reports" icon="fas fa-book">Reports</SidebarLink>
+        <SidebarLink to="/schedule" icon="fas fa-calendar-days">Calendar</SidebarLink>
+        <SidebarLink to="/reports" icon="fas fa-clipboard">Reports</SidebarLink>
         <SidebarLink to="/login" icon="fa-solid fa-person-running" class="logout" @click="$store.dispatch('logout')">Log Out</SidebarLink>
 
         <span class="collapse-icon" :class="{ 'rotate-180': collapsed}" @click="toggleSidebar">
