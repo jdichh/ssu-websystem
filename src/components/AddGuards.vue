@@ -81,14 +81,13 @@ export default {
     <div class="card-responsive">
       <div class="card-wrapper">
         <div class="card-title">
-
           <div class="row">
             <div class="col-sm-6">
               <h2>Add Security Personnel</h2>
             </div>
           </div>
-
         </div>
+
         <form class="login" @submit.prevent="onSubmit">
           <p>Personal Information</p>
             <div class="row justify-content-evenly">
@@ -102,21 +101,21 @@ export default {
                             <div class="col-md-3 mb-1 pb-2">
                               <div>
                                 <label>First Name</label>
-                                <input v-model="form.firstName" style="color:black" required />
+                                <input v-model="form.firstName" @keypress="validateText" style="color:black" required />
                               </div>
                             </div>
 
                             <div class="col-md-3 mb-1 pb-2">
                               <div>
-                                <label>Middle Name (optional)</label>
-                                <input v-model="form.middleName" style="color:black"/>
+                                <label>Middle Name</label>
+                                <input v-model="form.middleName" @keypress="validateText" style="color:black" placeholder="Optional"/>
                               </div>
                             </div>
                           
-                            <div class="col-md-2 mb-2 pb-2">
+                            <div class="col-md-1 mb-2 pb-2">
                               <div>
-                                <label>Suffix (optional)</label>
-                                <input v-model="form.nameEx" style="color:black"/>
+                                <label>Suffix</label>
+                                <input v-model="form.nameEx" @keypress="validateText" style="color:black" placeholder="Optional"/>
                               </div>
                             </div>
 
@@ -200,7 +199,7 @@ export default {
                           <div class="col-md-2"> <!--DROPDOWN-->
                             <div>
                               <label>Position</label>
-                              <input v-model="form.position" style="color:black" required />
+                              <input v-model="form.position" @keypress="validateText" style="color:black" required />
                             </div>
                           </div>
 
@@ -250,15 +249,14 @@ export default {
             <button type="submit" class="btn btn-success mt-3">
               Confirm Add
             </button>
-
         </form>
+
       </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-
 .card-responsive {
     margin-top: 30px;
 }

@@ -13,8 +13,6 @@ export default {
     }
   }
 }
-
-
 </script>
 
 <template>
@@ -25,11 +23,9 @@ export default {
 
           <div class="table-title">
             <div class="row">
-
               <div class="col-sm-6">
                 <h2>Security Personnel</h2>
               </div>
-
               <div class="col-sm-6">
                 <a>
                     <button class="btn btn-success" @click="$router.push('/add-guards')">
@@ -38,7 +34,6 @@ export default {
                     </button>
                 </a>
               </div>
-
             </div>
           </div>
           
@@ -100,7 +95,8 @@ export default {
                       </td>
                     </tr>
                   </tbody>
-                </table>  
+                </table> 
+                 
         </div>
       </div>
     </div>
@@ -159,6 +155,7 @@ table.table tr th, table.table tr td {
     border-color: #e9e9e9;
     padding: 12px 15px;
     vertical-align: middle;
+    font-size: 15px;
 }
 table.table tr th:first-child {
     width: 11px;

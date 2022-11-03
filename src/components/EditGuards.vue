@@ -5,6 +5,7 @@ import { getUser, updateUser } from '@/firebase'
 import '@vuepic/vue-datepicker/dist/main.css'
 
 export default {
+
   methods: {
     validateNumber: (event) => { //ensures that only numbers are entered
       let keyCode = event.keyCode;
@@ -12,6 +13,13 @@ export default {
         event.preventDefault();
       }
     },
+    
+    validateText: (event) => { //ensures that only letters are entered
+        let keyCode = (event.keyCode ? event.keyCode : event.which);
+        if (keyCode > 47 && keyCode < 58) {
+          event.preventDefault();
+        }
+      },
   },
   
   setup() {
@@ -117,28 +125,28 @@ export default {
                             <div class="col-md-3 mb-2 pb-2">
                               <div>
                                 <label>Last Name</label>
-                                <input v-model="form.lastName" style="color:black" required />
+                                <input v-model="form.lastName" @keypress="validateText" style="color:black" required />
                               </div>
                             </div>
 
                             <div class="col-md-3 mb-1 pb-2">
                               <div>
                                 <label>First Name</label>
-                                <input v-model="form.firstName" style="color:black" required />
+                                <input v-model="form.firstName" @keypress="validateText" style="color:black" required />
                               </div>
                             </div>
 
                             <div class="col-md-3 mb-1 pb-2">
                               <div>
                                 <label>Middle Name</label>
-                                <input v-model="form.middleName" style="color:black"/>
+                                <input v-model="form.middleName" @keypress="validateText" style="color:black" placeholder="Optional"/>
                               </div>
                             </div>
                           
                             <div class="col-md-1 mb-2 pb-2">
                               <div>
                                 <label>Suffix</label>
-                                <input v-model="form.nameEx" style="color:black"/>
+                                <input v-model="form.nameEx" @keypress="validateText" style="color:black" placeholder="Optional"/>
                               </div>
                             </div>
 
@@ -222,7 +230,7 @@ export default {
                           <div class="col-md-2"> <!--DROPDOWN-->
                             <div>
                               <label>Position</label>
-                              <input v-model="form.position" style="color:black" required />
+                              <input v-model="form.position" @keypress="validateText" style="color:black" required />
                             </div>
                           </div>
 
