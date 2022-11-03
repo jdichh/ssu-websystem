@@ -79,7 +79,7 @@ export default {
                       <td>
                         <a class="edit" data-toggle="modal">
                             <router-link :to="`/edit-guard/${id}`">
-                              <button class="btn btn-info btn-sm" v-on:click="say('You are about to EDIT a record.')"> <!--EDIT-->
+                              <button class="btn btn-info btn-sm" v-on:click="say('You are about to VIEW/EDIT a record.')"> <!--EDIT-->
                                 <i class="fa-solid fa-pen" data-toggle="tooltip" title="Edit"> 
                                 </i>
                               </button>

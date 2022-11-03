@@ -44,6 +44,9 @@ export default {
         licNum: '',
         issueDate: '',
         expDate: '',
+        licenses: '',
+        trainings: '',
+        seminars: '',
         password: '',
         email: '' })
   
@@ -68,6 +71,9 @@ export default {
       form.licNum = ''
       form.issueDate = ''
       form.expDate = ''
+      form.licenses = ''
+      form.trainings = ''
+      form.seminars = ''
       form.email = ''
       form.password = ''
     }
@@ -174,7 +180,7 @@ export default {
                           </div>
                           
                           <div class="col-md-4">
-                            <label>Home Address</label>
+                            <label style="padding-bottom: 5px;">Home Address</label>
                             <input v-model="form.homeAdd" required style="color:black"/>
                           </div>
 
@@ -182,14 +188,14 @@ export default {
 
                           <div class="col-md-3">
                             <div>
-                              <label>Contact Number</label>
+                              <label style="padding-bottom: 5px;">Contact Number</label>
                               <input v-model="form.conNumber" @keypress="validateNumber" maxlength="11" style="color:black" required />
                             </div>
                           </div>
 
                           <div class="col-md-3"> <!--REVISIT-->
                             <div>
-                              <label>Landline Number</label>
+                              <label style="padding-bottom: 5px;">Landline Number</label>
                               <input v-model="form.landNumber" @keypress="validateNumber" maxlength="10" style="color:black" required />
                             </div>
                           </div>
@@ -198,21 +204,21 @@ export default {
 
                           <div class="col-md-2"> <!--DROPDOWN-->
                             <div>
-                              <label>Position</label>
+                              <label style="padding-bottom: 5px;">Position</label>
                               <input v-model="form.position" @keypress="validateText" style="color:black" required />
                             </div>
                           </div>
 
                           <div class="col-md-2">
                             <div>
-                              <label>SSU ID</label>
+                              <label style="padding-bottom: 5px;">SSU ID</label>
                             <input v-model="form.idNum" @keypress="validateNumber" style="color:black" required />
                             </div>
                           </div>
 
                           <div class="col-md-2">
                             <div>
-                              <label>License Number</label>
+                              <label style="padding-bottom: 5px;">License Number</label>
                               <input v-model="form.licNum" @keypress="validateNumber" style="color:black" required />
                             </div>
                           </div>
@@ -227,15 +233,32 @@ export default {
                             <Datepicker dark v-model="form.expDate" :minDate="new Date()" :monthChangeOnScroll="false" :enableTimePicker="false" noToday hideOffsetDates hideInputIcon required />
                           </div>
 
+          <p>Accreditations</p>
+                          
+                          <div class="col-md-3">
+                            <label style="padding-bottom: 5px;">Licenses Attained</label>
+                            <textarea v-model="form.licenses" style="color:black" required/>
+                          </div>
+
+                          <div class="col-md-3">
+                            <label style="padding-bottom: 5px;">Trainings Completed</label>
+                            <textarea v-model="form.trainings" style="color:black" required/>
+                          </div>
+
+                          <div class="col-md-3">
+                            <label style="padding-bottom: 5px;">Seminars Attended</label>
+                            <textarea v-model="form.seminars" style="color:black" required/>
+                          </div>
+
           <p>Credentials</p>
 
                           <div class="col-md-3">
-                            <label>Email Address</label>
+                            <label style="padding-bottom: 5px;">Email Address</label>
                             <input v-model="form.email" type="email" style="color:black" required/>
                           </div>
                           
                           <div class="col-md-3">
-                            <label>Password</label>
+                            <label style="padding-bottom: 5px;">Password</label>
                             <input v-model="form.password"  type="text" style="color:black" required/>
                           </div>
 
