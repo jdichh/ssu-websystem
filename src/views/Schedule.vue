@@ -1,5 +1,11 @@
 <script>
+import VueCal from 'vue-cal'
+import 'vue-cal/dist/vuecal.css'
 
+export default {
+  components: { VueCal },
+
+}
 </script>
 
 <template>
@@ -15,9 +21,7 @@
               </div>
             </div>
           </div>
-          
-          
-        
+          <vue-cal class="vuecal--blue-theme vuecal--rounded-theme" :time="false" active-view="month" :disable-views="['years', 'year', 'week',]" style="height:82vh" />
         </div>
       </div>
     </div>
@@ -72,42 +76,5 @@
     float: left;
     margin-top: 2px;
 }
-table.table tr th, table.table tr td {
-    border-color: #e9e9e9;
-    padding: 12px 15px;
-    vertical-align: middle;
-    font-size: 15px;
-}
-table.table tr th:first-child {
-    width: 11px;
-}
-table.table tr th:last-child {
-    width: 130px;
-}
-table.table-striped tbody tr:nth-of-type(odd) {
-    background-color: #fafafa;
-}
-table.table-striped.table-hover tbody {
-    background: #f5f5f5;
-}
-table.table th i {
-    font-size: 13px;
-    margin: 0 5px;
-    cursor: pointer;
-}	
-table.table td:last-child i {
-    opacity: 0.9;
-    font-size: 22px;
-    margin: 0 5px;
-}
-table.table td a {
-    font-weight: bold;
-    color: #566787;
-    display: inline-block;
-    text-decoration: none;
-    outline: none !important;
-}
-table.table td i {
-    font-size: 19px;
-}
+
 </style>

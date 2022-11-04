@@ -40,7 +40,6 @@ export const deleteUser = id => {
   if(confirm('Are you sure you want to delete this record?')){
     return usersCollection.doc(id).delete()
   }
- 
 }
 export const useLoadUsers = () => {
   const users = ref([])

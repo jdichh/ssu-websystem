@@ -12,6 +12,7 @@ import 'mdb-vue-ui-kit/css/mdb.min.css'
 import '@fortawesome/fontawesome-free/js/all'
 import 'material-icons/iconfont/material-icons.css';
 
+
 const app = createApp(App)
 app.component('Datepicker', Datepicker)
 app.use(store)

@@ -69,13 +69,13 @@ export default {
     padding-bottom: 15px;
     background: #1e2833;
     color: #fff;
-    padding: 17px 30px;
+    padding: 16px 30px;
     min-width: 100%;
     margin: -20px -25px 10px;
     border-radius: 3px 3px 0 0;
 }
 .table-title h2 {
-    margin: 3px 0 0;
+    margin: 5px 0 0;
     font-size: 30px;
     text-align: left;
 }
@@ -85,7 +85,7 @@ export default {
 .table-title .btn {
     color: #fff;
     float: right;
-    font-size: 13px;
+    font-size: 15px;
     border: none;
     min-width: 50px;
     border-radius: 2px;
@@ -104,8 +104,9 @@ export default {
 }
 table.table tr th, table.table tr td {
     border-color: #e9e9e9;
-    padding: 12px 15px;
+    padding: 6px 15px;
     vertical-align: middle;
+    font-size: 15px;
 }
 table.table tr th:first-child {
     width: 11px;
@@ -136,21 +137,7 @@ table.table td a {
     text-decoration: none;
     outline: none !important;
 }
-table.table td a:hover {
-    color: #2196F3;
-}
-table.table td a.edit {
-    color: #FFC107;
-}
-table.table td a.delete {
-    color: #F44336;
-}
 table.table td i {
     font-size: 19px;
-}
-table.table .avatar {
-    border-radius: 50%;
-    vertical-align: middle;
-    margin-right: 10px;
 }
 </style>

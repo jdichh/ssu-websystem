@@ -13,6 +13,7 @@ export default {
     }
   }
 }
+
 </script>
 
 <template>
@@ -77,7 +78,7 @@ export default {
                       <td>{{ position }}</td>
 
                       <td>
-                        <el-button-group>
+                        <el-button-group size="small">
                           <a class="edit" data-toggle="modal">
                               <router-link :to="`/edit-guard/${id}`">
                                 <el-button type="warning" v-on:click="say('You are about to VIEW/EDIT a record.')"> <!--EDIT-->
@@ -94,7 +95,7 @@ export default {
                           </a>
                         </el-button-group>
                       </td>
-                      
+
                     </tr>
                   </tbody>
                 </table> 
@@ -155,7 +156,7 @@ export default {
 }
 table.table tr th, table.table tr td {
     border-color: #e9e9e9;
-    padding: 12px 15px;
+    padding: 6px 15px;
     vertical-align: middle;
     font-size: 15px;
 }
