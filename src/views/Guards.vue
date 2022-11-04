@@ -4,7 +4,8 @@ import { useLoadUsers, deleteUser } from '@/firebase' //refer to firebase/index.
 export default {
     setup() {
         const users = useLoadUsers()
-        return { users, deleteUser }
+        return { users, 
+          deleteUser }
      },
 
     methods: {
