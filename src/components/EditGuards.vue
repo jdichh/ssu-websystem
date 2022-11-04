@@ -50,7 +50,6 @@ export default {
         licenses: '',
         seminars: '',
         trainings: '',
-        password: '',
         email: '' })
 
     onMounted(async () => {
@@ -78,7 +77,6 @@ export default {
       form.seminars = user.seminars
       form.trainings = user.trainings
       form.email = user.email
-      form.password = user.password
     })
 
     const update = async () => {
@@ -106,7 +104,6 @@ export default {
       form.seminars = ''
       form.trainings = ''
       form.email = ''
-      form.password = ''
     }
 
     return { form, update }
@@ -190,7 +187,6 @@ export default {
                                 <option value="Divorced">Divorced</option>
                                 <option value="Separated">Separated</option>
                                 <option value="Widowed">Widowed</option>
-                                <option value="Prefer not to say">Prefer not to say</option>
                               </select>
                           </div>
 
@@ -271,17 +267,17 @@ export default {
                           
                           <div class="col-md-3">
                             <label style="padding-bottom: 5px;">Licenses Attained</label>
-                            <textarea v-model="form.licenses" style="color:black"></textarea>
+                            <el-input type="textarea" autosize v-model="form.licenses" style="color:black"/>
                           </div>
 
                           <div class="col-md-3">
                             <label style="padding-bottom: 5px;">Trainings Completed</label>
-                            <textarea v-model="form.trainings" style="color:black"></textarea>
+                            <el-input type="textarea" autosize v-model="form.trainings" style="color:black"/>
                           </div>
 
                           <div class="col-md-3">
                             <label style="padding-bottom: 5px;">Seminars Attended</label>
-                            <textarea v-model="form.seminars" style="color:black"></textarea>
+                            <el-input type="textarea" autosize v-model="form.seminars" style="color:black"/>
                           </div>
 
           <p>Credentials</p>
@@ -289,13 +285,7 @@ export default {
                           <div class="col-md-3">
                             <label style="padding-bottom: 5px;">Email Address</label>
                             <input v-model="form.email" type="email" style="color:black" required/>
-                          </div>
-                          
-                          <div class="col-md-3">
-                            <label style="padding-bottom: 5px;">Password</label>
-                            <input v-model="form.password"  type="text" style="color:black" required/>
-                          </div>
-
+                          </div>        
                          
             </div>
 

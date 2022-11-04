@@ -47,7 +47,6 @@ export default {
         licenses: '',
         trainings: '',
         seminars: '',
-        password: '',
         email: '' })
   
     const onSubmit = async () => {
@@ -75,7 +74,6 @@ export default {
       form.trainings = ''
       form.seminars = ''
       form.email = ''
-      form.password = ''
     }
     return { form, onSubmit, date}
    }
@@ -156,7 +154,6 @@ export default {
                                 <option value="Divorced">Divorced</option>
                                 <option value="Separated">Separated</option>
                                 <option value="Widowed">Widowed</option>
-                                <option value="Prefer not to say">Prefer not to say</option>
                               </select>
                           </div>
 
@@ -237,41 +234,37 @@ export default {
                           
                           <div class="col-md-3">
                             <label style="padding-bottom: 5px;">Licenses Attained</label>
-                            <textarea v-model="form.licenses" style="color:black" required/>
+                            <el-input type="textarea" autosize v-model="form.licenses" style="color:black" required/>
                           </div>
 
                           <div class="col-md-3">
                             <label style="padding-bottom: 5px;">Trainings Completed</label>
-                            <textarea v-model="form.trainings" style="color:black" required/>
+                            <el-input type="textarea" autosize v-model="form.trainings" style="color:black" required/>
                           </div>
 
                           <div class="col-md-3">
                             <label style="padding-bottom: 5px;">Seminars Attended</label>
-                            <textarea v-model="form.seminars" style="color:black" required/>
+                            <el-input type="textarea" autosize v-model="form.seminars" style="color:black" required/>
                           </div>
 
-          <p>Credentials</p>
+          <p>For Credentials</p>
 
                           <div class="col-md-3">
                             <label style="padding-bottom: 5px;">Email Address</label>
                             <input v-model="form.email" type="email" style="color:black" required/>
-                          </div>
-                          
-                          <div class="col-md-3">
-                            <label style="padding-bottom: 5px;">Password</label>
-                            <input v-model="form.password"  type="text" style="color:black" required/>
-                          </div>
-
+                          </div>                       
                          
             </div>
 
-            <button class="btn btn-danger mt-3" @click="$router.push('/guards')">
-              Cancel Add
-            </button>
-                  
-            <button type="submit" class="btn btn-success mt-3">
-              Confirm Add
-            </button>
+            <div class="flex justify-space-between mb-4 flex-wrap gap-4">
+              <button class="btn btn-danger mt-3" @click="$router.push('/guards')">
+                Cancel Add
+              </button>
+                    
+              <button type="submit" class="btn btn-success mt-3">
+                Confirm Add
+              </button>
+            </div>
         </form>
 
       </div>

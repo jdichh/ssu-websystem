@@ -4,8 +4,7 @@ import { useLoadUsers, deleteUser } from '@/firebase' //refer to firebase/index.
 export default {
     setup() {
         const users = useLoadUsers()
-        return { users, 
-          deleteUser }
+        return { users, deleteUser }
      },
 
     methods: {
@@ -78,22 +77,24 @@ export default {
                       <td>{{ position }}</td>
 
                       <td>
-                        <a class="edit" data-toggle="modal">
-                            <router-link :to="`/edit-guard/${id}`">
-                              <button class="btn btn-info btn-sm" v-on:click="say('You are about to VIEW/EDIT a record.')"> <!--EDIT-->
-                                <i class="fa-solid fa-user-pen" data-toggle="tooltip" title="Edit"> 
-                                </i>
-                              </button>
-                            </router-link>
-                        </a>
-
-                        <a class="delete" data-toggle="modal"> 
-                          <button class="btn btn-danger btn-sm" @click="deleteUser(id)"> <!--DELETE-->
-                            <i class="fa-solid fa-trash" data-toggle="tooltip" title="Delete">
-                            </i>
-                          </button>
-                        </a>
+                        <el-button-group>
+                          <a class="edit" data-toggle="modal">
+                              <router-link :to="`/edit-guard/${id}`">
+                                <el-button type="warning" v-on:click="say('You are about to VIEW/EDIT a record.')"> <!--EDIT-->
+                                  <i class="fa-solid fa-user-pen" data-toggle="tooltip" title="Edit"> 
+                                  </i>
+                                </el-button>
+                              </router-link>
+                          </a>
+                          <a class="delete" data-toggle="modal"> 
+                            <el-button type="danger" @click="deleteUser(id)"> <!--DELETE-->
+                              <i class="fa-solid fa-trash" data-toggle="tooltip" title="Delete">
+                              </i>
+                            </el-button>
+                          </a>
+                        </el-button-group>
                       </td>
+                      
                     </tr>
                   </tbody>
                 </table> 
