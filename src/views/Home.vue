@@ -20,7 +20,7 @@ export default {
                 <div class="table-title">
                   <div class="row">
                     <div class="col-sm-6">
-                      <h2>Currently On Patrol</h2>
+                      <h2><icon class="fa-solid fa-person-military-pointing"/>&nbsp;&nbsp;Currently On Patrol</h2>
                     </div>
                   </div>
                 </div>
@@ -57,14 +57,14 @@ export default {
       </div>
     </div>
 
-    <div class="container-xl">
+    <div class="container">
       <div class="table-responsive">
         <div class="table-wrapper">
 
                 <div class="table-title">
                   <div class="row">
                     <div class="col-sm-6">
-                      <h2>Last 10 Reports</h2>
+                      <h2><icon class="fa-solid fa-clipboard"/>&nbsp;&nbsp;Last 10 Reports</h2>
                     </div>
                   </div>
                 </div>
@@ -114,13 +114,6 @@ export default {
 .table-wrapper {
     background: rgb(235, 235, 235);
     padding: 20px 25px;
-    border-radius: 3px;
-    min-width: 1000px;
-    box-shadow: 0 1px 1px rgba(0,0,0,.05);
-}
-.table-wrapper-inner {
-    background: rgb(235, 235, 235);
-    padding: 15px 25px;
     border-radius: 3px;
     min-width: 1000px;
     box-shadow: 0 1px 1px rgba(0,0,0,.05);

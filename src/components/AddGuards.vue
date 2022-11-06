@@ -173,7 +173,7 @@ export default {
 
                           <div class="col-md-2 mb-2 pb-2">
                             <label style="padding-bottom: 5px;">Date of Birth</label>
-                            <Datepicker dark v-model="form.birthDate" :maxDate="new Date()" :monthChangeOnScroll="false" :enableTimePicker="false" noToday hideOffsetDates hideInputIcon required/>
+                            <Datepicker dark textInput v-model="form.birthDate" :maxDate="new Date()" :monthChangeOnScroll="false" :enableTimePicker="false" noToday hideOffsetDates hideInputIcon required/>
                           </div>
                           
                           <div class="col-md-4">
@@ -221,13 +221,15 @@ export default {
                           </div>
 
                           <div class="col-md-2">
-                            <label style="padding-bottom: 5px;">Date Issued</label>
-                            <Datepicker dark v-model="form.issueDate" :maxDate="new Date()" :monthChangeOnScroll="false" :enableTimePicker="false" noToday hideOffsetDates hideInputIcon required/>
+                            <!-- :maxDate="new Date()" -->
+                            <label style="padding-bottom: 12px;">Date Issued</label>
+                            <Datepicker dark textInput v-model="form.issueDate" :monthChangeOnScroll="false" :enableTimePicker="false" noToday hideOffsetDates hideInputIcon required/>
                           </div>
 
                           <div class="col-md-2">
-                            <label style="padding-bottom: 5px;">Expiry Date</label>
-                            <Datepicker dark v-model="form.expDate" :minDate="new Date()" :monthChangeOnScroll="false" :enableTimePicker="false" noToday hideOffsetDates hideInputIcon required />
+                            <!-- :minDate="new Date()" -->
+                            <label style="padding-bottom: 12px;">Expiry Date</label>
+                            <Datepicker dark textInput v-model="form.expDate" :monthChangeOnScroll="false" :enableTimePicker="false" noToday hideOffsetDates hideInputIcon required />
                           </div>
 
           <p>Accreditations</p>

@@ -21,7 +21,7 @@ export default {
 </script>
 
 <template>
-    <div class="sidebar" :style="{ width:sidebarWidth}" v-if="$store.state.user"> <!--store.state.user checks if the user is logged in for the sidebar to display, refer to store/index.js file-->
+    <div class="sidebar" :style="{ width:sidebarWidth }" v-if="$store.state.user"> <!--store.state.user checks if the user is logged in for the sidebar to display, refer to store/index.js file-->
         <h1>
             <span v-if="collapsed">
                 <div class="sidebar_img">
@@ -39,8 +39,8 @@ export default {
         <SidebarLink to="/" icon="fas fa-home">Home</SidebarLink>
         <SidebarLink to="/reports" icon="fas fa-clipboard">Reports</SidebarLink>
         <SidebarLink to="/guards" icon="fa-solid fa-person-military-pointing">Guards</SidebarLink>
-        <SidebarLink to="/calendar" icon="fas fa-calendar-days">Calendar</SidebarLink> 
-        <SidebarLink to="/login" icon="fa-solid fa-person-running" class="logout" @click="$store.dispatch('logout')">Log Out</SidebarLink>
+        <SidebarLink to="/events" icon="fas fa-calendar-days">Events</SidebarLink> 
+        <SidebarLink to="/logout" icon="fa-solid fa-arrow-right-from-bracket" class="logout" @click="$store.dispatch('logout')">Log Out</SidebarLink>
 
         <!--<span class="collapse-icon" :class="{ 'rotate-180': collapsed}" @click="toggleSidebar">
             <i class="fa-solid fa-expand"></i>

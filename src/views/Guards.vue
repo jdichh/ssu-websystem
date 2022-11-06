@@ -10,8 +10,8 @@ export default {
     methods: {
       say: function (msg) {
         alert(msg)
+        },
       },
-    }
 }
 </script>
 
@@ -24,13 +24,13 @@ export default {
           <div class="table-title">
             <div class="row">
               <div class="col-sm-6">
-                <h2>Security Personnel</h2>
+                <h2><icon class="fa-solid fa-person-military-pointing"/>&nbsp;&nbsp;Security Personnel</h2>
               </div>
               <div class="col-sm-6">
                 <a>
                     <button class="btn btn-success" @click="$router.push('/add-guards')">
                         <i class="fa-solid fa-plus"/>
-                        Add New Record
+                        Add
                     </button>
                 </a>
               </div>
@@ -40,14 +40,14 @@ export default {
                 <table class="table table-striped">
                   <thead>
                     <tr>
-                      <th scope="col">SSU ID</th>
-                      <th scope="col">Full Name</th>
-                      <th scope="col">Contact Number</th>
-                      <th scope="col">License Number</th>
-                      <th scope="col">Date Issued</th> 
-                      <th scope="col">Expiration Date</th> 
-                      <th scope="col">Position</th>   
-                      <th scope="col">Action</th>
+                      <th>SSU ID</th>
+                      <th>Full Name</th>
+                      <th>Position</th>
+                      <th>Contact Number</th>
+                      <th>License Number</th>
+                      <th>Date Issued</th> 
+                      <th>Expiration Date</th> 
+                      <th>Action</th>
                     </tr>
                   </thead>
 
@@ -70,11 +70,11 @@ export default {
                             firstName + " " +
                             middleName + " " +
                             nameEx}}</td>
+                      <td>{{ position }}</td>
                       <td>{{ conNumber }}</td>	
                       <td>{{ licNum }}</td>
-                      <td>{{ issueDate.toDate().toDateString() }}</td> <!--toDate and toDateString converts timestamps to readable human text-->
-                      <td>{{ expDate.toDate().toDateString() }}</td>
-                      <td>{{ position }}</td>
+                      <td>{{ issueDate.toDate().toLocaleDateString() }}</td> <!--toDate and toDateString converts timestamps to readable human text-->
+                      <td>{{ expDate.toDate().toLocaleDateString() }}</td>                
 
                       <td>
                         <el-button-group size="small">
@@ -143,6 +143,7 @@ export default {
     border: none;
     outline: none !important;
     margin-left: 10px;
+    margin-right: 10px;
 }
 .table-title .btn i {
     float: left;
@@ -190,5 +191,9 @@ table.table td a {
 }
 table.table td i {
     font-size: 19px;
+}
+
+th{
+  font-weight: bold;
 }
 </style>

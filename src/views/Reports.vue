@@ -18,7 +18,7 @@ export default {
                 <div class="table-title">
                     <div class="row">
                         <div class="col-sm-6">
-                            <h2>All Reports</h2>
+                            <h2><icon class="fa-solid fa-clipboard"/>&nbsp;&nbsp;All Reports</h2>
                         </div>
                     </div>
                 </div>
@@ -26,12 +26,12 @@ export default {
                 <table class="table table-striped">
                   <thead>
                     <tr> 
-                      <th scope="col">Date & Time Reported</th>
-                      <th scope="col">Reporter</th>
-                      <th scope="col">Event Type</th>
-                      <th scope="col">Event Details</th>
-                      <th scope="col">Coordinates</th>
-                      <th scope="col">Action</th>
+                      <th>Date & Time Reported</th>
+                      <th>Reporter</th>
+                      <th>Event Type</th>
+                      <th>Event Details</th>
+                      <th>Coordinates</th>
+                      <th>Action</th>
                     </tr>
                   </thead>
 
@@ -153,5 +153,9 @@ table.table td a {
 }
 table.table td i {
     font-size: 19px;
+}
+
+th{
+  font-weight: bold;
 }
 </style>

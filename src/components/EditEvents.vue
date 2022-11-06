@@ -46,7 +46,7 @@ export default {
 
     const update = async () => {
       await updateActivities(activityId.value, { ...form })
-      router.push('/calendar')
+      router.push('/events')
       form.description = ''
       form.eventStart = ''
       form.eventEnd = ''
@@ -66,7 +66,7 @@ export default {
 
           <div class="row">
             <div class="col-sm-6">
-              <h2>Edit Event Detail</h2>
+              <h2><icon class="fa-solid fa-calendar"/>&nbsp;&nbsp;Edit Event Detail</h2>
             </div>
           </div>
 
@@ -102,17 +102,17 @@ export default {
 
                             <div class="col-md-2 mb-2 pb-2">
                                 <label style="padding-bottom: 5px;">Start</label>
-                                <Datepicker dark v-model="form.eventStart" :monthChangeOnScroll="false" hideOffsetDates hideInputIcon required/>
+                                <Datepicker dark textInput v-model="form.eventStart" :monthChangeOnScroll="false" hideOffsetDates hideInputIcon required/>
                             </div>
 
                             <div class="col-md-2 mb-2 pb-2">
                                 <label style="padding-bottom: 5px;">End</label>
-                                <Datepicker dark v-model="form.eventEnd" :monthChangeOnScroll="false" hideOffsetDates hideInputIcon required/>
+                                <Datepicker dark textInput v-model="form.eventEnd" :monthChangeOnScroll="false" hideOffsetDates hideInputIcon required/>
                             </div>
             </div>                
 
             <div class="flex justify-space-between mb-4 flex-wrap gap-4">
-              <button class="btn btn-danger mt-3" @click="$router.push('/calendar')">
+              <button class="btn btn-danger mt-3" @click="$router.push('/events')">
                 Cancel
               </button>
                     

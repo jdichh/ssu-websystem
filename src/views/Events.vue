@@ -24,13 +24,14 @@ export default {
           <div class="table-title">
             <div class="row">
               <div class="col-sm-6">
-                <h2>Scheduled Events</h2>
+                
+                <h2><i class="fa-solid fa-calendar-days"/>&nbsp;&nbsp;Scheduled Events</h2>
               </div>
               <div class="col-sm-6">
                 <a>
                     <button class="btn btn-success" @click="$router.push('/add-event/')">
                         <i class="fa-solid fa-plus"/>
-                        Add Event
+                        Add
                     </button>
                 </a>
               </div>
@@ -40,10 +41,10 @@ export default {
                 <table class="table table-striped">
                   <thead>
                     <tr>
-                      <th scope="col">Event Description</th>
-                      <th scope="col">Start</th>
-                      <th scope="col">End</th>  
-                      <th scope="col">Action</th>
+                      <th>Event Description</th>
+                      <th>Start</th>
+                      <th>End</th>  
+                      <th>Action</th>
                     </tr>
                   </thead>
 
@@ -124,6 +125,7 @@ export default {
     border: none;
     outline: none !important;
     margin-left: 10px;
+    margin-right: 10px;
 }
 .table-title .btn i {
     float: left;
@@ -148,7 +150,7 @@ table.table tr th:first-child {
     width: 400px;
 }
 table.table tr th:last-child {
-    width: 150px;
+    width: 125px;
 }
 table.table-striped tbody tr:nth-of-type(odd) {
     background-color: #fafafa;
@@ -175,5 +177,9 @@ table.table td a {
 }
 table.table td i {
     font-size: 19px;
+}
+
+th{
+  font-weight: bold;
 }
 </style>

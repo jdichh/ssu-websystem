@@ -11,6 +11,10 @@ const Login = defineAsyncComponent (
   () => import('../views/Login.vue')
 )
 
+const Logout = defineAsyncComponent (
+  () => import('../views/Login.vue')
+)
+
 const Guards = defineAsyncComponent (
   () => import('../views/Guards.vue')
 )
@@ -19,8 +23,8 @@ const Reports = defineAsyncComponent (
   () => import('../views/Reports.vue')
 )
 
-const Calendar = defineAsyncComponent (
-  () => import('../views/Calendar.vue')
+const Events = defineAsyncComponent (
+  () => import('../views/Events.vue')
 )
 
 const AddGuards = defineAsyncComponent (
@@ -81,9 +85,9 @@ const routes = [
     }
   },
   {
-    path: '/calendar',
-    name: 'Calendar',
-    component: Calendar,
+    path: '/events',
+    name: 'Events',
+    component: Events,
     meta: {
       requiresAuth: true
     }
@@ -108,6 +112,11 @@ const routes = [
     path: '/login',
     name: 'Login',
     component: Login
+  },
+  {
+    path: '/logout',
+    name: 'Logout',
+    component: Logout
   }
 ]
 

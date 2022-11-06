@@ -15,7 +15,7 @@ export default {
   
     const onSubmit = async () => {
       await createActivities({ ...form })
-      router.push('/calendar')
+      router.push('/events')
       form.description = ''
       form.eventStart = ''
       form.eventEnd = ''
@@ -32,7 +32,7 @@ export default {
         <div class="card-title">
           <div class="row">
             <div class="col-sm-6">
-              <h2>Add New Event</h2>
+              <h2><icon class="fa-solid fa-calendar-plus"/>&nbsp;&nbsp;Add New Event</h2>
             </div>
           </div>
         </div>
@@ -49,17 +49,17 @@ export default {
 
                             <div class="col-md-3 mb-2 pb-2">
                                 <label style="padding-bottom: 5px;">Start</label>
-                                <Datepicker dark v-model="form.eventStart" :monthChangeOnScroll="false" hideOffsetDates hideInputIcon required/>
+                                <Datepicker dark textInput v-model="form.eventStart" :monthChangeOnScroll="false" hideOffsetDates hideInputIcon required/>
                             </div>
 
                             <div class="col-md-3 mb-2 pb-2">
                                 <label style="padding-bottom: 5px;">End</label>
-                                <Datepicker dark v-model="form.eventEnd" :monthChangeOnScroll="false" hideOffsetDates hideInputIcon required/>
+                                <Datepicker dark textInput v-model="form.eventEnd" :monthChangeOnScroll="false" hideOffsetDates hideInputIcon required/>
                             </div>
             </div>                
 
             <div class="flex justify-space-between mb-4 flex-wrap gap-4">
-              <button class="btn btn-danger mt-3" @click="$router.push('/calendar')">
+              <button class="btn btn-danger mt-3" @click="$router.push('/events')">
                 Cancel
               </button>
                     
