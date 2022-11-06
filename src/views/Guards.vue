@@ -8,10 +8,12 @@ export default {
      },
 
     methods: {
-    say: function (msg) {
-      alert(msg)
+      say: function (msg) {
+        alert(msg)
+      },
     }
-  }
+
+
 }
 
 </script>
@@ -95,9 +97,9 @@ export default {
                           </a>
                         </el-button-group>
                       </td>
-
                     </tr>
                   </tbody>
+
                 </table> 
                  
         </div>

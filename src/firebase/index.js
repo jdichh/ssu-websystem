@@ -26,6 +26,7 @@ const db = firebaseApp.firestore()
 
 //CRUD for Security Personnel
 const usersCollection = db.collection('users')
+
 export const createUser = user => {
   return usersCollection.add(user)
 }
@@ -37,19 +38,20 @@ export const updateUser = (id, user) => {
   return usersCollection.doc(id).update(user)
 }
 export const deleteUser = id => {
-  if(confirm('Are you sure you want to delete this record?')){
+  if(confirm('Are you sure you want to DELETE this record?')){
     return usersCollection.doc(id).delete()
   }
 }
+//loading data (users) by lastname
 export const useLoadUsers = () => {
   const users = ref([])
-  const close = usersCollection.onSnapshot(snapshot => {
+  const close = usersCollection.orderBy('lastName').limit(2).onSnapshot((snapshot) => {
     users.value = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }))
   })
   onUnmounted(close)
   return users
 }
-
+ 
 //CRUD for Reports
 const reportsCollection = db.collection('reports')
 export const createReport = report => { //this is useless code, possibly delete later on
@@ -65,6 +67,7 @@ export const updateReport = (id, report) => { //this is useless code, possibly d
 export const deleteReport = id => { //maybe useless?
   return reportsCollection.doc(id).delete()
 }
+//getting data (reports)
 export const useLoadReports = () => {
   const reports = ref([])
   const close = reportsCollection.onSnapshot(snapshot => {
