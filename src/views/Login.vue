@@ -98,12 +98,13 @@ export default {
   box-shadow:none;
   outline:none;
   color:inherit;
+  font-size: 17px;
 }
 
 .login-dark form .forgot {
   display:block;
   text-align:center;
-  font-size:16px;
+  font-size:14px;
   color:#6f7a85;
   opacity:0.9;
   text-decoration:none;
@@ -127,7 +128,7 @@ input {
 	font-size: 1.5rem;
 	margin-bottom: 2rem;
 	padding: 0.5rem 0rem;
-	font-size: 20px;
+	font-size: 25px;
 }
 
 input:not([type="submit"]) {
