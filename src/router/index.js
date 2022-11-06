@@ -19,8 +19,8 @@ const Reports = defineAsyncComponent (
   () => import('../views/Reports.vue')
 )
 
-const Schedule = defineAsyncComponent (
-  () => import('../views/Schedule.vue')
+const Calendar = defineAsyncComponent (
+  () => import('../views/Calendar.vue')
 )
 
 const AddGuards = defineAsyncComponent (
@@ -29,6 +29,14 @@ const AddGuards = defineAsyncComponent (
 
 const EditGuards = defineAsyncComponent (
   () => import('../components/EditGuards.vue')
+)
+
+const AddEvents = defineAsyncComponent (
+  () => import('../components/AddEvents.vue')
+)
+
+const EditEvents = defineAsyncComponent (
+  () => import('../components/EditEvents.vue')
 )
 
 const routes = [
@@ -73,9 +81,25 @@ const routes = [
     }
   },
   {
-    path: '/schedule',
-    name: 'Scheduling',
-    component: Schedule,
+    path: '/calendar',
+    name: 'Calendar',
+    component: Calendar,
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: '/add-event/',
+    name: 'AddEvent',
+    component: AddEvents,
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: '/edit-event/:id',
+    name: 'EditEvent',
+    component: EditEvents,
     meta: {
       requiresAuth: true
     }

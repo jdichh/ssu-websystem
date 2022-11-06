@@ -36,15 +36,15 @@ export default {
             </span>
         </h1>
         
-        <SidebarLink to="/" icon="fas fa-house-user">Home</SidebarLink>
-        <SidebarLink to="/guards" icon="fa-solid fa-person-military-pointing">Guards</SidebarLink>
-        <SidebarLink to="/schedule" icon="fas fa-calendar-days">Calendar</SidebarLink>
+        <SidebarLink to="/" icon="fas fa-home">Home</SidebarLink>
         <SidebarLink to="/reports" icon="fas fa-clipboard">Reports</SidebarLink>
+        <SidebarLink to="/guards" icon="fa-solid fa-person-military-pointing">Guards</SidebarLink>
+        <SidebarLink to="/calendar" icon="fas fa-calendar-days">Calendar</SidebarLink> 
         <SidebarLink to="/login" icon="fa-solid fa-person-running" class="logout" @click="$store.dispatch('logout')">Log Out</SidebarLink>
 
-        <span class="collapse-icon" :class="{ 'rotate-180': collapsed}" @click="toggleSidebar">
+        <!--<span class="collapse-icon" :class="{ 'rotate-180': collapsed}" @click="toggleSidebar">
             <i class="fa-solid fa-expand"></i>
-        </span>
+        </span>-->
     </div>
 </template>
 
@@ -82,7 +82,7 @@ export default {
     font-weight: 400;
     user-select: none;
 
-    margin-top: 90px;
+    margin-top: 350px;
     padding: 0.4em;
     border-radius: 0.25em;
     height: 4em;

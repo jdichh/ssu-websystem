@@ -1,11 +1,10 @@
 <script>
-import { useLoadReports } from '@/firebase' //refer to firebase/index.js
+import { useLoadReports, deleteReport } from '@/firebase' //refer to firebase/index.js
 
 export default {
-    
     setup() {
         const reports = useLoadReports()
-        return { reports }
+        return { reports, deleteReport }
      }
 }
 </script>
@@ -19,7 +18,7 @@ export default {
                 <div class="table-title">
                     <div class="row">
                         <div class="col-sm-6">
-                            <h2>Reports</h2>
+                            <h2>All Reports</h2>
                         </div>
                     </div>
                 </div>
@@ -27,23 +26,38 @@ export default {
                 <table class="table table-striped">
                   <thead>
                     <tr> 
+                      <th scope="col">Date & Time Reported</th>
                       <th scope="col">Reporter</th>
-                      <th scope="col">Statement</th>
+                      <th scope="col">Event Type</th>
+                      <th scope="col">Event Details</th>
                       <th scope="col">Coordinates</th>
+                      <th scope="col">Action</th>
                     </tr>
                   </thead>
 
                   <tbody>
                     <tr v-for="{ 
-                        id, 
+                        id,
+                        dateTime, 
                         lastName, 
                         firstName, 
-                        statement,
+                        eventType,
+                        eventDetails,
                         location} in reports" :key="id">
 
-                      <td>{{ lastName + " " + firstName}}</td>
-                      <td>{{ statement }}</td>
+                      <td style="font-weight:bold">{{ dateTime.toDate().toLocaleString() }}</td>
+                      <td>{{ lastName.toUpperCase() + " " + firstName}}</td>
+                      <td style="font-weight:bold">{{ eventType }}</td>
+                      <td>{{ eventDetails }}</td>
                       <td>{{ location }}</td>
+                      <td>
+                          <a class="delete" data-toggle="modal"> 
+                            <el-button type="danger" size="small" @click="deleteReport(id)"> <!--DELETE-->
+                              <i class="fa-solid fa-trash" data-toggle="tooltip" title="Delete">
+                              </i>
+                            </el-button>
+                          </a>
+                      </td>
                     </tr>
                   </tbody>
                 </table> 
@@ -106,13 +120,13 @@ table.table tr th, table.table tr td {
     border-color: #e9e9e9;
     padding: 6px 15px;
     vertical-align: middle;
-    font-size: 15px;
+    font-size: 17px;
 }
 table.table tr th:first-child {
-    width: 11px;
+    width: 250px;
 }
 table.table tr th:last-child {
-    width: 130px;
+    width: 70px;
 }
 table.table-striped tbody tr:nth-of-type(odd) {
     background-color: #fafafa;
