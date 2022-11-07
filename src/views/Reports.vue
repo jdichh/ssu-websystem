@@ -40,16 +40,17 @@ export default {
                         id,
                         dateTime, 
                         lastName, 
-                        firstName, 
+                        firstName,
+                        middleName, 
                         eventType,
                         eventDetails,
                         location} in reports" :key="id">
 
                       <td style="font-weight:bold">{{ dateTime.toDate().toLocaleString() }}</td>
-                      <td>{{ lastName.toUpperCase() + " " + firstName}}</td>
+                      <td>{{ lastName.toUpperCase() + " " + firstName + " " + middleName }}</td>
                       <td style="font-weight:bold">{{ eventType }}</td>
                       <td>{{ eventDetails }}</td>
-                      <td>{{ location }}</td>
+                      <td>{{ location.toJSON() }}</td>
                       <td>
                           <a class="delete" data-toggle="modal"> 
                             <el-button type="danger" size="small" @click="deleteReport(id)"> <!--DELETE-->
