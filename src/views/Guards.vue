@@ -78,17 +78,17 @@ export default {
 
                       <td>
                         <el-button-group size="small">
-                          <a class="edit" data-toggle="modal">
+                          <a class="edit">
                               <router-link :to="`/edit-guard/${id}`">
                                 <el-button type="warning" v-on:click="say('You are about to VIEW/EDIT a record.')"> <!--EDIT-->
-                                  <i class="fa-solid fa-user-pen" data-toggle="tooltip" title="Edit"> 
+                                  <i class="fa-solid fa-user-pen"> 
                                   </i>
                                 </el-button>
                               </router-link>
                           </a>
-                          <a class="delete" data-toggle="modal"> 
+                          <a class="delete"> 
                             <el-button type="danger" @click="deleteUser(id)"> <!--DELETE-->
-                              <i class="fa-solid fa-trash" data-toggle="tooltip" title="Delete">
+                              <i class="fa-solid fa-trash">
                               </i>
                             </el-button>
                           </a>

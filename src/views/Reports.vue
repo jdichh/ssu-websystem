@@ -28,9 +28,8 @@ export default {
                     <tr> 
                       <th>Date & Time Reported</th>
                       <th>Reporter</th>
-                      <th>Event Type</th>
                       <th>Event Details</th>
-                      <th>Coordinates</th>
+                      <th>Location</th>
                       <th>Action</th>
                     </tr>
                   </thead>
@@ -42,15 +41,13 @@ export default {
                         lastName, 
                         firstName,
                         middleName, 
-                        eventType,
                         eventDetails,
-                        location} in reports" :key="id">
+                        coords} in reports" :key="id">
 
                       <td style="font-weight:bold">{{ dateTime.toDate().toLocaleString() }}</td>
                       <td>{{ lastName.toUpperCase() + " " + firstName + " " + middleName }}</td>
-                      <td style="font-weight:bold">{{ eventType }}</td>
                       <td>{{ eventDetails }}</td>
-                      <td>{{ location.toJSON() }}</td>
+                      <td><a :href="`https://www.openstreetmap.org/search?query=${coords.latitude}%2C${coords.longitude}#map=18/${coords.latitude}/${coords.longitude}`" target="_blank">View</a></td>
                       <td>
                           <a class="delete" data-toggle="modal"> 
                             <el-button type="danger" size="small" @click="deleteReport(id)"> <!--DELETE-->
@@ -124,7 +121,7 @@ table.table tr th, table.table tr td {
     font-size: 17px;
 }
 table.table tr th:first-child {
-    width: 250px;
+    width: 225px;
 }
 table.table tr th:last-child {
     width: 70px;

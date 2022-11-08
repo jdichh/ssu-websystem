@@ -26,6 +26,7 @@ const db = firebaseApp.firestore()
 
 //CRUD for Security Personnel
 const usersCollection = db.collection('users')
+
 export const createUser = user => {
   return usersCollection.add(user)
 }
@@ -50,9 +51,10 @@ export const useLoadUsers = () => {
   onUnmounted(close)
   return users
 }
- 
+
 //CRUD for Reports
 const reportsCollection = db.collection('reports')
+
 export const createReport = report => { //this is useless code, possibly delete later on
   return reportsCollection.add(report)
 }
@@ -77,7 +79,7 @@ export const useLoadReports = () => {
   onUnmounted(close)
   return reports
 }
-//getting latest 5 reports
+//getting latest 5 reports (home page)
 export const useLatestReports = () => {
   const reports = ref([])
   const close = reportsCollection.orderBy('dateTime', 'desc').limit(5).onSnapshot(snapshot => {
@@ -87,29 +89,30 @@ export const useLatestReports = () => {
   return reports
 }
 
-//CRUD for Calendar
-const activitiesCollection = db.collection('activities')
-export const createActivities = act => {
-  return activitiesCollection.add(act)
+//CRUD for Events
+const eventsCollection = db.collection('events')
+
+export const createEvents = event => {
+  return eventsCollection.add(event)
 }
-export const getActivities = async id => {
-  const act = await activitiesCollection.doc(id).get()
-  return act.exists ? act.data() : null
+export const getEvents = async id => {
+  const event = await eventsCollection.doc(id).get()
+  return event.exists ? event.data() : null
 }
-export const updateActivities = (id, act) => {
-  return activitiesCollection.doc(id).update(act)
+export const updateEvents = (id, event) => {
+  return eventsCollection.doc(id).update(event)
 }
-export const deleteActivities = id => {
+export const deleteEvents = id => {
   if(confirm('Are you sure you want to DELETE this record?')){
-    return activitiesCollection.doc(id).delete()
+    return eventsCollection.doc(id).delete()
   }
 }
-//loading data (activities) by date & time
-export const useLoadActivities = () => {
-  const activities = ref([])
-  const close = activitiesCollection.orderBy('eventStart').onSnapshot((snapshot) => {
-    activities.value = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }))
+//loading data (events) by date & time
+export const useLoadEvents = () => {
+  const events = ref([])
+  const close = eventsCollection.orderBy('eventStart').onSnapshot((snapshot) => {
+    events.value = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }))
   })
   onUnmounted(close)
-  return activities
+  return events
 }

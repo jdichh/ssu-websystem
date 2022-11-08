@@ -1,5 +1,5 @@
 <script>
-import { createActivities } from '@/firebase'
+import { createEvents } from '@/firebase'
 import { reactive, ref } from 'vue'
 import { useRouter } from 'vue-router'
   
@@ -14,7 +14,7 @@ export default {
         eventEnd: ''})
   
     const onSubmit = async () => {
-      await createActivities({ ...form })
+      await createEvents({ ...form })
       router.push('/events')
       form.description = ''
       form.eventStart = ''

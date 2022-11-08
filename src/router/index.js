@@ -1,47 +1,17 @@
 //Link Management
 import { createRouter, createWebHistory } from 'vue-router'
 import { auth } from '../firebase'
-import { defineAsyncComponent } from 'vue'
 
-const Home = defineAsyncComponent (
-  () => import('../views/Home.vue')
-)
-
-const Login = defineAsyncComponent (
-  () => import('../views/Login.vue')
-)
-
-const Logout = defineAsyncComponent (
-  () => import('../views/Login.vue')
-)
-
-const Guards = defineAsyncComponent (
-  () => import('../views/Guards.vue')
-)
-
-const Reports = defineAsyncComponent (
-  () => import('../views/Reports.vue')
-)
-
-const Events = defineAsyncComponent (
-  () => import('../views/Events.vue')
-)
-
-const AddGuards = defineAsyncComponent (
-  () => import('../components/AddGuards.vue')
-)
-
-const EditGuards = defineAsyncComponent (
-  () => import('../components/EditGuards.vue')
-)
-
-const AddEvents = defineAsyncComponent (
-  () => import('../components/AddEvents.vue')
-)
-
-const EditEvents = defineAsyncComponent (
-  () => import('../components/EditEvents.vue')
-)
+const Home = () => import('../views/Home.vue')
+const Login = () => import('../views/Login.vue')
+const Logout = () => import('../views/Login.vue')
+const Guards = () => import('../views/Guards.vue')
+const Reports = () => import('../views/Reports.vue')
+const Events = () => import('../views/Events.vue')
+const AddGuards = () => import('../components/AddGuards.vue')
+const EditGuards = () => import('../components/EditGuards.vue')
+const AddEvents = () => import('../components/AddEvents.vue')
+const EditEvents = () => import('../components/EditEvents.vue')
 
 const routes = [
   {

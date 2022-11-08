@@ -64,7 +64,7 @@ export default {
                 <div class="table-title">
                   <div class="row">
                     <div class="col-sm-6">
-                      <h2><icon class="fa-solid fa-clipboard"/>&nbsp;&nbsp;Last 10 Reports</h2>
+                      <h2><icon class="fa-solid fa-clipboard"/>&nbsp;&nbsp;Last 5 Reports</h2>
                     </div>
                   </div>
                 </div>
@@ -74,9 +74,8 @@ export default {
                     <tr> 
                       <th scope="col">Date & Time Reported</th>
                       <th scope="col">Reporter</th>
-                      <th scope="col">Event Type</th>
                       <th scope="col">Event Details</th>
-                      <th scope="col">Coordinates</th>
+                      <th scope="col">Location</th>
                     </tr>
                   </thead>
 
@@ -85,16 +84,15 @@ export default {
                         id,
                         dateTime, 
                         lastName, 
-                        firstName, 
-                        eventType,
+                        firstName,
+                        middleName, 
                         eventDetails,
-                        location} in reports" :key="id">
+                        coords} in reports" :key="id">
 
                       <td style="font-weight:bold">{{ dateTime.toDate().toLocaleString() }}</td>
-                      <td>{{ lastName.toUpperCase() + " " + firstName}}</td>
-                      <td style="font-weight:bold">{{ eventType }}</td>
+                      <td>{{ lastName.toUpperCase() + " " + firstName + " " + middleName}}</td>
                       <td>{{ eventDetails }}</td>
-                      <td>{{ location }}</td>
+                      <td><a :href="`https://www.openstreetmap.org/search?query=${coords.latitude}%2C${coords.longitude}#map=18/${coords.latitude}/${coords.longitude}`" target="_blank">View</a></td>
                     </tr>
                   </tbody>
                 </table> 

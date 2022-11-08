@@ -1,7 +1,7 @@
 <script>
 import { reactive, computed, onMounted} from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { getActivities, updateActivities } from '@/firebase'
+import { getEvents, updateEvents } from '@/firebase'
 import '@vuepic/vue-datepicker/dist/main.css'
 
 export default {
@@ -26,7 +26,7 @@ export default {
 
     const router = useRouter()
     const route = useRoute()
-    const activityId = computed(() => route.params.id)
+    const eventId = computed(() => route.params.id)
 
     const form = reactive({   
         description: '',
@@ -34,18 +34,16 @@ export default {
         eventEnd: ''})
 
     onMounted(async () => {
-      const activity = await getActivities(activityId.value)
-      console.log(activity, activityId.value)
-      form.descriptionOriginal = activity.description
-      form.eventStartOriginal = activity.eventStart.toDate()
-      form.eventEndOriginal = activity.eventEnd.toDate()
-      form.description = activity.description
-      form.eventStart = activity.eventStart.toDate()
-      form.eventEnd = activity.eventEnd.toDate()
+      const event = await getEvents(eventId.value)
+      console.log(event, eventId.value)
+      form.descriptionOriginal = event.description
+      form.eventStartOriginal = event.eventStart.toDate()
+      form.eventEndOriginal = event.eventEnd.toDate()
+      form.description = event.description
     })
 
     const update = async () => {
-      await updateActivities(activityId.value, { ...form })
+      await updateEvents(eventId.value, { ...form })
       router.push('/events')
       form.description = ''
       form.eventStart = ''

@@ -1,10 +1,10 @@
 <script>
-import { useLoadActivities, deleteActivities } from '@/firebase' //refer to firebase/index.js
+import { useLoadEvents, deleteEvents } from '@/firebase' //refer to firebase/index.js
 
 export default {
     setup() {
-        const activities = useLoadActivities()
-        return { activities, deleteActivities }
+        const events = useLoadEvents()
+        return { events, deleteEvents }
      },
 
     methods: {
@@ -52,7 +52,7 @@ export default {
                     <tr v-for="{ id,  
                       description, 
                       eventStart,
-                      eventEnd} in activities" :key="id">
+                      eventEnd} in events" :key="id">
  
                       <td style="font-weight: bold; ">{{ description }}</td>	
                       <td>{{ eventStart.toDate().toLocaleString() }}</td> <!--toDate and toDateString converts timestamps to readable human text-->
@@ -69,7 +69,7 @@ export default {
                               </router-link>
                           </a>
                           <a class="delete" data-toggle="modal"> 
-                            <el-button type="danger" @click="deleteActivities(id)"> <!--DELETE-->
+                            <el-button type="danger" @click="deleteEvents(id)"> <!--DELETE-->
                               <i class="fa-solid fa-trash" data-toggle="tooltip" title="Delete">
                               </i>
                             </el-button>
