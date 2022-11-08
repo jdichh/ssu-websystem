@@ -60,11 +60,11 @@ export default {
 
             <div class="flex justify-space-between mb-4 flex-wrap gap-4">
               <button class="btn btn-danger mt-3" @click="$router.push('/events')">
-                Cancel
+                Back to Events
               </button>
                     
               <button type="submit" class="btn btn-success mt-3">
-                Confirm
+                Add Event
               </button>
             </div>
         </form>

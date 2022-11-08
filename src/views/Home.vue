@@ -92,7 +92,11 @@ export default {
                       <td style="font-weight:bold">{{ dateTime.toDate().toLocaleString() }}</td>
                       <td>{{ lastName.toUpperCase() + " " + firstName + " " + middleName}}</td>
                       <td>{{ eventDetails }}</td>
-                      <td><a :href="`https://www.openstreetmap.org/search?query=${coords.latitude}%2C${coords.longitude}#map=18/${coords.latitude}/${coords.longitude}`" target="_blank">View</a></td>
+                      <td>
+                        <button type="button" class="btn btn-primary btn-sm">
+                            <a :href="`https://www.openstreetmap.org/search?query=${coords.latitude}%2C${coords.longitude}#map=19/${coords.latitude}/${coords.longitude}`" target="_blank" style="color:white">View Location</a>
+                        </button>
+                      </td>
                     </tr>
                   </tbody>
                 </table> 
@@ -100,7 +104,6 @@ export default {
         </div>
       </div>
     </div>
-
 
   </main>
 </template>
@@ -163,7 +166,7 @@ table.table tr th:first-child {
     width: 250px;
 }
 table.table tr th:last-child {
-    width: 350px;
+    width: 250px;
 }
 table.table-striped tbody tr:nth-of-type(odd) {
     background-color: #fafafa;

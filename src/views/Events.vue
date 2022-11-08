@@ -59,22 +59,18 @@ export default {
                       <td>{{ eventEnd.toDate().toLocaleString() }}</td> <!--toDate and toDateString converts timestamps to readable human text-->
 
                       <td>
-                        <el-button-group size="small">
-                          <a class="edit" data-toggle="modal">
+                          <a class="edit">
                               <router-link :to="`/edit-event/${id}`">
-                                <el-button type="warning" v-on:click="say('You are about to VIEW/EDIT a record.')"> <!--EDIT-->
-                                  <i class="fa-solid fa-user-pen" data-toggle="tooltip" title="Edit"> 
-                                  </i>
-                                </el-button>
+                                <button type="button" class="btn btn-info btn-sm" v-on:click="say('You are about to VIEW/EDIT a record.')"> <!--EDIT-->
+                                  <i class="fa-solid fa-user-pen"/> 
+                                </button>
                               </router-link>
                           </a>
-                          <a class="delete" data-toggle="modal"> 
-                            <el-button type="danger" @click="deleteEvents(id)"> <!--DELETE-->
-                              <i class="fa-solid fa-trash" data-toggle="tooltip" title="Delete">
-                              </i>
-                            </el-button>
+                          <a class="delete"> 
+                            <button type="button" class="btn btn-danger btn-sm" @click="deleteEvents(id)"> <!--DELETE-->
+                              <i class="fa-solid fa-trash"/>
+                            </button>
                           </a>
-                        </el-button-group>
                       </td>
                     </tr>
                   </tbody>
@@ -150,7 +146,7 @@ table.table tr th:first-child {
     width: 400px;
 }
 table.table tr th:last-child {
-    width: 125px;
+    width: 130px;
 }
 table.table-striped tbody tr:nth-of-type(odd) {
     background-color: #fafafa;

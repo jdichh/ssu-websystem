@@ -77,22 +77,18 @@ export default {
                       <td>{{ expDate.toDate().toLocaleDateString() }}</td>                
 
                       <td>
-                        <el-button-group size="small">
                           <a class="edit">
                               <router-link :to="`/edit-guard/${id}`">
-                                <el-button type="warning" v-on:click="say('You are about to VIEW/EDIT a record.')"> <!--EDIT-->
-                                  <i class="fa-solid fa-user-pen"> 
-                                  </i>
-                                </el-button>
+                                <button type="button" class="btn btn-info btn-sm" v-on:click="say('You are about to VIEW/EDIT a record.')"> <!--EDIT-->
+                                  <i class="fa-solid fa-user-pen"/> 
+                                </button>
                               </router-link>
                           </a>
                           <a class="delete"> 
-                            <el-button type="danger" @click="deleteUser(id)"> <!--DELETE-->
-                              <i class="fa-solid fa-trash">
-                              </i>
-                            </el-button>
+                            <button type="button" class="btn btn-danger btn-sm" @click="deleteUser(id)"> <!--DELETE-->
+                              <i class="fa-solid fa-trash"/>
+                            </button>
                           </a>
-                        </el-button-group>
                       </td>
                     </tr>
                   </tbody>

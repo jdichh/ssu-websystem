@@ -12,6 +12,7 @@ const AddGuards = () => import('../components/AddGuards.vue')
 const EditGuards = () => import('../components/EditGuards.vue')
 const AddEvents = () => import('../components/AddEvents.vue')
 const EditEvents = () => import('../components/EditEvents.vue')
+const ViewReport = () => import('../components/ViewReport.vue')
 
 const routes = [
   {
@@ -54,6 +55,15 @@ const routes = [
       requiresAuth: true
     }
   },
+  {
+    path: '/view-report/:id',
+    name: 'Report',
+    component: ViewReport,
+    meta: {
+      requiresAuth: true
+    }
+  },
+  
   {
     path: '/events',
     name: 'Events',

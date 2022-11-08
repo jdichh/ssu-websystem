@@ -47,14 +47,27 @@ export default {
                       <td style="font-weight:bold">{{ dateTime.toDate().toLocaleString() }}</td>
                       <td>{{ lastName.toUpperCase() + " " + firstName + " " + middleName }}</td>
                       <td>{{ eventDetails }}</td>
-                      <td><a :href="`https://www.openstreetmap.org/search?query=${coords.latitude}%2C${coords.longitude}#map=18/${coords.latitude}/${coords.longitude}`" target="_blank">View</a></td>
                       <td>
-                          <a class="delete" data-toggle="modal"> 
-                            <el-button type="danger" size="small" @click="deleteReport(id)"> <!--DELETE-->
-                              <i class="fa-solid fa-trash" data-toggle="tooltip" title="Delete">
-                              </i>
-                            </el-button>
-                          </a>
+                        <button type="button" class="btn btn-primary btn-sm">
+                            <a :href="`https://www.openstreetmap.org/search?query=${coords.latitude}%2C${coords.longitude}#map=19/${coords.latitude}/${coords.longitude}`" target="_blank" style="color:white">View Location</a>
+                        </button>
+                      </td>
+                      <td>
+                            
+                                <a class="edit">
+                                    <router-link :to="`/view-report/${id}`">
+                                    <button type="button" class="btn btn-info btn-sm" v-on:click="say('You are about to VIEW/EDIT a record.')"> <!--EDIT-->
+                                        <i class="fa-solid fa-user-pen"> 
+                                        </i>
+                                    </button>
+                                    </router-link>
+                                </a>
+                                <a class="delete"> 
+                                    <button type="button" class="btn btn-danger btn-sm" @click="deleteReport(id)"> <!--DELETE-->
+                                        <i class="fa-solid fa-trash" title="Delete"/>
+                                    </button>
+                                </a>
+                            
                       </td>
                     </tr>
                   </tbody>
@@ -124,7 +137,7 @@ table.table tr th:first-child {
     width: 225px;
 }
 table.table tr th:last-child {
-    width: 70px;
+    width: 150px;
 }
 table.table-striped tbody tr:nth-of-type(odd) {
     background-color: #fafafa;
