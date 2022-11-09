@@ -74,7 +74,7 @@ export default {
                     <tr> 
                       <th scope="col">Date & Time Reported</th>
                       <th scope="col">Reporter</th>
-                      <th scope="col">Event Details</th>
+                      <th scope="col">Report Type</th>
                       <th scope="col">Location</th>
                     </tr>
                   </thead>
@@ -86,12 +86,12 @@ export default {
                         lastName, 
                         firstName,
                         middleName, 
-                        eventDetails,
+                        eventType,
                         coords} in reports" :key="id">
 
                       <td style="font-weight:bold">{{ dateTime.toDate().toLocaleString() }}</td>
                       <td>{{ lastName.toUpperCase() + " " + firstName + " " + middleName}}</td>
-                      <td>{{ eventDetails }}</td>
+                      <td>{{ eventType }}</td>
                       <td>
                         <button type="button" class="btn btn-primary btn-sm">
                             <a :href="`https://www.openstreetmap.org/search?query=${coords.latitude}%2C${coords.longitude}#map=19/${coords.latitude}/${coords.longitude}`" target="_blank" style="color:white">View Location</a>
@@ -160,7 +160,7 @@ table.table tr th, table.table tr td {
     border-color: #e9e9e9;
     padding: 6px 15px;
     vertical-align: middle;
-    font-size: 17px;
+    font-size: 16px;
 }
 table.table tr th:first-child {
     width: 250px;

@@ -46,58 +46,37 @@ export default {
 
           <div class="row">
             <div class="col-sm-6">
-              <h2><icon class="fa-solid fa-clipboard-question"/>&nbsp;&nbsp;Full Report Details</h2>
+              <h2><icon class="fa-solid fa-clipboard-question"/>&nbsp;&nbsp;Report Title: {{ form.eventType }}</h2>
             </div>
+            <div class="col-sm-6">
+                <a>
+                  <button type="button" class="btn btn-primary">
+                    <a :href="`https://www.openstreetmap.org/search?query=${form.coords.latitude}%2C${form.coords.longitude}#map=19/${form.coords.latitude}/${form.coords.longitude}`" target="_blank" style="color:white">
+                      View Location
+                    </a>
+                  </button>
+                </a>
+              </div>
           </div>
 
         </div>
         <form class="login">
-          <p>Report Type: {{ form.eventType }}</p> 
             <div class="row justify-content-evenly">
-                <div class="col-md-2 mb-2 pb-2">
-                  <div>
-                    <label>Last Name</label>
-                    <input v-model="form.lastName" readonly @keypress="validateText" style="color:black" required />
+              <p>Reported by {{ form.lastName.toUpperCase() + ", " + form.firstName + " " + form.middleName }} at {{ form.dateTime.toLocaleString() }}</p>
+              <h1></h1>
+                            
+                  <div class="col-md-5 mb-2 pb-2">
+                    <div>
+                      <label style="padding-bottom: 5px;">Full Details</label>
+                      <el-input type="textarea" readonly size="large" v-model="form.eventDetails" style="color:black; font-size:17px;padding-bottom:25px"/>
+                    </div>
                   </div>
-                </div>
-
-                <div class="col-md-2 mb-1 pb-2">
-                  <div>
-                    <label>First Name</label>
-                    <input v-model="form.firstName" readonly @keypress="validateText" style="color:black" required />
-                  </div>
-                </div>
-
-                <div class="col-md-2 mb-1 pb-2">
-                  <div>
-                    <label>Middle Name</label>
-                    <input v-model="form.middleName" readonly @keypress="validateText" style="color:black"/>
-                  </div>
-                </div>
-
-            <p>Report Details</p>
-                          
-                <div class="col-md-3 mb-2 pb-2">
-                  <div>
-                    <label>Event Details</label>
-                    <el-input type="textarea" readonly autosize v-model="form.eventDetails" style="color:black; font-size:17px"/>
-                  </div>
-                </div>
-
-                <div class="col-md-2 mb-2 pb-2">
-                    <label style="padding-bottom: 5px;">Date & Time Reported</label>
-                    <Datepicker readonly dark v-model="form.dateTime" :monthChangeOnScroll="false" hideOffsetDates hideInputIcon required/>
-                </div>
- 
+  
             </div>
 
-            <button type="button" class="btn btn-danger" @click="$router.push('/reports')">
-              Back to Reports
-            </button>
-
-            <button type="button" class="btn btn-primary">
-                <a :href="`https://www.openstreetmap.org/search?query=${form.coords.latitude}%2C${form.coords.longitude}#map=19/${form.coords.latitude}/${form.coords.longitude}`" target="_blank" style="color:white">View Location</a>
-            </button>
+              <button type="button" class="btn btn-danger" @click="$router.push('/reports')">
+                Back to Reports
+              </button>
                   
         </form>
       </div>
@@ -164,7 +143,7 @@ p {
   font-size: 30px;
   font-weight: 500;
   margin: 5px 0 0;
-  margin-top: 15px;
+  margin-top: 10px;
   margin-left: 4px;
   padding-bottom: 20px;
   text-align: left;

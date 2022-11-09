@@ -140,7 +140,7 @@ table.table tr th, table.table tr td {
     border-color: #e9e9e9;
     padding: 6px 15px;
     vertical-align: middle;
-    font-size: 17px;
+    font-size: 16px;
 }
 table.table tr th:first-child {
     width: 400px;

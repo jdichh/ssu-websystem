@@ -104,7 +104,7 @@ body{
 
   <div v-else class="mobile-message flex flex-column">
     <h2>Sorry, this cannot be viewed on mobile devices or low resolution monitors.</h2>
-    <p>To use this, please use a device that has a high resolution display.</p>
+    <p>To continue, please use a device that has a high resolution display.</p>
   </div>
 
 </template>

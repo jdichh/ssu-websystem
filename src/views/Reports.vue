@@ -28,7 +28,7 @@ export default {
                     <tr> 
                       <th>Date & Time Reported</th>
                       <th>Reporter</th>
-                      <th>Event Details</th>
+                      <th>Report Title</th>
                       <th>Location</th>
                       <th>Action</th>
                     </tr>
@@ -41,12 +41,12 @@ export default {
                         lastName, 
                         firstName,
                         middleName, 
-                        eventDetails,
+                        eventType,
                         coords} in reports" :key="id">
 
                       <td style="font-weight:bold">{{ dateTime.toDate().toLocaleString() }}</td>
                       <td>{{ lastName.toUpperCase() + " " + firstName + " " + middleName }}</td>
-                      <td>{{ eventDetails }}</td>
+                      <td>{{ eventType }}</td>
                       <td>
                         <button type="button" class="btn btn-primary btn-sm">
                             <a :href="`https://www.openstreetmap.org/search?query=${coords.latitude}%2C${coords.longitude}#map=19/${coords.latitude}/${coords.longitude}`" target="_blank" style="color:white">View Location</a>
@@ -57,7 +57,7 @@ export default {
                                 <a class="edit">
                                     <router-link :to="`/view-report/${id}`">
                                     <button type="button" class="btn btn-info btn-sm" v-on:click="say('You are about to VIEW/EDIT a record.')"> <!--EDIT-->
-                                        <i class="fa-solid fa-user-pen"> 
+                                        <i class="fa-solid fa-clipboard-list"> 
                                         </i>
                                     </button>
                                     </router-link>
@@ -131,7 +131,7 @@ table.table tr th, table.table tr td {
     border-color: #e9e9e9;
     padding: 6px 15px;
     vertical-align: middle;
-    font-size: 17px;
+    font-size: 16px;
 }
 table.table tr th:first-child {
     width: 225px;
