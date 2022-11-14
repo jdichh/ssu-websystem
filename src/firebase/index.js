@@ -82,7 +82,7 @@ export const useLoadReports = () => {
 //getting latest 5 reports (home page)
 export const useLatestReports = () => {
   const reports = ref([])
-  const close = reportsCollection.orderBy('dateTime', 'desc').limit(5).onSnapshot(snapshot => {
+  const close = reportsCollection.orderBy('dateTime').limit(5).onSnapshot(snapshot => {
     reports.value = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }))
   })
   onUnmounted(close)
@@ -115,4 +115,21 @@ export const useLoadEvents = () => {
   })
   onUnmounted(close)
   return events
+}
+
+//DTR
+const timeRecordCollection = db.collection('timeRecord')
+
+export const getDTR = async id => {
+  const timeRecord = await timeRecordCollection.doc(id).get()
+  return timeRecord.exists ? timeRecord.data() : null
+}
+
+export const useLoadDTR = () => {
+  const timeRecord = ref([])
+  const close = timeRecordCollection.orderBy('dtrLogin').limit(20).onSnapshot((snapshot) => {
+    timeRecord.value = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }))
+  })
+  onUnmounted(close)
+  return timeRecord
 }

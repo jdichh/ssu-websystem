@@ -8,6 +8,7 @@ const Logout = () => import('../views/Login.vue')
 const Guards = () => import('../views/Guards.vue')
 const Reports = () => import('../views/Reports.vue')
 const Events = () => import('../views/Events.vue')
+const DTR = () => import('../views/TimeRecord.vue')
 const AddGuards = () => import('../components/AddGuards.vue')
 const EditGuards = () => import('../components/EditGuards.vue')
 const AddEvents = () => import('../components/AddEvents.vue')
@@ -68,6 +69,14 @@ const routes = [
     path: '/events',
     name: 'Events',
     component: Events,
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: '/dtr',
+    name: 'Daily Time Record',
+    component: DTR,
     meta: {
       requiresAuth: true
     }

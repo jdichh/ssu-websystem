@@ -1,69 +1,55 @@
 <script>
-import { useLatestReports } from '@/firebase' //refer to firebase/index.js
+import { useLoadDTR } from '@/firebase' //refer to firebase/index.js
 
 export default {
-    
     setup() {
-        const reports = useLatestReports()
-        return { reports }
+        const timeRecord = useLoadDTR()
+        return { timeRecord }
      }
 }
 </script>
 
 <template>
-  <main class="Home"> 
-    <div class="container">
-      <div class="table-responsive">
-        <div class="table-wrapper">
-
+  <main class="reports"> 
+    <div class="container-xl">
+        <div class="table-responsive">
+            <div class="table-wrapper">
+                
                 <div class="table-title">
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <h2><icon class="fa-solid fa-clipboard"/>&nbsp;&nbsp;Last 5 Reports</h2>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h2><icon class="fa-solid fa-clipboard"/>&nbsp;&nbsp;Daily Time Record</h2>
+                        </div>
                     </div>
-                  </div>
                 </div>
 
                 <table class="table table-striped">
                   <thead>
                     <tr> 
-                      <th>Date & Time Reported</th>
                       <th>SSU ID</th>
-                      <th>Reporter</th>
-                      <th>Report Type</th>
-                      <th>Location</th>
+                      <th>Logged In At</th>
+                      <th>Logged Out At</th>
                     </tr>
                   </thead>
 
                   <tbody>
                     <tr v-for="{ 
-                        id,
-                        dateTime,
-                        ssuID, 
-                        lastName, 
-                        firstName,
-                        middleName,
-                        nameEx, 
-                        eventType,
-                        coords} in reports" :key="id">
+                        id,              
+                        ssuID,
+                        dtrLogin, 
+                        dtrLogout, 
+                        } in timeRecord" :key="id">
 
-                      <td style="font-weight:bold">{{ dateTime}}</td>
                       <td>{{ ssuID }}</td>
-                      <td>{{ lastName.toUpperCase() + " " + firstName + " " + middleName+ " " + nameEx }}</td>
-                      <td>{{ eventType }}</td>
-                      <td>
-                        <button type="button" class="btn btn-primary btn-sm">
-                            <a :href="`https://www.openstreetmap.org/search?query=${coords}#map=19/`" target="_blank" style="color:white">View Location</a>
-                        </button>
-                      </td>
+                      <td>{{ dtrLogin }}</td>
+                      <td>{{ dtrLogout }}</td>
                     </tr>
                   </tbody>
                 </table> 
-
+                 
+            </div>
         </div>
-      </div>
     </div>
-
   </main>
 </template>
 
@@ -122,10 +108,10 @@ table.table tr th, table.table tr td {
     font-size: 16px;
 }
 table.table tr th:first-child {
-    width: 250px;
+    width: 150px;
 }
 table.table tr th:last-child {
-    width: 250px;
+    width: 225px;
 }
 table.table-striped tbody tr:nth-of-type(odd) {
     background-color: #fafafa;
@@ -152,5 +138,9 @@ table.table td a {
 }
 table.table td i {
     font-size: 19px;
+}
+
+th{
+  font-weight: bold;
 }
 </style>

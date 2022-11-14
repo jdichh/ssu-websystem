@@ -37,19 +37,19 @@ export default {
 
                   <tbody>
                     <tr v-for="{ 
-                        id,
-                        
+                        id,    
                         dateTime,
                         ssuID, 
                         lastName, 
                         firstName,
-                        middleName, 
+                        middleName,
+                        nameEx, 
                         eventType,
                         coords} in reports" :key="id">
 
                       <td style="font-weight:bold">{{ dateTime }}</td>
                       <td>{{ ssuID }}</td>
-                      <td>{{ lastName.toUpperCase() + " " + firstName + " " + middleName }}</td>
+                      <td>{{ lastName.toUpperCase() + " " + firstName + " " + middleName + " " + nameEx }}</td>
                       <td>{{ eventType }}</td>
                       <td>
                         <button type="button" class="btn btn-primary btn-sm">
@@ -138,7 +138,7 @@ table.table tr th, table.table tr td {
     font-size: 16px;
 }
 table.table tr th:first-child {
-    width: 225px;
+    width: 250px;
 }
 table.table tr th:last-child {
     width: 150px;
