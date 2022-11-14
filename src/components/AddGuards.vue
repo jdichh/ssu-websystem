@@ -260,7 +260,7 @@ export default {
 
             <div class="flex justify-space-between mb-4 flex-wrap gap-4">
               <button class="btn btn-danger mt-3" @click="$router.push('/guards')">
-                Back to Personnel
+                Cancel
               </button>
                     
               <button type="submit" class="btn btn-success mt-3">

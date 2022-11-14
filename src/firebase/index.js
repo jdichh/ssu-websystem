@@ -6,8 +6,7 @@ import 'firebase/compat/firestore';
 
 
 const firebaseConfig = {
-  //change this configuration if migrating to another database in firebase
-  apiKey: "AIzaSyBVirBpZvWclB_eKNofu8DZLZ6T2jvTi5g",
+  apiKey: "AIzaSyBRf_1UfXXp3wWFlNkX9mNKWbWtULGJF0o",
   authDomain: "geoloccapstone.firebaseapp.com",
   databaseURL: "https://geoloccapstone-default-rtdb.firebaseio.com",
   projectId: "geoloccapstone",
@@ -15,7 +14,8 @@ const firebaseConfig = {
   messagingSenderId: "1018081186988",
   appId: "1:1018081186988:web:f076a41933fb8fd9dbbb09",
   measurementId: "G-T635YWT2VM"
-}
+};
+
 
 const app = initializeApp(firebaseConfig)
 const auth = getAuth(app)

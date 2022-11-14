@@ -292,11 +292,11 @@ export default {
             </div>
 
             <button class="btn btn-danger" @click="$router.push('/guards')">
-              Back to Guards
+              Cancel Editing
             </button>
                   
             <button type="submit" class="btn btn-success">
-              Edit Personnel
+              Confirm Changes
             </button>
 
         </form>

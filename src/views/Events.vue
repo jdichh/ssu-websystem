@@ -1,6 +1,7 @@
 <script>
 import { useLoadEvents, deleteEvents } from '@/firebase' //refer to firebase/index.js
 
+
 export default {
     setup() {
         const events = useLoadEvents()

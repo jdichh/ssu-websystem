@@ -27,6 +27,7 @@ export default {
                   <thead>
                     <tr> 
                       <th>Date & Time Reported</th>
+                      <th>SSU ID</th>
                       <th>Reporter</th>
                       <th>Report Title</th>
                       <th>Location</th>
@@ -37,19 +38,22 @@ export default {
                   <tbody>
                     <tr v-for="{ 
                         id,
-                        dateTime, 
+                        
+                        dateTime,
+                        ssuID, 
                         lastName, 
                         firstName,
                         middleName, 
                         eventType,
                         coords} in reports" :key="id">
 
-                      <td style="font-weight:bold">{{ dateTime.toDate().toLocaleString() }}</td>
+                      <td style="font-weight:bold">{{ dateTime }}</td>
+                      <td>{{ ssuID }}</td>
                       <td>{{ lastName.toUpperCase() + " " + firstName + " " + middleName }}</td>
                       <td>{{ eventType }}</td>
                       <td>
                         <button type="button" class="btn btn-primary btn-sm">
-                            <a :href="`https://www.openstreetmap.org/search?query=${coords.latitude}%2C${coords.longitude}#map=19/${coords.latitude}/${coords.longitude}`" target="_blank" style="color:white">View Location</a>
+                            <a :href="`https://www.openstreetmap.org/search?query=${coords}#map=19/`" target="_blank" style="color:white">View Location</a>
                         </button>
                       </td>
                       <td>

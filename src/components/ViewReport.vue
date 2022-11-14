@@ -18,6 +18,7 @@ export default {
         eventDetails: '',
         dateTime: '',
         coords: '',
+        reportID: '',
         })
 
     onMounted(async () => {
@@ -28,8 +29,9 @@ export default {
       form.middleName = report.middleName
       form.eventType = report.eventType
       form.eventDetails = report.eventDetails
-      form.dateTime = report.dateTime.toDate() //toDate and toDateString methods convert timestamps to readable human text
+      form.dateTime = report.dateTime //add .toDate() and .toDateString() methods to convert timestamps to readable human text
       form.coords = report.coords
+      form.reportID = report.reportID
     })
 
     return { form }
@@ -51,7 +53,7 @@ export default {
             <div class="col-sm-6">
                 <a>
                   <button type="button" class="btn btn-primary">
-                    <a :href="`https://www.openstreetmap.org/search?query=${form.coords.latitude}%2C${form.coords.longitude}#map=19/${form.coords.latitude}/${form.coords.longitude}`" target="_blank" style="color:white">
+                    <a :href="`https://www.openstreetmap.org/search?query=${form.coords}#map=19/`" target="_blank" style="color:white">
                       View Location
                     </a>
                   </button>
@@ -62,7 +64,7 @@ export default {
         </div>
         <form class="login">
             <div class="row justify-content-evenly">
-              <p>Reported by {{ form.lastName.toUpperCase() + ", " + form.firstName + " " + form.middleName }} at {{ form.dateTime.toLocaleString() }}</p>
+              <p>Reported by {{ form.lastName.toUpperCase() + ", " + form.firstName + " " + form.middleName }} at {{ form.dateTime }}</p>
               <h1></h1>
                             
                   <div class="col-md-5 mb-2 pb-2">
@@ -71,10 +73,16 @@ export default {
                       <el-input type="textarea" readonly size="large" v-model="form.eventDetails" style="color:black; font-size:17px;padding-bottom:25px"/>
                     </div>
                   </div>
+
+                  <div>
+                    <div>       
+                      <h6>Report ID: {{ form.reportID }}</h6>
+                    </div>
+                  </div>
   
             </div>
 
-              <button type="button" class="btn btn-danger" @click="$router.push('/reports')">
+              <button type="button" class="btn btn-info" @click="$router.push('/reports')">
                 Back to Reports
               </button>
                   
@@ -147,5 +155,11 @@ p {
   margin-left: 4px;
   padding-bottom: 20px;
   text-align: left;
+}
+
+h6{
+  padding-bottom: 10px;
+  text-align: left;
+  color: rgb(143, 142, 142)
 }
 </style>
