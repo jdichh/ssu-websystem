@@ -19,7 +19,7 @@ export default {
                 <div class="table-title">
                   <div class="row">
                     <div class="col-sm-6">
-                      <h2><icon class="fa-solid fa-clipboard"/>&nbsp;&nbsp;Last 5 Reports</h2>
+                      <h2><icon class="fa-solid fa-clipboard"/>&nbsp;&nbsp;Last 10 Reports</h2>
                     </div>
                   </div>
                 </div>

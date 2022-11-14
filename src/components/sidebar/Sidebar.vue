@@ -39,8 +39,8 @@ export default {
         <SidebarLink to="/" icon="fas fa-home">Home</SidebarLink>
         <SidebarLink to="/reports" icon="fas fa-clipboard">Reports</SidebarLink>
         <SidebarLink to="/guards" icon="fa-solid fa-person-military-pointing">Guards</SidebarLink>
-        <SidebarLink to="/events" icon="fas fa-calendar-days">Events</SidebarLink>
         <SidebarLink to="/dtr" icon="fas fa-clock">Daily Time Record</SidebarLink>  
+        <SidebarLink to="/events" icon="fas fa-calendar-days">Events</SidebarLink>  
         <SidebarLink to="/logout" icon="fa-solid fa-arrow-right-from-bracket" class="logout" @click="$store.dispatch('logout')">Log Out</SidebarLink>
 
         <!--<span class="collapse-icon" :class="{ 'rotate-180': collapsed}" @click="toggleSidebar">

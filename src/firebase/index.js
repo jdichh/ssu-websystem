@@ -4,7 +4,6 @@ import { ref, onUnmounted } from 'vue'
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 
-
 const firebaseConfig = {
   apiKey: "AIzaSyBRf_1UfXXp3wWFlNkX9mNKWbWtULGJF0o",
   authDomain: "geoloccapstone.firebaseapp.com",
@@ -16,7 +15,6 @@ const firebaseConfig = {
   measurementId: "G-T635YWT2VM"
 };
 
-
 const app = initializeApp(firebaseConfig)
 const auth = getAuth(app)
 export { auth }
@@ -26,7 +24,6 @@ const db = firebaseApp.firestore()
 
 //CRUD for Security Personnel
 const usersCollection = db.collection('users')
-
 export const createUser = user => {
   return usersCollection.add(user)
 }
@@ -55,16 +52,11 @@ export const useLoadUsers = () => {
 //CRUD for Reports
 const reportsCollection = db.collection('reports')
 
-export const createReport = report => { //this is useless code, possibly delete later on
-  return reportsCollection.add(report)
-}
 export const getReport = async id => {
   const report = await reportsCollection.doc(id).get()
   return report.exists ? report.data() : null
 }
-export const updateReport = (id, report) => { //this is useless code, possibly delete later on
-  return reportsCollection.doc(id).update(report)
-}
+
 export const deleteReport = id => { //maybe useless?
   if(confirm('Are you sure you want to DELETE this record?')){
   return reportsCollection.doc(id).delete()
@@ -73,16 +65,16 @@ export const deleteReport = id => { //maybe useless?
 //getting data (reports)
 export const useLoadReports = () => {
   const reports = ref([])
-  const close = reportsCollection.orderBy('dateTime', 'desc').onSnapshot(snapshot => {
+  const close = reportsCollection.onSnapshot(snapshot => {
     reports.value = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }))
   })
   onUnmounted(close)
   return reports
 }
-//getting latest 5 reports (home page)
+//getting latest 10 reports (home page)
 export const useLatestReports = () => {
   const reports = ref([])
-  const close = reportsCollection.orderBy('dateTime').limit(5).onSnapshot(snapshot => {
+  const close = reportsCollection.limit(10).onSnapshot(snapshot => {
     reports.value = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }))
   })
   onUnmounted(close)
@@ -91,7 +83,6 @@ export const useLatestReports = () => {
 
 //CRUD for Events
 const eventsCollection = db.collection('events')
-
 export const createEvents = event => {
   return eventsCollection.add(event)
 }
@@ -119,7 +110,6 @@ export const useLoadEvents = () => {
 
 //DTR
 const timeRecordCollection = db.collection('timeRecord')
-
 export const getDTR = async id => {
   const timeRecord = await timeRecordCollection.doc(id).get()
   return timeRecord.exists ? timeRecord.data() : null
@@ -127,7 +117,7 @@ export const getDTR = async id => {
 
 export const useLoadDTR = () => {
   const timeRecord = ref([])
-  const close = timeRecordCollection.orderBy('dtrLogin').limit(20).onSnapshot((snapshot) => {
+  const close = timeRecordCollection.limit(20).onSnapshot((snapshot) => {
     timeRecord.value = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }))
   })
   onUnmounted(close)

@@ -27,8 +27,8 @@ export default {
                   <thead>
                     <tr> 
                       <th>SSU ID</th>
-                      <th>Logged In At</th>
-                      <th>Logged Out At</th>
+                      <th>Logged In</th>
+                      <th>Logged Out</th>
                     </tr>
                   </thead>
 
@@ -40,7 +40,7 @@ export default {
                         dtrLogout, 
                         } in timeRecord" :key="id">
 
-                      <td>{{ ssuID }}</td>
+                      <td style="font-weight:bold">{{ ssuID }}</td>
                       <td>{{ dtrLogin }}</td>
                       <td>{{ dtrLogout }}</td>
                     </tr>
