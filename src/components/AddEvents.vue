@@ -49,12 +49,12 @@ export default {
 
                             <div class="col-md-3 mb-2 pb-2">
                                 <label style="padding-bottom: 5px;">Start</label>
-                                <Datepicker dark textInput v-model="form.eventStart" :monthChangeOnScroll="false" hideOffsetDates hideInputIcon required/>
+                                <Datepicker dark textInput v-model="form.eventStart" :minDate="new Date()" :monthChangeOnScroll="false" hideOffsetDates hideInputIcon required/>
                             </div>
 
                             <div class="col-md-3 mb-2 pb-2">
                                 <label style="padding-bottom: 5px;">End</label>
-                                <Datepicker dark textInput v-model="form.eventEnd" :monthChangeOnScroll="false" hideOffsetDates hideInputIcon required/>
+                                <Datepicker dark textInput v-model="form.eventEnd" :minDate="new Date()" :monthChangeOnScroll="false" hideOffsetDates hideInputIcon required/>
                             </div>
             </div>                
 

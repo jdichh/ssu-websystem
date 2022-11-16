@@ -11,10 +11,8 @@ export default {
     const reportId = computed(() => route.params.id)
 
     const form = reactive({   
-        lastName: '',
-        firstName: '',
-        middleName: '', 
-        eventType: '',
+        fullName: '',
+        eventTitle: '',
         eventDetails: '',
         dateTime: '',
         coords: '',
@@ -24,12 +22,10 @@ export default {
     onMounted(async () => {
       const report = await getReport(reportId.value)
       console.log(report, reportId.value)
-      form.lastName = report.lastName
-      form.firstName = report.firstName
-      form.middleName = report.middleName
-      form.eventType = report.eventType
+      form.fullName = report.fullName
+      form.eventTitle = report.eventTitle
       form.eventDetails = report.eventDetails
-      form.dateTime = report.dateTime //add .toDate() and .toDateString() methods to convert timestamps to readable human text
+      form.dateTime = report.dateTime.toDate().toLocaleString() //add .toDate() and .toLocaleString() methods to convert timestamps to readable human text
       form.coords = report.coords
       form.reportID = report.reportID
     })
@@ -48,7 +44,7 @@ export default {
 
           <div class="row">
             <div class="col-sm-6">
-              <h2><icon class="fa-solid fa-clipboard-question"/>&nbsp;&nbsp;Report Title: {{ form.eventType }}</h2>
+              <h2><icon class="fa-solid fa-clipboard-question"/>&nbsp;&nbsp;Report Title: {{ form.eventTitle }}</h2>
             </div>
             <div class="col-sm-6">
                 <a>
@@ -64,7 +60,7 @@ export default {
         </div>
         <form class="login">
             <div class="row justify-content-evenly">
-              <p>Reported by {{ form.lastName.toUpperCase() + ", " + form.firstName + " " + form.middleName }} at {{ form.dateTime }}</p>
+              <p>Reported by {{ form.fullName }} at {{ form.dateTime }}</p>
               <h1></h1>
                             
                   <div class="col-md-5 mb-2 pb-2">

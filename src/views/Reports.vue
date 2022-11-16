@@ -40,17 +40,14 @@ export default {
                         id,    
                         dateTime,
                         ssuID, 
-                        lastName, 
-                        firstName,
-                        middleName,
-                        nameEx, 
-                        eventType,
+                        fullName,  
+                        eventTitle,
                         coords} in reports" :key="id">
 
-                      <td style="font-weight:bold">{{ dateTime }}</td>
+                      <td style="font-weight:bold">{{ dateTime.toDate().toLocaleString() }}</td>
                       <td>{{ ssuID }}</td>
-                      <td>{{ lastName.toUpperCase() + " " + firstName + " " + middleName + " " + nameEx }}</td>
-                      <td>{{ eventType }}</td>
+                      <td>{{ fullName}}</td>
+                      <td>{{ eventTitle }}</td>
                       <td>
                         <button type="button" class="btn btn-primary btn-sm">
                             <a :href="`https://www.openstreetmap.org/search?query=${coords}#map=19/`" target="_blank" style="color:white">View Location</a>
@@ -170,7 +167,7 @@ table.table td i {
     font-size: 19px;
 }
 
-th{
+th {
   font-weight: bold;
 }
 </style>

@@ -18,7 +18,7 @@ export default {
                 <div class="table-title">
                     <div class="row">
                         <div class="col-sm-6">
-                            <h2><icon class="fa-solid fa-clipboard"/>&nbsp;&nbsp;Daily Time Record</h2>
+                            <h2><icon class="fa-solid fa-clock"/>&nbsp;&nbsp;Daily Time Record</h2>
                         </div>
                     </div>
                 </div>
@@ -27,24 +27,27 @@ export default {
                   <thead>
                     <tr> 
                       <th>SSU ID</th>
+                      <th>Email</th>
                       <th>Logged In</th>
                       <th>Logged Out</th>
                     </tr>
                   </thead>
 
-                  <tbody>
-                    <tr v-for="{ 
-                        id,              
-                        ssuID,
-                        dtrLogin, 
-                        dtrLogout, 
-                        } in timeRecord" :key="id">
+                    <tbody>
+                        <tr v-for="{ 
+                            id,              
+                            ssuID,
+                            email,
+                            dtrLogin, 
+                            dtrLogout, 
+                            } in timeRecord" :key="id">
 
-                      <td style="font-weight:bold">{{ ssuID }}</td>
-                      <td>{{ dtrLogin }}</td>
-                      <td>{{ dtrLogout }}</td>
-                    </tr>
-                  </tbody>
+                        <td style="font-weight:bold">{{ ssuID }}</td>
+                        <td>{{ email }}</td>
+                        <td>{{ dtrLogin.toDate().toLocaleString() }}</td>
+                        <td>{{ dtrLogout.toDate().toLocaleString() }}</td>
+                        </tr>
+                    </tbody>
                 </table> 
                  
             </div>

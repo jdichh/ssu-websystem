@@ -53,7 +53,7 @@ export default {
 
                   <tbody id="tbody1">
                     <tr v-for="{ id, 
-                      idNum, 
+                      ssuID, 
                       lastName, 
                       firstName,
                       middleName,
@@ -64,7 +64,7 @@ export default {
                       expDate,
                       position } in users" :key="id">
 
-                      <td style="font-weight:bold">{{ idNum }}</td>
+                      <td style="font-weight:bold">{{ ssuID }}</td>
                       <td>
                         {{ lastName.toUpperCase() + ", " + 
                             firstName + " " +

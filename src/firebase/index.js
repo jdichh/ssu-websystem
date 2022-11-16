@@ -65,16 +65,16 @@ export const deleteReport = id => { //maybe useless?
 //getting data (reports)
 export const useLoadReports = () => {
   const reports = ref([])
-  const close = reportsCollection.onSnapshot(snapshot => {
+  const close = reportsCollection.orderBy('dateTime', 'desc').onSnapshot(snapshot => {
     reports.value = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }))
   })
   onUnmounted(close)
   return reports
 }
-//getting latest 10 reports (home page)
+//getting latest 5 reports (home page)
 export const useLatestReports = () => {
   const reports = ref([])
-  const close = reportsCollection.limit(10).onSnapshot(snapshot => {
+  const close = reportsCollection.orderBy('dateTime', 'desc').limit(5).onSnapshot(snapshot => {
     reports.value = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }))
   })
   onUnmounted(close)
@@ -108,16 +108,21 @@ export const useLoadEvents = () => {
   return events
 }
 
-//DTR
-const timeRecordCollection = db.collection('timeRecord')
-export const getDTR = async id => {
-  const timeRecord = await timeRecordCollection.doc(id).get()
-  return timeRecord.exists ? timeRecord.data() : null
+//getting latest 5 events (home page)
+export const useLatestEvents = () => {
+  const events = ref([])
+  const close = eventsCollection.orderBy('eventStart').limit(5).onSnapshot((snapshot) => {
+    events.value = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }))
+  })
+  onUnmounted(close)
+  return events
 }
 
+//DTR
+const timeRecordCollection = db.collection('timeRecord')
 export const useLoadDTR = () => {
   const timeRecord = ref([])
-  const close = timeRecordCollection.limit(20).onSnapshot((snapshot) => {
+  const close = timeRecordCollection.orderBy('dtrLogin', 'asc').onSnapshot((snapshot) => {
     timeRecord.value = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }))
   })
   onUnmounted(close)

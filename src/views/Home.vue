@@ -1,17 +1,59 @@
 <script>
-import { useLatestReports } from '@/firebase' //refer to firebase/index.js
+import { useLatestReports, useLatestEvents } from '@/firebase' //refer to firebase/index.js
 
 export default {
     
     setup() {
         const reports = useLatestReports()
-        return { reports }
+        const events = useLatestEvents()
+        return { reports, events }
      }
 }
 </script>
 
 <template>
-  <main class="Home"> 
+  <main class="Home">   
+    
+    <div class="container-xl">
+      <div class="table-responsive">
+        <div class="table-wrapper">
+
+          <div class="table-title">
+            <div class="row">
+              <div class="col-sm-6">
+                <h2><i class="fa-solid fa-calendar-days"/>&nbsp;&nbsp;Latest Events</h2>
+              </div>
+            </div>
+          </div>
+          
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Event Description</th>
+                      <th>Start</th>
+                      <th>End</th>  
+                    </tr>
+                  </thead>
+
+                  <tbody id="tbody1">
+                    <tr v-for="{ id,  
+                      description, 
+                      eventStart,
+                      eventEnd} in events" :key="id">
+ 
+                      <td style="font-weight: bold; ">{{ description }}</td>	
+                      <td>{{ eventStart.toDate().toLocaleString() }}</td> <!--toDate and toDateString converts timestamps to readable human text-->
+                      <td>{{ eventEnd.toDate().toLocaleString() }}</td> <!--toDate and toDateString converts timestamps to readable human text-->
+
+                    </tr>
+                  </tbody>
+
+                </table> 
+                 
+        </div>
+      </div>
+    </div>
+
     <div class="container">
       <div class="table-responsive">
         <div class="table-wrapper">
@@ -19,7 +61,7 @@ export default {
                 <div class="table-title">
                   <div class="row">
                     <div class="col-sm-6">
-                      <h2><icon class="fa-solid fa-clipboard"/>&nbsp;&nbsp;Last 10 Reports</h2>
+                      <h2><icon class="fa-solid fa-file-lines"/>&nbsp;&nbsp;Latest Reports</h2>
                     </div>
                   </div>
                 </div>
@@ -30,7 +72,7 @@ export default {
                       <th>Date & Time Reported</th>
                       <th>SSU ID</th>
                       <th>Reporter</th>
-                      <th>Report Type</th>
+                      <th>Report Title</th>
                       <th>Location</th>
                     </tr>
                   </thead>
@@ -40,17 +82,14 @@ export default {
                         id,
                         dateTime,
                         ssuID, 
-                        lastName, 
-                        firstName,
-                        middleName,
-                        nameEx, 
-                        eventType,
+                        fullName, 
+                        eventTitle,
                         coords} in reports" :key="id">
 
-                      <td style="font-weight:bold">{{ dateTime}}</td>
+                      <td style="font-weight:bold">{{ dateTime.toDate().toLocaleString() }}</td>
                       <td>{{ ssuID }}</td>
-                      <td>{{ lastName.toUpperCase() + " " + firstName + " " + middleName+ " " + nameEx }}</td>
-                      <td>{{ eventType }}</td>
+                      <td>{{ fullName }}</td>
+                      <td>{{ eventTitle }}</td>
                       <td>
                         <button type="button" class="btn btn-primary btn-sm">
                             <a :href="`https://www.openstreetmap.org/search?query=${coords}#map=19/`" target="_blank" style="color:white">View Location</a>
@@ -152,5 +191,9 @@ table.table td a {
 }
 table.table td i {
     font-size: 19px;
+}
+
+th {
+  font-weight: bold;
 }
 </style>

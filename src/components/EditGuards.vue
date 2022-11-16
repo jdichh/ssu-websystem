@@ -42,7 +42,8 @@ export default {
         conNumber: '',
         landNumber: '',
         homeAdd: '',
-        idNum: '',
+        ssuID: '',
+        agency: '',
         position: '',
         licNum: '',
         issueDate: '',
@@ -68,8 +69,9 @@ export default {
       form.conNumber = user.conNumber
       form.landNumber = user.landNumber
       form.homeAdd = user.homeAdd
-      form.idNum = user.idNum
+      form.ssuID = user.ssuID
       form.position = user.position
+      form.agency = user.agency
       form.licNum = user.licNum
       form.issueDate = user.issueDate.toDate()
       form.expDate = user.expDate.toDate()
@@ -95,8 +97,9 @@ export default {
       form.conNumber = ''
       form.landNumber = ''
       form.homeAdd = ''
-      form.idNum = ''
+      form.ssuID = ''
       form.position = ''
+      form.agency = ''
       form.licNum = ''
       form.issueDate = ''
       form.expDate = ''
@@ -242,14 +245,21 @@ export default {
                           <div class="col-md-2">
                             <div>
                               <label style="padding-bottom: 5px;">SSU ID</label>
-                            <input v-model="form.idNum" @keypress="validateNumber" style="color:black" required />
+                            <input v-model="form.ssuID" style="color:black" required />
+                            </div>
+                          </div>
+
+                          <div class="col-md-2">
+                            <div>
+                              <label style="padding-bottom: 5px;">Agency</label>
+                            <input v-model="form.agency" @keypress="validateText" style="color:black" required />
                             </div>
                           </div>
 
                           <div class="col-md-2">
                             <div>
                               <label style="padding-bottom: 5px;">License Number</label>
-                              <input v-model="form.licNum" @keypress="validateNumber" style="color:black" required />
+                              <input v-model="form.licNum" style="color:black" required />
                             </div>
                           </div>
 

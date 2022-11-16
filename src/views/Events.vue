@@ -56,8 +56,8 @@ export default {
                       eventEnd} in events" :key="id">
  
                       <td style="font-weight: bold; ">{{ description }}</td>	
-                      <td>{{ eventStart.toDate().toUTCString().slice(0,26) }}</td> <!--toDate and toDateString converts timestamps to readable human text-->
-                      <td>{{ eventEnd.toDate().toUTCString().slice(0,26) }}</td> <!--toDate and toDateString converts timestamps to readable human text-->
+                      <td>{{ eventStart.toDate().toLocaleString() }}</td> <!--toDate and toDateString converts timestamps to readable human text-->
+                      <td>{{ eventEnd.toDate().toLocaleString() }}</td> <!--toDate and toDateString converts timestamps to readable human text-->
 
                       <td>
                           <a class="edit">
