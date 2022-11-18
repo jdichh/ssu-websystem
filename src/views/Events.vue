@@ -24,9 +24,8 @@ export default {
 
           <div class="table-title">
             <div class="row">
-              <div class="col-sm-6">
-                
-                <h2><i class="fa-solid fa-calendar-days"/>&nbsp;&nbsp;Scheduled Events</h2>
+              <div class="col-sm-6"> 
+                                <h2><i class="fa-solid fa-calendar-days"/>&nbsp;&nbsp;Scheduled Events</h2>
               </div>
               <div class="col-sm-6">
                 <a>
@@ -35,7 +34,7 @@ export default {
                         Add
                     </button>
                 </a>
-              </div>
+              </div> 
             </div>
           </div>
           
@@ -78,8 +77,7 @@ export default {
                     </tr>
                   </tbody>
 
-                </table> 
-                 
+                </table>           
         </div>
       </div>
     </div>

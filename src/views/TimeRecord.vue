@@ -18,7 +18,7 @@ export default {
                 <div class="table-title">
                     <div class="row">
                         <div class="col-sm-6">
-                            <h2><icon class="fa-solid fa-clock"/>&nbsp;&nbsp;Daily Time Record</h2>
+                            <h2><icon class="fa-solid fa-clock"/>&nbsp;&nbsp;Daily Time Record</h2> 
                         </div>
                     </div>
                 </div>
@@ -27,10 +27,10 @@ export default {
                   <thead>
                     <tr> 
                       <th>SSU ID</th>
-                      <th>Email</th>
+                      <th>Name</th>
                       <th>Logged In</th>
                       <th>Logged Out</th>
-                      <th>Hour(s) Worked</th>
+                      <th>Hour/s Worked</th>
                     </tr>
                   </thead>
 
@@ -38,21 +38,23 @@ export default {
                         <tr v-for="{ 
                             id,              
                             ssuID,
-                            email,
+                            firstName,
+                            middleName,
+                            lastName,
                             dtrLogin, 
                             dtrLogout, 
                             } in timeRecord" :key="id">
 
                         <td v-if="ssuID == null">No Data</td>
                         <td v-else style="font-weight:bold">{{ ssuID }}</td>
-                        <td v-if="email == null">No Data</td>
-                        <td v-else>{{ email }}</td>
+                        <td v-if="lastName && firstName && middleName == null">No Data</td>
+                        <td v-else>{{ lastName + ", " + firstName + " " + middleName}}</td>
                         <td v-if="dtrLogin == null">No Data</td>
                         <td v-else>{{ dtrLogin.toDate().toLocaleString() }}</td>
                         <td v-if="dtrLogout == null">No Data</td>
                         <td v-else>{{ dtrLogout.toDate().toLocaleString() }}</td>  
                         <td v-if="dtrLogin == null || dtrLogout == null">No Data</td>
-                        <td v-else>{{ ((dtrLogout - dtrLogin)/3600).toFixed(1) + " hour(s) worked" }}</td>      
+                        <td v-else>{{ ((dtrLogout - dtrLogin)/3600).toFixed(1) + " hour/s" }}</td>      
                         </tr>
                     </tbody>
                 </table> 

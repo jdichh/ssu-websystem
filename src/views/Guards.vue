@@ -67,7 +67,7 @@ export default {
                       <td v-if="ssuID == null">No Data</td>
                       <td v-else style="font-weight:bold">{{ ssuID }}</td>
                       <td v-if="lastName && firstName && middleName && nameEx == null">No Data</td>
-                      <td v-else>{{ lastName.toUpperCase() + ", " + firstName + " " + middleName + " " + nameEx}}</td>
+                      <td v-else>{{ lastName + ", " + firstName + " " + middleName + " " + nameEx}}</td>
                       <td v-if="position == null">No Data</td>
                       <td v-else>{{ position }}</td>
                       <td v-if="conNumber == null">No Data</td>

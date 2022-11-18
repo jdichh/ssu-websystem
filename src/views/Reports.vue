@@ -18,7 +18,7 @@ export default {
                 <div class="table-title">
                     <div class="row">
                         <div class="col-sm-6">
-                            <h2><icon class="fa-solid fa-clipboard"/>&nbsp;&nbsp;All Reports</h2>
+                            <h2><icon class="fa-solid fa-file-lines"/>&nbsp;&nbsp;All Reports</h2>
                         </div>
                     </div>
                 </div>
@@ -62,7 +62,7 @@ export default {
                                 <a class="edit">
                                     <router-link :to="`/view-report/${id}`">
                                     <button type="button" class="btn btn-info btn-sm" v-on:click="say('You are about to VIEW/EDIT a record.')"> <!--EDIT-->
-                                        <i class="fa-solid fa-clipboard-list"> 
+                                        <i class="fa-solid fa-file-lines"> 
                                         </i>
                                     </button>
                                     </router-link>
