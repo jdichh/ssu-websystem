@@ -14,7 +14,7 @@ export default {
 <template>
   <main class="Home">   
     
-    <div class="container-xl">
+    <div class="container">
       <div class="table-responsive">
         <div class="table-wrapper">
 
@@ -29,7 +29,7 @@ export default {
                 <table class="table table-striped">
                   <thead>
                     <tr>
-                      <th>Event Description</th>
+                      <th>Description</th>
                       <th>Start</th>
                       <th>End</th>  
                     </tr>
@@ -41,9 +41,12 @@ export default {
                       eventStart,
                       eventEnd} in events" :key="id">
  
-                      <td style="font-weight: bold; ">{{ description }}</td>	
-                      <td>{{ eventStart.toDate().toLocaleString() }}</td> <!--toDate and toDateString converts timestamps to readable human text-->
-                      <td>{{ eventEnd.toDate().toLocaleString() }}</td> <!--toDate and toDateString converts timestamps to readable human text-->
+                      <td v-if="description == null">No Data</td>
+                      <td v-else style="font-weight: bold; ">{{ description }}</td>	
+                      <td v-if="eventStart == null">No Data</td>
+                      <td v-else>{{ eventStart.toDate().toLocaleString() }}</td>
+                      <td v-if="eventEnd == null">No Data</td>
+                      <td v-else>{{ eventEnd.toDate().toLocaleString() }}</td>
 
                     </tr>
                   </tbody>
@@ -86,10 +89,14 @@ export default {
                         eventTitle,
                         coords} in reports" :key="id">
 
-                      <td style="font-weight:bold">{{ dateTime.toDate().toLocaleString() }}</td>
-                      <td>{{ ssuID }}</td>
-                      <td>{{ fullName }}</td>
-                      <td>{{ eventTitle }}</td>
+                      <td v-if="dateTime == null">No Data</td>
+                      <td style="font-weight:bold" v-else>{{ dateTime.toDate().toLocaleString() }}</td>
+                      <td v-if="ssuID == null">No Data</td>
+                      <td v-else>{{ ssuID }}</td>
+                      <td v-if="fullName == null">No Data</td>
+                      <td v-else>{{ fullName }}</td>
+                      <td v-if="eventTitle == null">No Data</td>
+                      <td v-else>{{ eventTitle }}</td>
                       <td>
                         <button type="button" class="btn btn-primary btn-sm">
                             <a :href="`https://www.openstreetmap.org/search?query=${coords}#map=19/`" target="_blank" style="color:white">View Location</a>
@@ -108,7 +115,7 @@ export default {
 
 <style scoped>
 .table-responsive {
-    margin-top: 30px;
+    margin-top: 70px;
 }
 .table-wrapper {
     background: rgb(235, 235, 235);

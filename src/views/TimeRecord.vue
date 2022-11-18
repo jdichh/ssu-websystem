@@ -30,6 +30,7 @@ export default {
                       <th>Email</th>
                       <th>Logged In</th>
                       <th>Logged Out</th>
+                      <th>Hour(s) Worked</th>
                     </tr>
                   </thead>
 
@@ -42,10 +43,16 @@ export default {
                             dtrLogout, 
                             } in timeRecord" :key="id">
 
-                        <td style="font-weight:bold">{{ ssuID }}</td>
-                        <td>{{ email }}</td>
-                        <td>{{ dtrLogin.toDate().toLocaleString() }}</td>
-                        <td>{{ dtrLogout.toDate().toLocaleString() }}</td>
+                        <td v-if="ssuID == null">No Data</td>
+                        <td v-else style="font-weight:bold">{{ ssuID }}</td>
+                        <td v-if="email == null">No Data</td>
+                        <td v-else>{{ email }}</td>
+                        <td v-if="dtrLogin == null">No Data</td>
+                        <td v-else>{{ dtrLogin.toDate().toLocaleString() }}</td>
+                        <td v-if="dtrLogout == null">No Data</td>
+                        <td v-else>{{ dtrLogout.toDate().toLocaleString() }}</td>  
+                        <td v-if="dtrLogin == null || dtrLogout == null">No Data</td>
+                        <td v-else>{{ ((dtrLogout - dtrLogin)/3600).toFixed(1) + " hour(s) worked" }}</td>      
                         </tr>
                     </tbody>
                 </table> 

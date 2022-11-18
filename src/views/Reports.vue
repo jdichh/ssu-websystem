@@ -44,10 +44,14 @@ export default {
                         eventTitle,
                         coords} in reports" :key="id">
 
-                      <td style="font-weight:bold">{{ dateTime.toDate().toLocaleString() }}</td>
-                      <td>{{ ssuID }}</td>
-                      <td>{{ fullName}}</td>
-                      <td>{{ eventTitle }}</td>
+                      <td v-if="dateTime == null">No Data</td>
+                      <td v-else style="font-weight:bold">{{ dateTime.toDate().toLocaleString() }}</td>
+                      <td v-if="ssuID == null">No Data</td>
+                      <td v-else>{{ ssuID }}</td>
+                      <td v-if="fullName == null">No Data</td>
+                      <td v-else>{{ fullName }}</td>
+                      <td v-if="eventTitle == null">No Data</td>
+                      <td v-else>{{ eventTitle }}</td>
                       <td>
                         <button type="button" class="btn btn-primary btn-sm">
                             <a :href="`https://www.openstreetmap.org/search?query=${coords}#map=19/`" target="_blank" style="color:white">View Location</a>

@@ -42,7 +42,7 @@ export default {
                 <table class="table table-striped">
                   <thead>
                     <tr>
-                      <th>Event Description</th>
+                      <th>Description</th>
                       <th>Start</th>
                       <th>End</th>  
                       <th>Action</th>
@@ -55,10 +55,12 @@ export default {
                       eventStart,
                       eventEnd} in events" :key="id">
  
-                      <td style="font-weight: bold; ">{{ description }}</td>	
-                      <td>{{ eventStart.toDate().toLocaleString() }}</td> <!--toDate and toDateString converts timestamps to readable human text-->
-                      <td>{{ eventEnd.toDate().toLocaleString() }}</td> <!--toDate and toDateString converts timestamps to readable human text-->
-
+                      <td v-if="description == null">No Data</td>
+                      <td v-else style="font-weight: bold; ">{{ description }}</td>	
+                      <td v-if="eventStart == null">No Data</td>
+                      <td v-else>{{ eventStart.toDate().toLocaleString() }}</td>
+                      <td v-if="eventEnd == null">No Data</td>
+                      <td v-else>{{ eventEnd.toDate().toLocaleString() }}</td>
                       <td>
                           <a class="edit">
                               <router-link :to="`/edit-event/${id}`">

@@ -1,5 +1,5 @@
 <script>
-import { useLoadUsers, deleteUser } from '@/firebase' //refer to firebase/index.js
+import { useLoadUsers, deleteUser  } from '@/firebase' //refer to firebase/index.js
 
 export default {
     setup() {
@@ -64,17 +64,20 @@ export default {
                       expDate,
                       position } in users" :key="id">
 
-                      <td style="font-weight:bold">{{ ssuID }}</td>
-                      <td>
-                        {{ lastName.toUpperCase() + ", " + 
-                            firstName + " " +
-                            middleName + " " +
-                            nameEx}}</td>
-                      <td>{{ position }}</td>
-                      <td>{{ conNumber }}</td>	
-                      <td>{{ licNum }}</td>
-                      <td>{{ issueDate.toDate().toLocaleDateString() }}</td> <!--toDate and toDateString converts timestamps to readable human text-->
-                      <td>{{ expDate.toDate().toLocaleDateString() }}</td>                
+                      <td v-if="ssuID == null">No Data</td>
+                      <td v-else style="font-weight:bold">{{ ssuID }}</td>
+                      <td v-if="lastName && firstName && middleName && nameEx == null">No Data</td>
+                      <td v-else>{{ lastName.toUpperCase() + ", " + firstName + " " + middleName + " " + nameEx}}</td>
+                      <td v-if="position == null">No Data</td>
+                      <td v-else>{{ position }}</td>
+                      <td v-if="conNumber == null">No Data</td>
+                      <td v-else>{{ conNumber }}</td>	
+                      <td v-if="licNum == null">No Data</td>
+                      <td v-else>{{ licNum }}</td>
+                      <td v-if="issueDate == null">No Data</td>
+                      <td v-else>{{ issueDate.toDate().toLocaleDateString() }}</td>
+                      <td v-if="expDate == null">No Data</td>
+                      <td v-else>{{ expDate.toDate().toLocaleDateString() }}</td>                
 
                       <td>
                           <a class="edit">

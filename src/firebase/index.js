@@ -48,7 +48,6 @@ export const useLoadUsers = () => {
   onUnmounted(close)
   return users
 }
-
 //CRUD for Reports
 const reportsCollection = db.collection('reports')
 
@@ -122,7 +121,7 @@ export const useLatestEvents = () => {
 const timeRecordCollection = db.collection('timeRecord')
 export const useLoadDTR = () => {
   const timeRecord = ref([])
-  const close = timeRecordCollection.orderBy('dtrLogin', 'asc').onSnapshot((snapshot) => {
+  const close = timeRecordCollection.orderBy('dtrLogin', 'desc').onSnapshot((snapshot) => {
     timeRecord.value = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }))
   })
   onUnmounted(close)
