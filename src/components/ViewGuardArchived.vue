@@ -255,7 +255,7 @@ export default {
                          
             </div>
 
-            <button class="btn btn-info" @click="$router.push('/guardsarchive')">
+            <button class="btn btn-primary" @click="$router.push('/guardsarchive')">
               Back To Archived Security Personnel
             </button>
 

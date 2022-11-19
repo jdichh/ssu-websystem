@@ -64,7 +64,7 @@ export default {
 
           <div class="row">
             <div class="col-sm-6">
-              <h2><icon class="fa-solid fa-calendar"/>&nbsp;&nbsp;Edit Event Detail</h2>
+              <h2><icon class="fa-solid fa-calendar"/>&nbsp;&nbsp;Edit Event Details</h2>
             </div>
           </div>
 

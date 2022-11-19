@@ -28,7 +28,7 @@ export default {
               </div>
               <div class="col-sm-3">
                 <a>
-                  <button class="btn btn-info" @click="$router.push('/guardsarchive')">
+                  <button class="btn btn-primary" @click="$router.push('/guardsarchive')">
                       Archive
                   </button>
                 </a>
