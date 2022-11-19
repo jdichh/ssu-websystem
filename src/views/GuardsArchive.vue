@@ -1,80 +1,102 @@
 <script>
-import { useLoadEvents, deleteEvents } from '@/firebase' //refer to firebase/index.js
-
+import { useLoadUsersArhived, deleteUserArchived } from '@/firebase' //refer to firebase/index.js
 
 export default {
     setup() {
-      const events = useLoadEvents()
-      return { events, deleteEvents }
+        const users = useLoadUsersArhived()
+        return { users, deleteUserArchived }
      },
 
     methods: {
       say: function (msg) {
         alert(msg)
+        },
       },
-    }
 }
 </script>
 
 <template>
-  <main class="Calendar"> 
+  <main class="Guard"> 
     <div class="container-xl">
       <div class="table-responsive">
         <div class="table-wrapper">
+
           <div class="table-title">
             <div class="row">
-              <div class="col-sm-6"> 
-                <h2><i class="fa-solid fa-calendar-days"/>&nbsp;&nbsp;Scheduled Events</h2>
+              <div class="col-sm-6">
+                <h2><icon class="fa-solid fa-person-military-pointing"/>&nbsp;&nbsp;Security Personnel - ARCHIVE</h2>
               </div>
               <div class="col-sm-6">
                 <a>
-                  <button class="btn btn-success" @click="$router.push('/add-event/')">
-                      Add
+                  <button class="btn btn-info" @click="$router.push('/guards')">
+                      Back
                   </button>
                 </a>
-              </div> 
+              </div>
             </div>
           </div>
           
                 <table class="table table-striped">
                   <thead>
                     <tr>
-                      <th>Description</th>
-                      <th>Start</th>
-                      <th>End</th>  
+                      <th>SSU ID</th>
+                      <th>Name</th>
+                      <th>Position</th>
+                      <th>Contact Number</th>
+                      <th>License Number</th>
+                      <th>Date Issued</th> 
+                      <th>Expiration Date</th> 
                       <th>Action</th>
                     </tr>
                   </thead>
 
                   <tbody id="tbody1">
-                    <tr v-for="{ id,  
-                      description, 
-                      eventStart,
-                      eventEnd} in events" :key="id">
- 
-                      <td v-if="description == null">No Data</td>
-                      <td v-else style="font-weight: bold; ">{{ description }}</td>	
-                      <td v-if="eventStart == null">No Data</td>
-                      <td v-else>{{ eventStart.toDate().toLocaleString() }}</td>
-                      <td v-if="eventEnd == null">No Data</td>
-                      <td v-else>{{ eventEnd.toDate().toLocaleString() }}</td>
+                    <tr v-for="{ id, 
+                      ssuID, 
+                      lastName, 
+                      firstName,
+                      middleName,
+                      nameEx,
+                      conNumber, 
+                      licNum,
+                      issueDate,
+                      expDate,
+                      position } in users" :key="id">
+
+                      <td v-if="ssuID == null">No Data</td>
+                      <td v-else style="font-weight:bold">{{ ssuID }}</td>
+                      <td v-if="lastName && firstName && middleName && nameEx == null">No Data</td>
+                      <td v-else>{{ lastName + ", " + firstName + " " + middleName + " " + nameEx}}</td>
+                      <td v-if="position == null">No Data</td>
+                      <td v-else>{{ position }}</td>
+                      <td v-if="conNumber == null">No Data</td>
+                      <td v-else>{{ conNumber }}</td>	
+                      <td v-if="licNum == null">No Data</td>
+                      <td v-else>{{ licNum }}</td>
+                      <td v-if="issueDate == null">No Data</td>
+                      <td v-else>{{ issueDate.toDate().toLocaleDateString() }}</td>
+                      <td v-if="expDate == null">No Data</td>
+                      <td v-else>{{ expDate.toDate().toLocaleDateString() }}</td>                
+
                       <td>
                           <a class="edit">
-                              <router-link :to="`/edit-event/${id}`">
-                                <button type="button" class="btn btn-info btn-sm" v-on:click="say('You are about to VIEW/EDIT a record.')"> <!--EDIT-->
-                                  <i class="fa-solid fa-user-pen"/> 
+                              <router-link :to="`/viewarchivedguard/${id}`">
+                                <button type="button" class="btn btn-info btn-sm" v-on:click="say('You are about to VIEW an archived record.')"> <!--EDIT-->
+                                  <i class="fa-solid fa-eye"/> 
                                 </button>
                               </router-link>
                           </a>
                           <a class="delete"> 
-                            <button type="button" class="btn btn-danger btn-sm" @click="deleteEvents(id)"> <!--DELETE-->
+                            <button type="button" class="btn btn-danger btn-sm" @click="deleteUserArchived(id)"> <!--DELETE-->
                               <i class="fa-solid fa-trash"/>
                             </button>
                           </a>
                       </td>
                     </tr>
                   </tbody>
-                </table>           
+
+                </table> 
+                 
         </div>
       </div>
     </div>
@@ -130,18 +152,14 @@ export default {
     float: left;
     margin-top: 2px;
 }
-.table-title .btn span {
-    float: left;
-    margin-top: 2px;
-}
 table.table tr th, table.table tr td {
     border-color: #e9e9e9;
     padding: 6px 15px;
     vertical-align: middle;
-    font-size: 16px;
+    font-size: 15px;
 }
 table.table tr th:first-child {
-    width: 400px;
+    width: 11px;
 }
 table.table tr th:last-child {
     width: 130px;

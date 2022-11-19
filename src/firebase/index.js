@@ -105,7 +105,6 @@ export const useLoadEvents = () => {
   onUnmounted(close)
   return events
 }
-
 //getting latest 5 events (home page)
 export const useLatestEvents = () => {
   const events = ref([])
@@ -115,7 +114,6 @@ export const useLatestEvents = () => {
   onUnmounted(close)
   return events
 }
-
 //DTR
 const timeRecordCollection = db.collection('timeRecord')
 export const useLoadDTR = () => {
@@ -125,4 +123,27 @@ export const useLoadDTR = () => {
   })
   onUnmounted(close)
   return timeRecord
+}
+
+//archiving for Security Personnel
+const usersArchivedCollection = db.collection('usersArchived')
+export const createUserArchived = user => {
+  return usersArchivedCollection.add(user)
+}
+export const getUserArchived = async id => {
+  const user = await usersArchivedCollection.doc(id).get()
+  return user.exists ? user.data() : null
+}
+export const deleteUserArchived = id => {
+  if(confirm('Are you sure you want to DELETE this record forever?')){
+    return usersArchivedCollection.doc(id).delete()
+  }
+}
+export const useLoadUsersArhived = () => {
+  const users = ref([])
+  const close = usersArchivedCollection.orderBy('lastName').onSnapshot((snapshot) => {
+    users.value = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }))
+  })
+  onUnmounted(close)
+  return users
 }

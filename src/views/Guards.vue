@@ -23,13 +23,19 @@ export default {
 
           <div class="table-title">
             <div class="row">
-              <div class="col-sm-6">
+              <div class="col-sm-8">
                 <h2><icon class="fa-solid fa-person-military-pointing"/>&nbsp;&nbsp;Security Personnel</h2>
               </div>
-              <div class="col-sm-6">
+              <div class="col-sm-3">
+                <a>
+                  <button class="btn btn-info" @click="$router.push('/guardsarchive')">
+                      Archive
+                  </button>
+                </a>
+              </div>
+              <div class="col-sm-1">
                 <a>
                     <button class="btn btn-success" @click="$router.push('/add-guards')">
-                        <i class="fa-solid fa-plus"/>
                         Add
                     </button>
                 </a>

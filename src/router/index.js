@@ -6,11 +6,13 @@ const Home = () => import('../views/Home.vue')
 const Login = () => import('../views/Login.vue')
 const Logout = () => import('../views/Login.vue')
 const Guards = () => import('../views/Guards.vue')
+const GuardsArchive = () => import('../views/GuardsArchive.vue')
 const Reports = () => import('../views/Reports.vue')
 const Events = () => import('../views/Events.vue')
 const DTR = () => import('../views/TimeRecord.vue')
 const AddGuards = () => import('../components/AddGuards.vue')
 const EditGuards = () => import('../components/EditGuards.vue')
+const ViewGuardArchived = () => import('../components/ViewGuardArchived.vue')
 const AddEvents = () => import('../components/AddEvents.vue')
 const EditEvents = () => import('../components/EditEvents.vue')
 const ViewReport = () => import('../components/ViewReport.vue')
@@ -28,6 +30,22 @@ const routes = [
     path: '/guards',
     name: 'Guards',
     component: Guards,
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: '/guardsarchive',
+    name: 'GuardsArchive',
+    component: GuardsArchive,
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: '/viewarchivedguard/:id',
+    name: 'ViewArchivedGuard',
+    component: ViewGuardArchived,
     meta: {
       requiresAuth: true
     }

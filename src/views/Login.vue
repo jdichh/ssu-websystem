@@ -24,7 +24,7 @@ export default {
 		<div class="login-dark">
 			<form class="login" @submit.prevent="login">
 				<img class="letran_logo" src="../assets/img/letran_calamba_seal.png"/>
-				<h2>SSU Portal</h2>
+				<h2>SSU Web Portal</h2>
 				<div class="illustration">
 					<div class="form-group">
 						<input 
