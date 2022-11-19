@@ -5,8 +5,9 @@ export default {
     setup() {
         const reports = useLoadReports()
         return { reports, deleteReport }
-     }
+    },
 }
+
 </script>
 
 <template>
@@ -52,32 +53,31 @@ export default {
                       <td v-else>{{ fullName }}</td>
                       <td v-if="eventTitle == null">No Data</td>
                       <td v-else>{{ eventTitle }}</td>
+
                       <td>
                         <button type="button" class="btn btn-primary btn-sm">
                             <a :href="`https://www.openstreetmap.org/search?query=${coords}#map=19/`" target="_blank" style="color:white">View Location</a>
                         </button>
                       </td>
                       <td>
-                            
-                                <a class="edit">
-                                    <router-link :to="`/view-report/${id}`">
-                                    <button type="button" class="btn btn-info btn-sm" v-on:click="say('You are about to VIEW/EDIT a record.')"> <!--EDIT-->
-                                        <i class="fa-solid fa-file-lines"> 
-                                        </i>
-                                    </button>
-                                    </router-link>
-                                </a>
-                                <a class="delete"> 
-                                    <button type="button" class="btn btn-danger btn-sm" @click="deleteReport(id)"> <!--DELETE-->
-                                        <i class="fa-solid fa-trash" title="Delete"/>
-                                    </button>
-                                </a>
-                            
+                        <a class="edit">
+                            <router-link :to="`/view-report/${id}`">
+                            <button type="button" class="btn btn-info btn-sm" v-on:click="say('You are about to VIEW/EDIT a record.')"> <!--EDIT-->
+                                <i class="fa-solid fa-file-lines"> 
+                                </i>
+                            </button>
+                            </router-link>
+                        </a>
+                        <a class="delete"> 
+                            <button type="button" class="btn btn-danger btn-sm" @click="deleteReport(id)"> <!--DELETE-->
+                                <i class="fa-solid fa-trash" title="Delete"/>
+                            </button>
+                        </a>
                       </td>
+
                     </tr>
                   </tbody>
                 </table> 
-                 
             </div>
         </div>
     </div>
@@ -86,7 +86,7 @@ export default {
 
 <style scoped>
 .table-responsive {
-    margin-top: 30px;
+    margin-top: 15px;
 }
 .table-wrapper {
     background: rgb(235, 235, 235);

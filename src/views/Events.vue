@@ -4,8 +4,8 @@ import { useLoadEvents, deleteEvents } from '@/firebase' //refer to firebase/ind
 
 export default {
     setup() {
-        const events = useLoadEvents()
-        return { events, deleteEvents }
+      const events = useLoadEvents()
+      return { events, deleteEvents }
      },
 
     methods: {
@@ -29,10 +29,10 @@ export default {
               </div>
               <div class="col-sm-6">
                 <a>
-                    <button class="btn btn-success" @click="$router.push('/add-event/')">
-                        <i class="fa-solid fa-plus"/>
-                        Add
-                    </button>
+                  <button class="btn btn-success" @click="$router.push('/add-event/')">
+                      <i class="fa-solid fa-plus"/>
+                      Add
+                  </button>
                 </a>
               </div> 
             </div>
@@ -86,7 +86,7 @@ export default {
 
 <style scoped>
 .table-responsive {
-    margin-top: 30px;
+    margin-top: 15px;
 }
 .table-wrapper {
     background: rgb(235, 235, 235);

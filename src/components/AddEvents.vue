@@ -76,7 +76,7 @@ export default {
 
 <style scoped>
 .card-responsive {
-    margin-top: 30px;
+    margin-top: 15px;
 }
 .card-wrapper {
     background: rgb(235, 235, 235);

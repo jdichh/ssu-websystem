@@ -41,7 +41,7 @@ export default {
                   <thead>
                     <tr>
                       <th>SSU ID</th>
-                      <th>Full Name</th>
+                      <th>Name</th>
                       <th>Position</th>
                       <th>Contact Number</th>
                       <th>License Number</th>
@@ -106,7 +106,7 @@ export default {
 
 <style scoped>
 .table-responsive {
-    margin-top: 30px;
+    margin-top: 15px;
 }
 .table-wrapper {
     background: rgb(235, 235, 235);

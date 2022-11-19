@@ -5,7 +5,7 @@ export default {
     setup() {
         const timeRecord = useLoadDTR()
         return { timeRecord }
-     }
+    }
 }
 </script>
 
@@ -67,7 +67,7 @@ export default {
 
 <style scoped>
 .table-responsive {
-    margin-top: 30px;
+    margin-top: 15px;
 }
 .table-wrapper {
     background: rgb(235, 235, 235);

@@ -79,7 +79,6 @@ export const useLatestReports = () => {
   onUnmounted(close)
   return reports
 }
-
 //CRUD for Events
 const eventsCollection = db.collection('events')
 export const createEvents = event => {

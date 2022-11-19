@@ -2,18 +2,17 @@
 import { useLatestReports, useLatestEvents } from '@/firebase' //refer to firebase/index.js
 
 export default {
-    
     setup() {
-        const reports = useLatestReports()
-        const events = useLatestEvents()
-        return { reports, events }
+      const reports = useLatestReports()
+      const events = useLatestEvents()
+      return { reports, events }
      }
 }
 </script>
 
 <template>
   <main class="Home">   
-    
+
     <div class="container">
       <div class="table-responsive">
         <div class="table-wrapper">
@@ -115,12 +114,18 @@ export default {
 
 <style scoped>
 .table-responsive {
-    margin-top: 70px;
+    margin-top: 15px;
 }
 .table-wrapper {
     background: rgb(235, 235, 235);
     padding: 20px 25px;
     border-radius: 3px;
+    min-width: 1000px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+}
+.table-wrapper2 {
+    padding: 20px 25px;
+    border-radius: 10px;
     min-width: 1000px;
     box-shadow: 0 1px 1px rgba(0,0,0,.05);
 }
@@ -132,6 +137,16 @@ export default {
     min-width: 100%;
     margin: -20px -25px 10px;
     border-radius: 3px 3px 0 0;
+}
+.table-title2 {        
+    padding-bottom: 15px;
+    background: #1e2833;
+    color: #fff;
+    padding: 16px 30px;
+    min-width: 100%;
+    margin: -20px -25px 10px;
+    border-radius: 3px;
+    text-align: left;
 }
 .table-title h2 {
     margin: 5px 0 0;
