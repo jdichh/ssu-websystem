@@ -8,6 +8,9 @@ const Logout = () => import('../views/Login.vue')
 const Guards = () => import('../views/Guards.vue')
 const GuardsArchive = () => import('../views/GuardsArchive.vue')
 const Reports = () => import('../views/Reports.vue')
+const ReportsArchive = () => import('../views/ReportsArchive.vue')
+const ViewReport = () => import('../components/ViewReport.vue')
+const ViewReportArchived = () => import('../components/ViewReportArchived.vue')
 const Events = () => import('../views/Events.vue')
 const DTR = () => import('../views/TimeRecord.vue')
 const AddGuards = () => import('../components/AddGuards.vue')
@@ -15,7 +18,7 @@ const EditGuards = () => import('../components/EditGuards.vue')
 const ViewGuardArchived = () => import('../components/ViewGuardArchived.vue')
 const AddEvents = () => import('../components/AddEvents.vue')
 const EditEvents = () => import('../components/EditEvents.vue')
-const ViewReport = () => import('../components/ViewReport.vue')
+
 
 const routes = [
   {
@@ -68,16 +71,32 @@ const routes = [
   },
   {
     path: '/reports',
-    name: 'Reports & Logs',
+    name: 'Reports',
     component: Reports,
     meta: {
       requiresAuth: true
     }
   },
   {
+    path: '/reportsarchive',
+    name: 'ReportsArchive',
+    component: ReportsArchive,
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
     path: '/view-report/:id',
-    name: 'Report',
+    name: 'ViewReport',
     component: ViewReport,
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: '/viewarchivedreport/:id',
+    name: 'ViewArchivedReport',
+    component: ViewReportArchived,
     meta: {
       requiresAuth: true
     }
@@ -93,7 +112,7 @@ const routes = [
   },
   {
     path: '/dtr',
-    name: 'Daily Time Record',
+    name: 'DailyTimeRecord',
     component: DTR,
     meta: {
       requiresAuth: true

@@ -1,10 +1,10 @@
 <script>
-import { useLoadReports, deleteReport } from '@/firebase' //refer to firebase/index.js
+import { useLoadReportsArchived, deleteReportsArchived } from '@/firebase' //refer to firebase/index.js
 
 export default {
     setup() {
-        const reports = useLoadReports()
-        return { reports, deleteReport }
+        const reports = useLoadReportsArchived()
+        return { reports, deleteReportsArchived }
     },
 }
 
@@ -19,18 +19,17 @@ export default {
                 <div class="table-title">
                     <div class="row">
                         <div class="col-sm-6">
-                            <h2><icon class="fa-solid fa-file-lines"/>&nbsp;&nbsp;All Reports</h2>
+                            <h2><icon class="fa-solid fa-file-lines"/>&nbsp;&nbsp;All Reports [ARCHIVED]</h2>
                         </div>
                         <div class="col-sm-6">
                             <a>
-                                <button class="btn btn-primary" @click="$router.push('/reportsarchive')">
-                      Archive
-                  </button>
+                                <button class="btn btn-primary" @click="$router.push('/reports')">
+                                    Back
+                                </button>
                             </a>
                         </div>
                     </div>
                 </div>
-                
 
                 <table class="table table-striped">
                   <thead>
@@ -69,15 +68,15 @@ export default {
                       </td>
                       <td>
                         <a class="edit">
-                            <router-link :to="`/view-report/${id}`">
-                            <button type="button" class="btn btn-info btn-sm" v-on:click="say('You are about to VIEW/EDIT a record.')"> <!--EDIT-->
-                                <i class="fa-solid fa-file-lines"> 
+                            <router-link :to="`/viewarchivedreport/${id}`">
+                            <button type="button" class="btn btn-info btn-sm" v-on:click="say('You are about to view a record.')"> <!--EDIT-->
+                                <i class="fa-solid fa-eye"> 
                                 </i>
                             </button>
                             </router-link>
                         </a>
                         <a class="delete"> 
-                            <button type="button" class="btn btn-danger btn-sm" @click="deleteReport(id)"> <!--DELETE-->
+                            <button type="button" class="btn btn-danger btn-sm" @click="deleteReportsArchived(id)"> <!--DELETE-->
                                 <i class="fa-solid fa-trash" title="Delete"/>
                             </button>
                         </a>
@@ -150,7 +149,7 @@ table.table tr th:first-child {
     width: 250px;
 }
 table.table tr th:last-child {
-    width: 130px;
+    width: 150px;
 }
 table.table-striped tbody tr:nth-of-type(odd) {
     background-color: #fafafa;

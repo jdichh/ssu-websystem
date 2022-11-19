@@ -1,7 +1,7 @@
 <script>
 import { reactive, computed, onMounted} from 'vue'
 import { useRoute } from 'vue-router'
-import { getReport } from '@/firebase'
+import { getReportsArchived } from '@/firebase'
 import '@vuepic/vue-datepicker/dist/main.css'
 
 export default {
@@ -20,7 +20,7 @@ export default {
         })
 
     onMounted(async () => {
-      const report = await getReport(reportId.value)
+      const report = await getReportsArchived(reportId.value)
       console.log(report, reportId.value)
       form.fullName = report.fullName
       form.eventTitle = report.eventTitle
@@ -44,7 +44,7 @@ export default {
 
           <div class="row">
             <div class="col-sm-6">
-              <h2><icon class="fa-solid fa-clipboard-question"/>&nbsp;&nbsp;Report Title: {{ form.eventTitle }}</h2>
+              <h2><icon class="fa-solid fa-clipboard-question"/>&nbsp;&nbsp;Report Title: {{ form.eventTitle }} [ARCHIVED]</h2>
             </div>
             <div class="col-sm-6">
                 <a>
@@ -78,8 +78,8 @@ export default {
   
             </div>
 
-              <button type="button" class="btn btn-info" @click="$router.push('/reports')">
-                Back to Reports
+              <button type="button" class="btn btn-info" @click="$router.push('/reportsarchive')">
+                Back to Archived Reports
               </button>
                   
         </form>

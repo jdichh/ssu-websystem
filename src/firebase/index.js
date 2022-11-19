@@ -147,3 +147,23 @@ export const useLoadUsersArhived = () => {
   onUnmounted(close)
   return users
 }
+
+//archiving for reports
+const reportsArchivedCollection = db.collection('reportsArchive')
+export const getReportsArchived = async id => {
+  const report = await reportsArchivedCollection.doc(id).get()
+  return report.exists ? report.data() : null
+}
+export const deleteReportsArchived = id => {
+  if(confirm('Are you sure you want to DELETE this record forever?')){
+    return reportsArchivedCollection.doc(id).delete()
+  }
+}
+export const useLoadReportsArchived = () => {
+  const reports = ref([])
+  const close = reportsArchivedCollection.orderBy('dateTime', 'desc').onSnapshot((snapshot) => {
+    reports.value = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }))
+  })
+  onUnmounted(close)
+  return reports
+}

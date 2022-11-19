@@ -24,7 +24,7 @@ export default {
           <div class="table-title">
             <div class="row">
               <div class="col-sm-6">
-                <h2><icon class="fa-solid fa-person-military-pointing"/>&nbsp;&nbsp;Security Personnel - ARCHIVE</h2>
+                <h2><icon class="fa-solid fa-person-military-pointing"/>&nbsp;&nbsp;Security Personnel [ARCHIVED]</h2>
               </div>
               <div class="col-sm-6">
                 <a>

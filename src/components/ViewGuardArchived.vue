@@ -77,7 +77,7 @@ export default {
 
           <div class="row">
             <div class="col-sm-6">
-              <h2><icon class="fa-solid fa-clipboard-question"/>&nbsp;&nbsp;View Archived Security Personnel</h2>
+              <h2><icon class="fa-solid fa-clipboard-question"/>&nbsp;&nbsp;View Security Personnel [ARCHIVED]</h2>
             </div>
           </div>
 

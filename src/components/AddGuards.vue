@@ -89,7 +89,7 @@ export default {
         <div class="card-title">
           <div class="row">
             <div class="col-sm-6">
-              <h2>Add Security Personnel</h2>
+              <h2><icon class="fa-solid fa-person-military-pointing"/>&nbsp;&nbsp;Add Security Personnel</h2>
             </div>
           </div>
         </div>
@@ -130,7 +130,6 @@ export default {
                               <select class="form-select" v-model="form.sex" style="color:black" required>
                                 <option value="Male">Male</option>
                                 <option value="Female">Female</option>
-                                <option value="Other">Other</option>
                               </select>
                           </div>
 
@@ -244,7 +243,7 @@ export default {
           <p>Accreditations</p>
                           
                           <div class="col-md-3">
-                            <label style="padding-bottom: 5px;">Licenses Attained</label>
+                            <label style="padding-bottom: 5px;">Licenses Obtained</label>
                             <el-input type="textarea" autosize v-model="form.licenses" style="color:black" required/>
                           </div>
 
