@@ -35,7 +35,7 @@ export default {
                 <table class="table table-striped">
                   <thead>
                     <tr> 
-                      <th>Date & Time Reported</th>
+                      <th>Date & Time</th>
                       <th>SSU ID</th>
                       <th>Reporter</th>
                       <th>Report Title</th>

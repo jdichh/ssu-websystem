@@ -1,17 +1,116 @@
 <script>
-import { useLatestReports, useLatestEvents } from '@/firebase' //refer to firebase/index.js
+import { useLatestReports, useLatestEvents, useLoadLatestGuardLocation } from '@/firebase' //refer to firebase/index.js
 
 export default {
     setup() {
+      const guardLocation = useLoadLatestGuardLocation()
       const reports = useLatestReports()
       const events = useLatestEvents()
-      return { reports, events }
+      return { reports, events, guardLocation }
      }
 }
 </script>
 
 <template>
-  <main class="Home">   
+  <main class="Home"> 
+
+    <div class="container">
+      <div class="table-responsive">
+        <div class="table-wrapper">
+
+                <div class="table-title">
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <h2><icon class="fa-solid fa-file-lines"/>&nbsp;&nbsp;Latest Reports</h2>
+                    </div>
+                  </div>
+                </div>
+
+                <table class="table table-striped">
+                  <thead>
+                    <tr> 
+                      <th>Date & Time</th>
+                      <th>SSU ID</th>
+                      <th>Reporter</th>
+                      <th>Report Title</th>
+                      <th>Location</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr v-for="{ 
+                        id,
+                        dateTime,
+                        ssuID, 
+                        fullName, 
+                        eventTitle,
+                        coords} in reports" :key="id">
+
+                      <td v-if="dateTime == null">No Data</td>
+                      <td style="font-weight:bold" v-else>{{ dateTime.toDate().toLocaleString() }}</td>
+                      <td v-if="ssuID == null">No Data</td>
+                      <td v-else>{{ ssuID }}</td>
+                      <td v-if="fullName == null">No Data</td>
+                      <td v-else>{{ fullName }}</td>
+                      <td v-if="eventTitle == null">No Data</td>
+                      <td v-else>{{ eventTitle }}</td>
+                      <td>
+                        <button type="button" class="btn btn-primary btn-sm">
+                            <a :href="`https://www.openstreetmap.org/search?query=${coords}#map=19/`" target="_blank" style="color:white">View Location</a>
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table> 
+
+        </div>
+      </div>
+    </div>
+    
+    <div class="container">
+      <div class="table-responsive">
+        <div class="table-wrapper">
+
+          <div class="table-title">
+            <div class="row">
+              <div class="col-sm-6">
+                <h2><i class="fa-solid fa-location-crosshairs"/>&nbsp;&nbsp;Latest Patrolling Status</h2>
+              </div>
+            </div>
+          </div>
+          
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Date & Time</th>
+                      <th>Name</th>
+                      <th>Status</th>  
+                    </tr>
+                  </thead>
+
+                  <tbody id="tbody1">
+                    <tr v-for="{ id,  
+                      firstName, 
+                      middleName,
+                      lastName,
+                      locUpdate,
+                      timeStamp} in guardLocation" :key="id">
+ 
+                      <td v-if="timeStamp == null">No Data</td>
+                      <td v-else style="font-weight: bold; ">{{ timeStamp.toDate().toLocaleString() }}</td>	
+                      <td v-if="lastName && firstName && middleName == null">No Data</td>
+                      <td v-else>{{ lastName + ", " + firstName + " " + middleName}}</td>
+                      <td v-if="locUpdate == null">No Data</td>
+                      <td v-else>{{ locUpdate }}</td>
+
+                    </tr>
+                  </tbody>
+
+                </table> 
+                 
+        </div>
+      </div>
+    </div>
 
     <div class="container">
       <div class="table-responsive">
@@ -56,65 +155,14 @@ export default {
       </div>
     </div>
 
-    <div class="container">
-      <div class="table-responsive">
-        <div class="table-wrapper">
-
-                <div class="table-title">
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <h2><icon class="fa-solid fa-file-lines"/>&nbsp;&nbsp;Latest Reports</h2>
-                    </div>
-                  </div>
-                </div>
-
-                <table class="table table-striped">
-                  <thead>
-                    <tr> 
-                      <th>Date & Time Reported</th>
-                      <th>SSU ID</th>
-                      <th>Reporter</th>
-                      <th>Report Title</th>
-                      <th>Location</th>
-                    </tr>
-                  </thead>
-
-                  <tbody>
-                    <tr v-for="{ 
-                        id,
-                        dateTime,
-                        ssuID, 
-                        fullName, 
-                        eventTitle,
-                        coords} in reports" :key="id">
-
-                      <td v-if="dateTime == null">No Data</td>
-                      <td style="font-weight:bold" v-else>{{ dateTime.toDate().toLocaleString() }}</td>
-                      <td v-if="ssuID == null">No Data</td>
-                      <td v-else>{{ ssuID }}</td>
-                      <td v-if="fullName == null">No Data</td>
-                      <td v-else>{{ fullName }}</td>
-                      <td v-if="eventTitle == null">No Data</td>
-                      <td v-else>{{ eventTitle }}</td>
-                      <td>
-                        <button type="button" class="btn btn-primary btn-sm">
-                            <a :href="`https://www.openstreetmap.org/search?query=${coords}#map=19/`" target="_blank" style="color:white">View Location</a>
-                        </button>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table> 
-
-        </div>
-      </div>
-    </div>
+    
 
   </main>
 </template>
 
 <style scoped>
 .table-responsive {
-    margin-top: 15px;
+    margin-top: 25px;
 }
 .table-wrapper {
     background: rgb(235, 235, 235);
@@ -186,7 +234,7 @@ table.table tr th:first-child {
     width: 250px;
 }
 table.table tr th:last-child {
-    width: 250px;
+    width: 300px;
 }
 table.table-striped tbody tr:nth-of-type(odd) {
     background-color: #fafafa;

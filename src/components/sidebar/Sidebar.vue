@@ -38,6 +38,7 @@ export default {
         
         <SidebarLink to="/" icon="fas fa-home">Home</SidebarLink>
         <SidebarLink to="/reports" icon="fas fa-file-lines">Reports</SidebarLink>
+        <SidebarLink to="/guardlocation" icon="fa-solid fa-location-crosshairs">Patrolling Status</SidebarLink>
         <SidebarLink to="/guards" icon="fa-solid fa-person-military-pointing">Guards</SidebarLink>
         <SidebarLink to="/dtr" icon="fas fa-clock">Daily Time Record</SidebarLink>  
         <SidebarLink to="/events" icon="fas fa-calendar-days">Events</SidebarLink>  

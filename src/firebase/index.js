@@ -73,7 +73,7 @@ export const useLoadReports = () => {
 //getting latest 5 reports (home page)
 export const useLatestReports = () => {
   const reports = ref([])
-  const close = reportsCollection.orderBy('dateTime', 'desc').limit(5).onSnapshot(snapshot => {
+  const close = reportsCollection.orderBy('dateTime', 'desc').limit(3).onSnapshot(snapshot => {
     reports.value = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }))
   })
   onUnmounted(close)
@@ -108,7 +108,7 @@ export const useLoadEvents = () => {
 //getting latest 5 events (home page)
 export const useLatestEvents = () => {
   const events = ref([])
-  const close = eventsCollection.orderBy('eventStart').limit(5).onSnapshot((snapshot) => {
+  const close = eventsCollection.orderBy('eventStart').limit(3).onSnapshot((snapshot) => {
     events.value = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }))
   })
   onUnmounted(close)
@@ -123,6 +123,29 @@ export const useLoadDTR = () => {
   })
   onUnmounted(close)
   return timeRecord
+}
+//patrolling area notif
+const guardLocationCollection = db.collection('guardLocation')
+export const useLoadGuardLocation = () => {
+  const guardLocation = ref([])
+  const close = guardLocationCollection.orderBy('timeStamp', 'desc').onSnapshot((snapshot) => {
+    guardLocation.value = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }))
+  })
+  onUnmounted(close)
+  return guardLocation
+}
+export const useLoadLatestGuardLocation = () => {
+  const latestGuardLocation = ref([])
+  const close = guardLocationCollection.orderBy('timeStamp', 'desc').limit(3).onSnapshot((snapshot) => {
+    latestGuardLocation.value = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }))
+  })
+  onUnmounted(close)
+  return latestGuardLocation
+}
+export const deleteGuardLocation = id => {
+  if(confirm('Clear this notification?')){
+    return guardLocationCollection.doc(id).delete()
+  }
 }
 
 //archiving for Security Personnel

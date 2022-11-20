@@ -149,7 +149,7 @@ table.table tr th:first-child {
     width: 250px;
 }
 table.table tr th:last-child {
-    width: 150px;
+    width: 130px;
 }
 table.table-striped tbody tr:nth-of-type(odd) {
     background-color: #fafafa;

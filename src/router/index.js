@@ -7,6 +7,7 @@ const Login = () => import('../views/Login.vue')
 const Logout = () => import('../views/Login.vue')
 const Guards = () => import('../views/Guards.vue')
 const GuardsArchive = () => import('../views/GuardsArchive.vue')
+const GuardLocation = () => import('../views/GuardLocation.vue')
 const Reports = () => import('../views/Reports.vue')
 const ReportsArchive = () => import('../views/ReportsArchive.vue')
 const ViewReport = () => import('../components/ViewReport.vue')
@@ -41,6 +42,14 @@ const routes = [
     path: '/guardsarchive',
     name: 'GuardsArchive',
     component: GuardsArchive,
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: '/guardlocation',
+    name: 'GuardLocation',
+    component: GuardLocation,
     meta: {
       requiresAuth: true
     }
