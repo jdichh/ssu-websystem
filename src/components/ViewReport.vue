@@ -44,7 +44,7 @@ export default {
 
           <div class="row">
             <div class="col-sm-6">
-              <h2><icon class="fa-solid fa-clipboard-question"/>&nbsp;&nbsp;Report Title: {{ form.eventTitle }}</h2>
+              <h2><icon class="fa-solid fa-file-lines"/>&nbsp;&nbsp;{{ form.eventTitle }}</h2>
             </div>
             <div class="col-sm-6">
                 <a>

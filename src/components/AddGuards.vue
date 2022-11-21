@@ -83,187 +83,236 @@ export default {
 </script>
   
 <template>
+<form class="login" @submit.prevent="onSubmit">
   <div class="container-xl">
     <div class="card-responsive">
       <div class="card-wrapper">
         <div class="card-title">
           <div class="row">
             <div class="col-sm-6">
-              <h2><icon class="fa-solid fa-person-military-pointing"/>&nbsp;&nbsp;Add Security Personnel</h2>
+              <h2><icon class="fa-solid fa-person"/>&nbsp;&nbsp;Personal Information</h2>
+            </div>
+          </div>
+        </div>
+          <div class="row justify-content-evenly">
+            <div class="col-md-3 mb-2 pb-2">
+              <div>
+                <label style="padding-top: 20px;">Last Name</label>
+                <input v-model="form.lastName" @keypress="validateText" style="color:black" required />
+              </div>
+            </div>
+
+            <div class="col-md-3 mb-1 pb-2">
+              <div>
+                <label style="padding-top: 20px;">First Name</label>
+                <input v-model="form.firstName" @keypress="validateText" style="color:black" required />
+              </div>
+            </div>
+
+            <div class="col-md-3 mb-1 pb-2">
+              <div>
+                <label style="padding-top: 20px;">Middle Name</label>
+                <input v-model="form.middleName" @keypress="validateText" style="color:black" placeholder="Optional"/>
+              </div>
+            </div>
+                          
+            <div class="col-md-1 mb-2 pb-2">
+              <div>
+                <label style="padding-top: 20px;">Suffix</label>
+                <input v-model="form.nameEx" @keypress="validateText" style="color:black" placeholder="Optional"/>
+              </div>
+            </div>
+
+            <div class="col-md-2 mb-2 pb-2">
+              <label style="padding-top: 25px;">Sex</label>
+                <select class="form-select" v-model="form.sex" style="color:black" required>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                </select>
+            </div>
+
+            <div class="col-md-2 mb-2 pb-2">
+                <div>
+                  <label>Height (cm)</label>
+                  <input v-model="form.height" @keypress="validateNumber" maxlength="3" style="color:black" required />
+                </div>
+            </div>
+
+            <div class="col-md-2 mb-2 pb-2">
+                <div>
+                  <label>Weight (kg)</label>
+                  <input v-model="form.weight" @keypress="validateNumber" maxlength="3" style="color:black" required />
+                </div>
+            </div>
+
+            <div class="col-md-2 mb-2 pb-2">
+              <label style="padding-bottom: 5px;">Civil Status</label>
+                <select class="form-select" v-model="form.civStat" style="color:black" required >
+                  <option value="Single">Single</option>
+                  <option value="Married">Married</option>
+                  <option value="Divorced">Divorced</option>
+                  <option value="Separated">Separated</option>
+                  <option value="Widowed">Widowed</option>
+                </select>
+            </div>
+
+            <div class="col-md-2 mb-2 pb-2">
+              <label style="padding-bottom: 5px;">Blood Type</label>
+                <select class="form-select" v-model="form.bloodType" style="color:black" required >
+                  <option value="O+">O+</option>
+                  <option value="A+">A+</option>
+                  <option value="B+">B+</option>
+                  <option value="AB+">AB+</option>
+                  <option value="O-">O-</option>
+                  <option value="A-">A-</option>
+                  <option value="B-">B-</option>
+                  <option value="AB-">AB-</option>
+                </select>
+            </div>
+
+            <div class="col-md-2 mb-2 pb-2">
+              <label style="padding-bottom: 5px;">Date of Birth</label>
+              <Datepicker dark textInput v-model="form.birthDate" :maxDate="new Date()" :monthChangeOnScroll="false" :enableTimePicker="false" noToday hideOffsetDates hideInputIcon required/>
+            </div>
+                          
+            <div class="col-md-4">
+              <label style="padding-bottom: 5px;">Home Address</label>
+              <input v-model="form.homeAdd" style="color:black" required />
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-xl">
+    <div class="card-responsive">
+      <div class="card-wrapper">
+        <div class="card-title">
+          <div class="row">
+            <div class="col-sm-6">
+              <h2><icon class="fa-solid fa-address-book"/>&nbsp;&nbsp;Contact Information</h2>
+            </div>
+          </div>
+        </div>
+            <div class="row justify-content-evenly">
+              <div class="col-md-3">
+                <div>
+                  <label style="padding-top: 20px;">Contact Number</label>
+                  <input v-model="form.conNumber" @keypress="validateNumber" maxlength="11" style="color:black" required />
+                </div>
+              </div>
+
+              <div class="col-md-3"> <!--REVISIT-->
+                <div>
+                  <label style="padding-top: 20px;">Landline Number</label>
+                  <input v-model="form.landNumber" @keypress="validateNumber" maxlength="10" style="color:black" required />
+                </div>
+              </div>
+            </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-xl">
+    <div class="card-responsive">
+      <div class="card-wrapper">
+        <div class="card-title">
+          <div class="row">
+            <div class="col-sm-6">
+              <h2><icon class="fa-solid fa-briefcase"/>&nbsp;&nbsp;Work Information</h2>
             </div>
           </div>
         </div>
 
-        <form class="login" @submit.prevent="onSubmit">
-          <p>Personal Information</p>
+          <div class="row justify-content-evenly">
+            <div class="col-md-2"> <!--DROPDOWN-->
+              <div>
+                <label style="padding-top: 20px;">Position</label>
+                <input v-model="form.position" @keypress="validateText" style="color:black" required />
+              </div>
+            </div>
+
+            <div class="col-md-2">
+              <div>
+                <label style="padding-top: 20px;">SSU ID</label>
+              <input v-model="form.ssuID" style="color:black" required />
+              </div>
+            </div>
+
+            <div class="col-md-2">
+              <div>
+                <label style="padding-top: 20px;">Agency</label>
+              <input v-model="form.agency" @keypress="validateText" style="color:black" required />
+              </div>
+            </div>
+
+            <div class="col-md-2">
+              <div>
+                <label style="padding-top: 20px;">License Number</label>
+                <input v-model="form.licNum" style="color:black" required />
+              </div>
+            </div>
+
+            <div class="col-md-2">
+              <!-- :maxDate="new Date()" -->
+              <label style="padding-top: 25px;">Date Issued</label>
+              <Datepicker dark textInput v-model="form.issueDate" :monthChangeOnScroll="false" :enableTimePicker="false" noToday hideOffsetDates hideInputIcon required/>
+            </div>
+
+            <div class="col-md-2">
+              <!-- :minDate="new Date()" -->
+              <label style="padding-top: 25px;">Expiry Date</label>
+              <Datepicker dark textInput v-model="form.expDate" :monthChangeOnScroll="false" :enableTimePicker="false" noToday hideOffsetDates hideInputIcon required />
+            </div>        
+          </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-xl">
+    <div class="card-responsive">
+      <div class="card-wrapper">
+        <div class="card-title">
+          <div class="row">
+            <div class="col-sm-6">
+              <h2><icon class="fa-solid fa-shield-halved"/>&nbsp;&nbsp;Accreditations</h2>
+            </div>
+          </div>
+        </div>
+          <div class="row justify-content-evenly">
+            <div class="col-md-3">
+              <label style="padding-top: 5px;">Licenses Obtained</label>
+              <el-input type="textarea" autosize v-model="form.licenses" style="color:black" placeholder="Optional"/>
+            </div>
+            <div class="col-md-3">
+              <label style="padding-top: 5px;">Trainings Completed</label>
+              <el-input type="textarea" autosize v-model="form.trainings" style="color:black" placeholder="Optional"/>
+            </div>
+            <div class="col-md-3">
+              <label style="padding-top: 5px;">Seminars Attended</label>
+              <el-input type="textarea" autosize v-model="form.seminars" style="color:black" placeholder="Optional"/>
+            </div>
+          </div>
+    </div>
+   </div>
+  </div>
+
+  <div class="container-xl"  style="padding-bottom:30px">
+    <div class="card-responsive">
+      <div class="card-wrapper">
+        <div class="card-title">
+          <div class="row">
+            <div class="col-sm-6">
+              <h2><icon class="fa-solid fa-address-card"/>&nbsp;&nbsp;Credentials</h2>
+            </div>
+          </div>
+        </div>
+
             <div class="row justify-content-evenly">
-                            <div class="col-md-3 mb-2 pb-2">
-                              <div>
-                                <label>Last Name</label>
-                                <input v-model="form.lastName" @keypress="validateText" style="color:black" required />
-                              </div>
-                            </div>
-
-                            <div class="col-md-3 mb-1 pb-2">
-                              <div>
-                                <label>First Name</label>
-                                <input v-model="form.firstName" @keypress="validateText" style="color:black" required />
-                              </div>
-                            </div>
-
-                            <div class="col-md-3 mb-1 pb-2">
-                              <div>
-                                <label>Middle Name</label>
-                                <input v-model="form.middleName" @keypress="validateText" style="color:black" placeholder="Optional"/>
-                              </div>
-                            </div>
-                          
-                            <div class="col-md-1 mb-2 pb-2">
-                              <div>
-                                <label>Suffix</label>
-                                <input v-model="form.nameEx" @keypress="validateText" style="color:black" placeholder="Optional"/>
-                              </div>
-                            </div>
-
-                          <div class="col-md-2 mb-2 pb-2">
-                            <label style="padding-bottom: 5px;">Sex</label>
-                              <select class="form-select" v-model="form.sex" style="color:black" required>
-                                <option value="Male">Male</option>
-                                <option value="Female">Female</option>
-                              </select>
-                          </div>
-
-                          <div class="col-md-2 mb-2 pb-2">
-                              <div>
-                                <label>Height (cm)</label>
-                                <input v-model="form.height" @keypress="validateNumber" maxlength="3" style="color:black"/>
-                              </div>
-                          </div>
-
-                          <div class="col-md-2 mb-2 pb-2">
-                              <div>
-                                <label>Weight (kg)</label>
-                                <input v-model="form.weight" @keypress="validateNumber" maxlength="3" style="color:black"/>
-                              </div>
-                          </div>
-
-                          <div class="col-md-2 mb-2 pb-2">
-                            <label style="padding-bottom: 5px;">Civil Status</label>
-                              <select class="form-select" v-model="form.civStat" style="color:black">
-                                <option value="Single">Single</option>
-                                <option value="Married">Married</option>
-                                <option value="Divorced">Divorced</option>
-                                <option value="Separated">Separated</option>
-                                <option value="Widowed">Widowed</option>
-                              </select>
-                          </div>
-
-                          <div class="col-md-2 mb-2 pb-2">
-                            <label style="padding-bottom: 5px;">Blood Type</label>
-                              <select class="form-select" v-model="form.bloodType" style="color:black" >
-                                <option value="O+">O+</option>
-                                <option value="A+">A+</option>
-                                <option value="B+">B+</option>
-                                <option value="AB+">AB+</option>
-                                <option value="O-">O-</option>
-                                <option value="A-">A-</option>
-                                <option value="B-">B-</option>
-                                <option value="AB-">AB-</option>
-                              </select>
-                          </div>
-
-                          <div class="col-md-2 mb-2 pb-2">
-                            <label style="padding-bottom: 5px;">Date of Birth</label>
-                            <Datepicker dark textInput v-model="form.birthDate" :maxDate="new Date()" :monthChangeOnScroll="false" :enableTimePicker="false" noToday hideOffsetDates hideInputIcon required/>
-                          </div>
-                          
-                          <div class="col-md-4">
-                            <label style="padding-bottom: 5px;">Home Address</label>
-                            <input v-model="form.homeAdd" required style="color:black"/>
-                          </div>
-
-          <p>Contact Information</p>
-
-                          <div class="col-md-3">
-                            <div>
-                              <label style="padding-bottom: 5px;">Contact Number</label>
-                              <input v-model="form.conNumber" @keypress="validateNumber" maxlength="11" style="color:black" required />
-                            </div>
-                          </div>
-
-                          <div class="col-md-3"> <!--REVISIT-->
-                            <div>
-                              <label style="padding-bottom: 5px;">Landline Number</label>
-                              <input v-model="form.landNumber" @keypress="validateNumber" maxlength="10" style="color:black" required />
-                            </div>
-                          </div>
-
-          <p>Work Information</p>
-
-                          <div class="col-md-2"> <!--DROPDOWN-->
-                            <div>
-                              <label style="padding-bottom: 5px;">Position</label>
-                              <input v-model="form.position" @keypress="validateText" style="color:black" required />
-                            </div>
-                          </div>
-
-                          <div class="col-md-2">
-                            <div>
-                              <label style="padding-bottom: 5px;">SSU ID</label>
-                            <input v-model="form.ssuID" style="color:black" required />
-                            </div>
-                          </div>
-
-                          <div class="col-md-2">
-                            <div>
-                              <label style="padding-bottom: 5px;">Agency</label>
-                            <input v-model="form.agency" @keypress="validateText" style="color:black" required />
-                            </div>
-                          </div>
-
-                          <div class="col-md-2">
-                            <div>
-                              <label style="padding-bottom: 5px;">License Number</label>
-                              <input v-model="form.licNum" style="color:black" required />
-                            </div>
-                          </div>
-
-                          <div class="col-md-2">
-                            <!-- :maxDate="new Date()" -->
-                            <label style="padding-bottom: 12px;">Date Issued</label>
-                            <Datepicker dark textInput v-model="form.issueDate" :monthChangeOnScroll="false" :enableTimePicker="false" noToday hideOffsetDates hideInputIcon required/>
-                          </div>
-
-                          <div class="col-md-2">
-                            <!-- :minDate="new Date()" -->
-                            <label style="padding-bottom: 12px;">Expiry Date</label>
-                            <Datepicker dark textInput v-model="form.expDate" :monthChangeOnScroll="false" :enableTimePicker="false" noToday hideOffsetDates hideInputIcon required />
-                          </div>
-
-          <p>Accreditations</p>
-                          
-                          <div class="col-md-3">
-                            <label style="padding-bottom: 5px;">Licenses Obtained</label>
-                            <el-input type="textarea" autosize v-model="form.licenses" style="color:black" required/>
-                          </div>
-
-                          <div class="col-md-3">
-                            <label style="padding-bottom: 5px;">Trainings Completed</label>
-                            <el-input type="textarea" autosize v-model="form.trainings" style="color:black" required/>
-                          </div>
-
-                          <div class="col-md-3">
-                            <label style="padding-bottom: 5px;">Seminars Attended</label>
-                            <el-input type="textarea" autosize v-model="form.seminars" style="color:black" required/>
-                          </div>
-
-          <p>For Credentials</p>
-
-                          <div class="col-md-3">
-                            <label style="padding-bottom: 5px;">Email Address</label>
-                            <input v-model="form.email" type="email" style="color:black" required/>
-                          </div>                       
-                         
+              <div class="col-md-3">
+                <label style="padding-top: 20px;">Email Address</label>
+                <input v-model="form.email" type="email" style="color:black" required/>
+              </div>                                  
             </div>
 
             <div class="flex justify-space-between mb-4 flex-wrap gap-4">
@@ -275,11 +324,11 @@ export default {
                 Add Personnel
               </button>
             </div>
-        </form>
-
+  
       </div>
     </div>
   </div>
+</form>
 </template>
 
 <style scoped>
