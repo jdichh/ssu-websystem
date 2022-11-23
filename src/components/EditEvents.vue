@@ -57,77 +57,89 @@ export default {
 </script>
 
 <template>
+<form class="login" @submit.prevent="update">
   <div class="container-xl">
     <div class="card-responsive">
       <div class="card-wrapper">
         <div class="card-title">
-
           <div class="row">
             <div class="col-sm-6">
-              <h2><icon class="fa-solid fa-calendar"/>&nbsp;&nbsp;Edit Event Details</h2>
+              <h2><icon class="fa-solid fa-calendar-xmark"/>&nbsp;&nbsp;Original Event Details</h2>
             </div>
           </div>
-
         </div>
-        <form class="login" @submit.prevent="update">
-            <p>Original Event Details</p>
+        
             <div class="row justify-content-evenly" style="padding-top:40px">
-                            <div class="col-md-3 mb-2 pb-2">
-                              <div>
-                                <label>Description</label>
-                                <input disabled v-model="form.descriptionOriginal" style="color:black" required />
-                              </div>
-                            </div>
+              <div class="col-md-3 mb-2 pb-2">
+                <div>
+                  <label>Description</label>
+                  <input disabled v-model="form.descriptionOriginal" style="color:black" required />
+                </div>
+              </div>
 
-                          <div class="col-md-2 mb-2 pb-2">
-                            <label style="padding-bottom: 5px;">Start</label>
-                            <Datepicker readonly dark v-model="form.eventStartOriginal" :monthChangeOnScroll="false" hideOffsetDates hideInputIcon required/>
-                          </div>
+              <div class="col-md-2 mb-2 pb-2">
+                <label style="padding-bottom: 5px;">Start</label>
+                <Datepicker readonly dark v-model="form.eventStartOriginal" :monthChangeOnScroll="false" hideOffsetDates hideInputIcon required/>
+              </div>
 
-                          <div class="col-md-2 mb-2 pb-2">
-                            <label style="padding-bottom: 5px;">End</label>
-                            <Datepicker readonly dark v-model="form.eventEndOriginal" :monthChangeOnScroll="false" hideOffsetDates hideInputIcon required/>
-                          </div>
+              <div class="col-md-2 mb-2 pb-2">
+                <label style="padding-bottom: 5px;">End</label>
+                <Datepicker readonly dark v-model="form.eventEndOriginal" :monthChangeOnScroll="false" hideOffsetDates hideInputIcon required/>
+              </div>
+            </div>              
+      </div>
+    </div>
+  </div>
+
+  <div class="container-xl">
+    <div class="card-responsive">
+      <div class="card-wrapper">
+        <div class="card-title">
+          <div class="row">
+            <div class="col-sm-6">
+              <h2><icon class="fa-solid fa-calendar-check"/>&nbsp;&nbsp;New Event Details</h2>
             </div>
-            <p>New Event Details</p>     
+          </div>
+        </div>   
+
             <div class="row justify-content-evenly" style="padding-top:40px">
-                            <div class="col-md-3 mb-2 pb-2">
-                              <div>
-                                <label>Description</label>
-                                <input v-model="form.description" maxlength="60" style="color:black" required />
-                              </div>
-                            </div>
+              <div class="col-md-3 mb-2 pb-2">
+                <div>
+                  <label>Description</label>
+                  <input v-model="form.description" maxlength="60" style="color:black" required />
+                </div>
+              </div>
 
-                            <div class="col-md-2 mb-2 pb-2">
-                                <label style="padding-bottom: 5px;">Start</label>
-                                <Datepicker dark textInput v-model="form.eventStart" :minDate="new Date()" :monthChangeOnScroll="false" hideOffsetDates hideInputIcon required/>
-                            </div>
+              <div class="col-md-2 mb-2 pb-2">
+                  <label style="padding-bottom: 5px;">Start</label>
+                  <Datepicker dark textInput v-model="form.eventStart" :minDate="new Date()" :monthChangeOnScroll="false" hideOffsetDates hideInputIcon required/>
+              </div>
 
-                            <div class="col-md-2 mb-2 pb-2">
-                                <label style="padding-bottom: 5px;">End</label>
-                                <Datepicker dark textInput v-model="form.eventEnd" :minDate="new Date()" :monthChangeOnScroll="false" hideOffsetDates hideInputIcon required/>
-                            </div>
+              <div class="col-md-2 mb-2 pb-2">
+                  <label style="padding-bottom: 5px;">End</label>
+                  <Datepicker dark textInput v-model="form.eventEnd" :minDate="new Date()" :monthChangeOnScroll="false" hideOffsetDates hideInputIcon required/>
+              </div>
             </div>                
 
             <div class="flex justify-space-between mb-4 flex-wrap gap-4">
               <button class="btn btn-danger mt-3" @click="$router.push('/events')">
-                Cancel Editing
+                Cancel Changes
               </button>
                     
               <button type="submit" class="btn btn-success mt-3">
                 Confirm Changes
               </button>
             </div>
-        </form>
       </div>
     </div>
   </div>
+</form>
 </template>
 
 <style scoped>
 
 .card-responsive {
-    margin-top: 15px;
+    margin-top: 20px;
 }
 .card-wrapper {
     background: rgb(235, 235, 235);
