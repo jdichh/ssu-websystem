@@ -18,7 +18,7 @@ export default {
                 <div class="table-title">
                     <div class="row">
                         <div class="col-sm-6">
-                            <h2><icon class="fa-solid fa-clock"/>&nbsp;&nbsp;Daily Time Record</h2> 
+                            <h2><icon class="fa-solid fa-clock"/>&nbsp;&nbsp;Time Record</h2> 
                         </div>
                     </div>
                 </div>

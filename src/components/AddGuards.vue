@@ -158,7 +158,7 @@ export default {
 
             <div class="col-md-2 mb-2 pb-2">
               <label style="padding-bottom: 5px;">Blood Type</label>
-                <select class="form-select" v-model="form.bloodType" style="color:black" required >
+                <select class="form-select" v-model="form.bloodType" style="color:black"  >
                   <option value="O+">O+</option>
                   <option value="A+">A+</option>
                   <option value="B+">B+</option>
@@ -235,7 +235,7 @@ export default {
             <div class="col-md-2">
               <div>
                 <label style="padding-top: 20px;">SSU ID</label>
-              <input v-model="form.ssuID" style="color:black" required />
+              <input v-model="form.ssuID" style="color:black" @keypress="validateNumber" required />
               </div>
             </div>
 
@@ -249,7 +249,7 @@ export default {
             <div class="col-md-2">
               <div>
                 <label style="padding-top: 20px;">License Number</label>
-                <input v-model="form.licNum" style="color:black" required />
+                <input v-model="form.licNum" style="color:black" @keypress="validateNumber" required />
               </div>
             </div>
 
