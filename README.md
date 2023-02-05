@@ -1,4 +1,4 @@
-# WEBSYSTEM FOR SSU
+# Web Application for the Security Services Unit Patrol System for Letran-Calamba
 
 ## Project setup
 ```
