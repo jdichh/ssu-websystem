@@ -1,4 +1,4 @@
-# WEBSYSTEM FOR SSU
+# Web Application for the Security Services Unit Patrol System for Letran-Calamba
 
 ## Project setup
 ```
@@ -22,3 +22,6 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+### Video Demonstration
+https://drive.google.com/file/d/1URsvcR04m4ejfkJLfUMpq-YOLFVFSS-Q/view?usp=share_link
