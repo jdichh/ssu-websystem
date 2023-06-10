@@ -49,7 +49,7 @@ export default {
 					</div>
 
 					<div>
-						<p class="forgot">Credentials: testaccount@gmail.com <br> 123456</p>
+						<p class="forgot">Email: <strong>testaccount@gmail.com</strong> <br> Password: <strong>123456</strong></p>
 					</div>
 				</div>
 			</form>
@@ -105,7 +105,7 @@ export default {
   display:block;
   text-align:center;
   font-size:14px;
-  color:#6f7a85;
+  color:white;
   opacity:0.9;
   text-decoration:none;
 }
