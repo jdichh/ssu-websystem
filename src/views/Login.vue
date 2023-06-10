@@ -49,7 +49,7 @@ export default {
 					</div>
 
 					<div>
-						<p class="forgot">Contact your head to register.</p>
+						<p class="forgot">Credentials: testaccount@gmail.com <br> 123456</p>
 					</div>
 				</div>
 			</form>
