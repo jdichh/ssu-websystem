@@ -1,6 +1,7 @@
 # Web Application for the Security Services Unit Patrol System for Letran-Calamba
+[Video Demonstration](https://youtu.be/vkYClk75SS0)
 
-## Project setup
+### Project setup
 ```
 npm install
 ```
@@ -23,5 +24,4 @@ npm run lint
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
-### Video Demonstration
-https://drive.google.com/file/d/1URsvcR04m4ejfkJLfUMpq-YOLFVFSS-Q/view?usp=share_link
+
